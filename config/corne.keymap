@@ -42,14 +42,14 @@
 
                 upper_layer {
 // -------------------------------------------------------------------------
-// |      |  F1 |  F2 |  F3 | F4  |     |  |VOL+ |PSCRN|     |     |     |SLEEP |
-// |      |  F5 |  F6 |  F7 |  F8 |     |  |VOL- |     |     |     |     |LOCK  |
-// |      | F9  | F10 | F11 | F12 |     |  |BTCLR|BTCAL|BTNXT|BTPRV|     |      |
+// |      |  F1 |  F2 |  F3 | F4  |     |  |VOL+ |PSCRN|BTCLR|BTCAL|     |SLEEP |
+// |      |  F5 |  F6 |  F7 |  F8 |     |  |VOL- | BT1 | BT2 | BT3 | BT4 |LOCK  |
+// |      | F9  | F10 | F11 | F12 |     |  |     | BTX1| BTX2| BTX3| BTX4|      |
 //                    |     |     |     |  |     |     |     |
                         bindings = <
-   &trans &kp F1 &kp F2  &kp F3  &kp F4  &trans     &kp C_VOL_UP  &kp PSCRN      &trans     &trans     &trans &kp C_SLEEP
-   &trans &kp F5 &kp F6  &kp F7  &kp F8  &trans     &kp C_VOL_DN  &trans         &trans     &trans     &trans &kp C_AL_LOCK
-   &trans &kp F9 &kp F10 &kp F11 &kp F12 &trans     &bt BT_CLR    &bt BT_CLR_ALL &bt BT_NXT &bt BT_PRV &trans &trans
+   &trans &kp F1 &kp F2  &kp F3  &kp F4  &trans     &kp C_VOL_UP  &kp PSCRN      &bt BT_CLR    &bt BT_CLR_ALL  &trans        &kp C_SLEEP
+   &trans &kp F5 &kp F6  &kp F7  &kp F8  &trans     &kp C_VOL_DN  &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &kp C_AL_LOCK
+   &trans &kp F9 &kp F10 &kp F11 &kp F12 &trans     &trans        &bt BT_DISC 0  &bt BT_DISC 1 &bt BT_DISC 2   &bt BT_DISC 3 &trans
                  &trans    &trans   &trans             &trans    &trans    &trans
                         >;
                 };
