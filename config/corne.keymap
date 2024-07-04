@@ -9,6 +9,18 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+   macros {
+        // Windows sleep key
+        win_sleep: win_sleep {
+            wait-ms = <500>;
+            tap-ms = <5>;
+            compatible = "zmk,behavior-macro";
+            label = "WIN_SLEEP_KEY";
+            #binding-cells = <0>;
+            bindings = <&kp LG(X) &kp U &kp S>;
+        };
+    };
         keymap {
                 compatible = "zmk,keymap";
 
@@ -47,7 +59,7 @@
 // |      | F9  | F10 | F11 | F12 |     |  |     | BTX1| BTX2| BTX3| BTX4|      |
 //                    |     |     |     |  |     |     |     |
                         bindings = <
-   &trans &kp F1 &kp F2  &kp F3  &kp F4  &trans     &kp C_VOL_UP  &kp PSCRN      &bt BT_CLR    &bt BT_CLR_ALL  &trans        &kp C_SLEEP
+   &trans &kp F1 &kp F2  &kp F3  &kp F4  &trans     &kp C_VOL_UP  &kp PSCRN      &bt BT_CLR    &bt BT_CLR_ALL  &trans        &win_sleep
    &trans &kp F5 &kp F6  &kp F7  &kp F8  &trans     &kp C_VOL_DN  &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &kp C_AL_LOCK
    &trans &kp F9 &kp F10 &kp F11 &kp F12 &trans     &trans        &bt BT_DISC 0  &bt BT_DISC 1 &bt BT_DISC 2   &bt BT_DISC 3 &trans
                  &trans    &trans   &trans             &trans    &trans    &trans
