@@ -40,29 +40,29 @@
 
                 lower_layer {
 // -----------------------------------------------------------------------------------------
-// |   `  |  $  |  !  |  {  |  }  |  =  |                     |  +  |  7  |  8  |  9  |  UP | HOME |
-// |   ~  |  %  |  @  |  (  |  )  | "|" |                     |  -  |  4  |  5  |  6  | LEFT|RIGHT |
-// |   ^  |  &  |  #  |  [  |  ]  |  *  |                     |  0  |  1  |  2  |  3  | DOWN| END  |
+// |   `  |  $  |  !  |  {  |  }  |  =  |                     |  +  |  7  |  8  |  9  |  -  | DEL  |
+// |   ~  |  %  |  @  |  (  |  )  | "|" |                     |  -  |  4  |  5  |  6  |  _  |  :   |
+// |      |  &  |  #  |  [  |  ]  |  *  |                     |  0  |  1  |  2  |  3  |  \  |  ^   |
 //                    |  \  |  _  | DEL |                     |     |     |     |
                         bindings = <
-   &kp GRAVE &kp DLLR  &kp EXCL &kp LBRC &kp RBRC  &kp EQUAL   &kp PLUS  &kp N7 &kp N8 &kp N9 &kp UP   &kp HOME
-   &kp TILDE &kp PRCNT &kp AT   &kp LPAR &kp RPAR  &kp PIPE    &kp MINUS &kp N4 &kp N5 &kp N6 &kp LEFT &kp RIGHT
-   &kp CARET &kp AMPS  &kp HASH &kp LBKT &kp RBKT  &kp ASTRK   &kp N0    &kp N1 &kp N2 &kp N3 &kp DOWN &kp END
-                  &kp BSLH    &kp UNDER &kp DEL     &trans    &trans    &trans
+   &kp GRAVE &kp DLLR  &kp EXCL &kp LBRC &kp RBRC  &kp EQUAL   &kp PLUS  &kp N7 &kp N8 &kp N9 &kp MINUS &kp DEL
+   &kp TILDE &kp PRCNT &kp AT   &kp LPAR &kp RPAR  &kp PIPE    &kp MINUS &kp N4 &kp N5 &kp N6 &kp UNDER &kp COLON
+   &trans    &kp AMPS  &kp HASH &kp LBKT &kp RBKT  &kp ASTRK   &kp N0    &kp N1 &kp N2 &kp N3 &kp BSLH  &kp CARET
+                    &trans    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
 
                 upper_layer {
 // -------------------------------------------------------------------------
-// |      |  F1 |  F2 |  F3 | F4  |     |  |VOL+ |PSCRN|BTCLR|BTCAL|     |SLEEP |
-// |      |  F5 |  F6 |  F7 |  F8 |     |  |VOL- | BT1 | BT2 | BT3 | BT4 |LOCK  |
-// |      | F9  | F10 | F11 | F12 |     |  |     | BTX1| BTX2| BTX3| BTX4|      |
-//                    |     |     |     |  |     |     |     |
+// | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL| VOL+  | HOME |  UP  |  END  | PGUP  |
+// |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  | VOL-  | LEFT | DOWN | RIGHT | PGDN  |
+// |       | F9 | F10 | F11 | F12 | BTX0 |                  | BTX1 | MUTE  | PREV | PLAY | NEXT  | SLEEP |
+//                   |     |     |     |                      |     |     |     |
                         bindings = <
-   &trans &kp F1 &kp F2  &kp F3  &kp F4  &trans     &kp C_VOL_UP  &kp PSCRN      &bt BT_CLR    &bt BT_CLR_ALL  &trans        &win_sleep
-   &trans &kp F5 &kp F6  &kp F7  &kp F8  &trans     &kp C_VOL_DN  &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &kp C_AL_LOCK
-   &trans &kp F9 &kp F10 &kp F11 &kp F12 &trans     &trans        &bt BT_DISC 0  &bt BT_DISC 1 &bt BT_DISC 2   &bt BT_DISC 3 &trans
-                 &trans    &trans   &trans             &trans    &trans    &trans
+   &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp C_VOL_UP  &kp HOME    &kp UP    &kp END    &kp PGUP
+   &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 2   &kp C_VOL_DN  &kp LEFT    &kp DOWN  &kp RIGHT  &kp PGDN
+   &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 2  &kp C_MUTE    &kp C_PREV  &kp C_PP  &kp C_NEXT &win_sleep
+                          &trans    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
         };
