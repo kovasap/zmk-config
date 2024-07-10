@@ -51,6 +51,7 @@
    &trans    &kp AMPS  &kp HASH &kp LBKT &kp RBKT  &kp ASTRK   &kp N0    &kp N1 &kp N2 &kp N3 &kp BSLH  &kp CARET
                     &trans    &trans   &trans          &trans    &trans    &trans
                         >;
+                };
 
                 upper_layer {
 // -----------------------------------------------------------------------------------------        
@@ -79,6 +80,7 @@
    &trans    &kp AMPS  &kp HASH &kp LBKT &kp RBKT  &kp ASTRK   &kp BSLH  &kp N1 &kp N2 &kp N3 &kp MINUS &kp CARET
                     &trans    &trans   &trans          &trans    &trans    &trans
                         >;
+                };
 
                 upper_layer {
 // -------------------------------------------------------------------------
