@@ -71,13 +71,13 @@
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 // |   `  |  @  |  !  |  {  |  }  |  =  |                     |  +  |  7  |  8  |  9  |  -  | DEL  |
-// |   ~  |  %  |  -  |  (  |  )  | "|" |                     |  *  |  4  |  5  |  6  |  0  |  :   |
-// |      |  &  |  #  |  [  |  ]  |  $  |                     |  \  |  1  |  2  |  3  |  _  |  ^   |
+// |   ~  |  _  |  -  |  (  |  )  | "|" |                     |  *  |  4  |  5  |  6  |  0  |  :   |
+// |      |  &  |  #  |  [  |  ]  |  $  |                     |  \  |  1  |  2  |  3  |  %  |  ^   |
 //                    |     |     |     |                     |     |     |     |
                         bindings = <
    &kp GRAVE &kp AT    &kp EXCL  &kp LBRC &kp RBRC  &kp EQUAL   &kp PLUS  &kp N7 &kp N8 &kp N9 &kp MINUS &kp DEL
-   &kp TILDE &kp PRCNT &kp MINUS &kp LPAR &kp RPAR  &kp PIPE    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0    &kp COLON
-   &trans    &kp AMPS  &kp HASH  &kp LBKT &kp RBKT  &kp DLLR    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp UNDER &kp CARET
+   &kp TILDE &kp UNDER &kp MINUS &kp LPAR &kp RPAR  &kp PIPE    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0    &kp COLON
+   &trans    &kp AMPS  &kp HASH  &kp LBKT &kp RBKT  &kp DLLR    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp PRCNT &kp CARET
                     &trans    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
