@@ -35,6 +35,12 @@
             key-positions = <20 21>;
             bindings = <&tog SYMBOL>;
         };
+        combo_sticky_symbol {
+            timeout-ms = <50>;
+            // index/pinky home row keys on right hand
+            key-positions = <20 23>;
+            bindings = <&sl SYMBOL>;
+        };
         combo_navi {
             timeout-ms = <50>;
             // middle/index home row keys on left hand
