@@ -31,8 +31,8 @@
         compatible = "zmk,combos";
         combo_symbol {
             timeout-ms = <50>;
-            // middle/index home row keys on right hand
-            key-positions = <19 20>;
+            // ring/index home row keys on right hand
+            key-positions = <19 21>;
             bindings = <&tog SYMBOL>;
         };
         combo_sticky_symbol {
@@ -43,8 +43,8 @@
         };
         combo_navi {
             timeout-ms = <50>;
-            // middle/index home row keys on left hand
-            key-positions = <15 16>;
+            // ring/index home row keys on left hand
+            key-positions = <14 16>;
             bindings = <&tog NAVI>;
         };
         combo_sticky_navi {
@@ -52,6 +52,12 @@
             // pinky/index home row keys on left hand
             key-positions = <13 16>;
             bindings = <&sl NAVI>;
+        };
+        combo_mo_config {
+            timeout-ms = <50>;
+            // both mod keys
+            key-positions = <40 41>;
+            bindings = <&mo CONFIG>;
         };
     };
     keymap {
@@ -67,7 +73,7 @@
    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
    &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo CONFIG
+              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVI
                         >;
                 };
 
@@ -87,14 +93,14 @@
 
                 navi_layer {
 // -------------------------------------------------------------------------
-// |     |ENT | PGUP| UP  | PGDN|  0   |                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
-// |     |HOME| LEFT| DOWN|RIGHT| END  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
-// |     | 1  |  2  | 3   |  4  |  5   |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
+// |     |ENT | PGUP| UP  | PGDN|  0   |                  | PSCRN|  PGUP |  UP  | PGDN  |C+BKSP|       |
+// |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END | DEL   |
+// |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                   |     |     |     |                      |     |     |     |
                         bindings = <
-   &trans    &kp RET  &kp PGUP &kp UP   &kp PGDN  &kp N0         &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
-   &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
-   &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
+   &trans    &kp RET  &kp PGUP &kp UP   &kp PGDN  &kp N0         &kp PSCRN  &kp PGUP &kp UP   &kp PGDN  &kp LC(BSPC)  &trans
+   &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END       &kp DEL
+   &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0        &trans
                           &trans    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
