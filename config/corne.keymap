@@ -92,7 +92,7 @@
 // |     | 1  |  2  | 3   |  4  |  5   |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
 //                   |     |     |     |                      |     |     |     |
                         bindings = <
-   &trans    &kp ENT  &kp PGUP &kp UP   &kp PGDN  &kp N0         &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
+   &trans    &kp RET  &kp PGUP &kp UP   &kp PGDN  &kp N0         &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
    &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
    &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
                           &trans    &trans   &trans          &trans    &trans    &trans
