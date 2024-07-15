@@ -41,16 +41,10 @@
             key-positions = <19 22>;
             bindings = <&sl SYMBOL>;
         };
-        combo_sticky_navi {
+        combo_navi {
             timeout-ms = <50>;
             // ring/index upper row keys on left hand
             key-positions = <2 4>;
-            bindings = <&sl NAVI>;
-        };
-        combo_navi {
-            timeout-ms = <50>;
-            // middle/index home row keys on right hand
-            key-positions = <19 20>;
             bindings = <&tog NAVI>;
         };
         combo_mo_config {
@@ -58,6 +52,26 @@
             // both mod keys
             key-positions = <40 41>;
             bindings = <&mo CONFIG>;
+        };
+        combo_up {
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp UP>;
+        };
+        combo_down {
+            timeout-ms = <50>;
+            key-positions = <20 22>;
+            bindings = <&kp DOWN>;
+        };
+        combo_left {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <&kp LEFT>;
+        };
+        combo_right {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&kp RIGHT>;
         };
     };
     keymap {
