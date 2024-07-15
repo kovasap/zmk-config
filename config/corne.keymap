@@ -31,27 +31,33 @@
         compatible = "zmk,combos";
         combo_symbol {
             timeout-ms = <50>;
-            // middle/index home row keys on right hand
-            key-positions = <20 21>;
+            // ring/index home row keys on right hand
+            key-positions = <19 21>;
             bindings = <&tog SYMBOL>;
         };
         combo_sticky_symbol {
             timeout-ms = <50>;
             // index/pinky home row keys on right hand
-            key-positions = <20 23>;
+            key-positions = <19 22>;
             bindings = <&sl SYMBOL>;
-        };
-        combo_navi {
-            timeout-ms = <50>;
-            // middle/index home row keys on left hand
-            key-positions = <2 4>
-            bindings = <&tog NAVI>;
         };
         combo_sticky_navi {
             timeout-ms = <50>;
-            // pinky/index home row keys on left hand
-            key-positions = <14 17>;
+            // ring/index upper row keys on left hand
+            key-positions = <2 4>
             bindings = <&sl NAVI>;
+        };
+        combo_navi {
+            timeout-ms = <50>;
+            // middle/index home row keys on right hand
+            key-positions = <19 20>
+            bindings = <&tog NAVI>;
+        };
+        combo_mo_config {
+            timeout-ms = <50>;
+            // both mod keys
+            key-positions = <40 41>;
+            bindings = <&mo CONFIG>;
         };
     };
     keymap {
@@ -67,7 +73,7 @@
    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
    &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo CONFIG
+              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVI
                         >;
                 };
 
@@ -80,21 +86,22 @@
                         bindings = <
    &kp GRAVE &kp AT    &kp EXCL  &kp LBRC &kp RBRC  &kp EQUAL   &kp PLUS  &kp N7 &kp N8 &kp N9 &trans    &trans 
    &kp TILDE &kp UNDER &kp MINUS &kp LPAR &kp RPAR  &kp PIPE    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0    &kp COLON
-   &trans    &kp AMPS  &kp HASH  &kp LBKT &kp RBKT  &kp DLLR    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp PRCNT &kp CARET
+   &trans    &kp AMPS  &kp HASH  &kp LBKT &kp RBKT  &kp DLLR    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp PRCNT &kp SEMI
                     &kb EQUAL    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
 
+
                 navi_layer {
 // -------------------------------------------------------------------------
-// |     |ENT | PGUP| UP  | PGDN|  0   |                  | BTCAL|  HOME |  UP  |  END  |      |       |
-// |     |HOME| LEFT| DOWN|RIGHT| END  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
-// |     | 1  |  2  | 3   |  4  |  5   |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
+// |     |ENT | PGUP| UP  | PGDN|  =   |                  | PSCRN|  PGUP |  UP  | PGDN  |      |       |
+// |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
+// |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                   |     |     |     |                      |     |     |     |
                         bindings = <
-   &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
-   &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
-   &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
+   &trans    &kp RET  &kp PGUP &kp UP   &kp PGDN  &kp EQUAL      &kp PSCRN  &kp PGUP &kp UP   &kp PGDN  &trans   &trans
+   &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
+   &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
                           &trans    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
