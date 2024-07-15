@@ -35,16 +35,10 @@
             key-positions = <19 21>;
             bindings = <&tog SYMBOL>;
         };
-        combo_sticky_symbol {
+        combo_navi {
             timeout-ms = <50>;
             // index/pinky home row keys on right hand
             key-positions = <19 22>;
-            bindings = <&sl SYMBOL>;
-        };
-        combo_navi {
-            timeout-ms = <50>;
-            // ring/index upper row keys on left hand
-            key-positions = <2 4>;
             bindings = <&tog NAVI>;
         };
         combo_mo_config {
