@@ -101,7 +101,7 @@
    &kp GRAVE &kp AT    &kp EXCL  &kp LBRC &kp EQUAL &kp RBRC    &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
    &kp TILDE &kp HASH  &kp PRCNT &kp LPAR &kp MINUS &kp RPAR    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
    &trans    &kp AMPS  &kp PIPE  &kp LBKT &kp UNDER &kp RBKT    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
-                    &kb CARET    &trans   &trans          &trans    &trans    &trans
+                    &kp CARET    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
 
