@@ -31,8 +31,8 @@
         compatible = "zmk,combos";
         combo_symbol {
             timeout-ms = <50>;
-            // ring/index home row keys on right hand
-            key-positions = <19 21>;
+            // index home row key, pinky lower row key on right hand
+            key-positions = <19 34>;
             bindings = <&tog SYMBOL>;
         };
         combo_navi {
