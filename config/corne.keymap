@@ -31,14 +31,14 @@
         compatible = "zmk,combos";
         combo_symbol {
             timeout-ms = <50>;
-            // index home row key, pinky lower row key on right hand
-            key-positions = <19 34>;
+            // index upper row key and key to the left on right hand
+            key-positions = <6 7>;
             bindings = <&tog SYMBOL>;
         };
         combo_navi {
             timeout-ms = <50>;
-            // index/pinky home row keys on right hand
-            key-positions = <19 22>;
+            // index lower row key and key to the left on right hand
+            key-positions = <30 31>;
             bindings = <&tog NAVI>;
         };
         combo_mo_config {
@@ -69,7 +69,7 @@
         };
         combo_home {
             timeout-ms = <50>;
-            key-positions = <19 20>;
+            key-positions = <18 19>;
             bindings = <&kp HOME>;
         };
         combo_end {
