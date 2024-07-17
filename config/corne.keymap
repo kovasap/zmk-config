@@ -31,15 +31,9 @@
         compatible = "zmk,combos";
         combo_symbol {
             timeout-ms = <50>;
-            // index upper row key and key to the left on right hand
-            key-positions = <6 7>;
+            // bottom right two keys
+            key-positions = <34 35>;
             bindings = <&tog SYMBOL>;
-        };
-        combo_navi {
-            timeout-ms = <50>;
-            // index lower row key and key to the left on right hand
-            key-positions = <30 31>;
-            bindings = <&tog NAVI>;
         };
         combo_mo_config {
             timeout-ms = <50>;
@@ -54,7 +48,7 @@
         };
         combo_down {
             timeout-ms = <50>;
-            key-positions = <19 21>;
+            key-positions = <31 32>;
             bindings = <&kp DOWN>;
         };
         combo_left {
@@ -74,17 +68,17 @@
         };
         combo_end {
             timeout-ms = <50>;
-            key-positions = <22 23>;
+            key-positions = <21 22>;
             bindings = <&kp END>;
         };
         combo_pgup {
             timeout-ms = <50>;
-            key-positions = <9 10>;
+            key-positions = <7 9>;
             bindings = <&kp PGUP>;
         };
         combo_pgdn {
             timeout-ms = <50>;
-            key-positions = <6 7>;
+            key-positions = <19 21>;
             bindings = <&kp PGDN>;
         };
     };
