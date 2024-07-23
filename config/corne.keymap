@@ -29,7 +29,7 @@
     };
     combos {
         compatible = "zmk,combos";
-        combo_symbol {
+        combo_symbol_toggle {
             timeout-ms = <50>;
             // bottom right two keys
             key-positions = <34 35>;
@@ -48,12 +48,22 @@
         };
         combo_down {
             timeout-ms = <50>;
-            key-positions = <31 32>;
+            key-positions = <19 20>;
             bindings = <&kp DOWN>;
+        };
+        combo_symbol_right {
+            timeout-ms = <50>;
+            key-positions = <31 32>;
+            bindings = <&mo SYMBOL>;
+        };
+        combo_symbol_left {
+            timeout-ms = <50>;
+            key-positions = <27 28>;
+            bindings = <&mo SYMBOL>;
         };
         combo_left {
             timeout-ms = <50>;
-            key-positions = <19 20>;
+            key-positions = <18 19>;
             bindings = <&kp LEFT>;
         };
         combo_right {
@@ -63,12 +73,12 @@
         };
         combo_home {
             timeout-ms = <50>;
-            key-positions = <18 19>;
+            key-positions = <18 20>;
             bindings = <&kp HOME>;
         };
         combo_end {
             timeout-ms = <50>;
-            key-positions = <21 22>;
+            key-positions = <20 22>;
             bindings = <&kp END>;
         };
         combo_pgup {
