@@ -54,7 +54,7 @@
           ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
                       ╰────────────╯  ╰────────────╯
         */
-        NAMED_COMBO(test, &tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
+        NAMED_COMBO(test, &kp DOWN, 34 35)
         /*
         COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
         COMBO(&tog NAVIGATION, 19 20 21 22)
@@ -81,7 +81,6 @@
         compatible = "zmk,keymap";
 
                 default_layer {
-                       label = "DEFAULT";
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
 // | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
@@ -96,7 +95,6 @@
                 };
 
                 default_no_combos_layer {
-                        label = "DEFAULT_NO_COMBOS";
                         bindings = <
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
@@ -106,7 +104,6 @@
                 };
 
                 symbol_layer {
-                        label = "SYMBOL";
 // -----------------------------------------------------------------------------------------
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
@@ -121,7 +118,6 @@
                 };
 
                 navi_layer {
-                        label = "NAVIGATION";
 // -------------------------------------------------------------------------
 // |     |ENT | PGDN| UP  | PGUP|  =   |                  | PSCRN|  PGDN |  UP  | PGUP  |      |       |
 // |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
@@ -136,7 +132,6 @@
                 };
 
                 config_layer {
-                        label = "CONFIG";
 // -------------------------------------------------------------------------
 // | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
 // |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
