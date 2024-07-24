@@ -10,13 +10,20 @@
 
 
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
-#define COMBO(BINDINGS, KEYPOS) \
-  combo_##__LINE__ { \
+#define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
+  combo_##NAME { \
     timeout-ms = <40>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <DEFAULT SYMBOL NAVIGATION>; \
   };
+
+// See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
+// Can test output by putting these macros in a file test.c, then running 
+// `gcc -E test.c`
+#define NAMED_COMBO2(NAME, BINDINGS, KEYPOS) NAMED_COMBO(NAME, BINDINGS, KEYPOS)
+// __LINE__ is the line number in the file, used here for uniqueness.
+#define COMBO(BINDINGS, KEYPOS) NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
 
 / {
 
