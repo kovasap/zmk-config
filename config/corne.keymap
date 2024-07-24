@@ -8,6 +8,11 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define DEFAULT 0
+#define DEFAULT_NO_COMBOS 1
+#define SYMBOL 2
+#define NAVIGATION 3
+#define CONFIG 4
 
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
@@ -49,7 +54,6 @@
           ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
                       ╰────────────╯  ╰────────────╯
         */
-        NAMED_COMBO(test, &kp DOWN, 34 35)  // Useful when gaming
         COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
         COMBO(&tog NAVIGATION, 19 20 21 22)
         COMBO(&mo CONFIG, 40 41)
@@ -84,7 +88,7 @@
    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
    &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVI
+              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVIGATION
                         >;
                 };
 
