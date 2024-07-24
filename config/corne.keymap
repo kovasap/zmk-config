@@ -55,7 +55,9 @@ combos {
                   ╰────────────╯  ╰────────────╯
     */
 
-    // NAMED_COMBO(t, &kp LEFT, 34 35)
+    // Note that these macros can be very fragile - for instance, putting
+    // comments after them on the same line can break them!
+
     // Useful when gaming
     COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
     COMBO(&tog NAVIGATION, 19 20 21 22)
