@@ -20,7 +20,7 @@
     timeout-ms = <40>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    // layers = <DEFAULT SYMBOL NAVIGATION>; \
+    layers = <DEFAULT SYMBOL NAVIGATION>; \
   };
 
 // See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
@@ -32,122 +32,123 @@
 
 / {
 
-   macros {
-        // Windows sleep key
-        win_sleep: win_sleep {
-            wait-ms = <500>;
-            tap-ms = <5>;
-            compatible = "zmk,behavior-macro";
-            label = "WIN_SLEEP_KEY";
-            #binding-cells = <0>;
-            bindings = <&kp LG(X) &kp U &kp S>;
-        };
-    };
-    combos {
-        compatible = "zmk,combos";
-        /*
-          KEY POSITIONS
-          ╭────────────────────────╮  ╭────────────────────────╮
-          │ 0   1   2   3   4   5  │  │ 6   7   8   9   10  11 │
-          │ 12  13  14  15  16  17 │  │ 18  19  20  21  22  23 │
-          │ 24  25  26  27  28  29 │  │ 30  31  32  33  34  35 │
-          ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
-                      ╰────────────╯  ╰────────────╯
-        */
-        /*
-        NAMED_COMBO(test, &tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
-        COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
-        COMBO(&tog NAVIGATION, 19 20 21 22)
-        COMBO(&mo CONFIG, 40 41)
-        // "Home row mods", mirrored on both sides
-        COMBO(&mo SYMBOL, 19 20)
-        COMBO(&kp LGUI, 19 21)
-        COMBO(&sk LCTRL, 19 22)
-        COMBO(&mo SYMBOL, 15 16)
-        COMBO(&kp LGUI, 14 16)
-        COMBO(&sk LCTRL, 13 16)
-        // Navigation
-        COMBO(&kp UP, 7 8)
-        COMBO(&kp PGUP, 7 9)
-        COMBO(&kp DOWN, 31 32)
-        COMBO(&kp PGDN, 31 33)
-        COMBO(&kp LEFT, 18 19)
-        COMBO(&kp RIGHT, 20 21)
-        COMBO(&kp HOME, 18 20)
-        COMBO(&kp END, 20 22)
-        */
-    };
-    keymap {
-        compatible = "zmk,keymap";
+macros {
+     // Windows sleep key
+     win_sleep: win_sleep {
+         wait-ms = <500>;
+         tap-ms = <5>;
+         compatible = "zmk,behavior-macro";
+         label = "WIN_SLEEP_KEY";
+         #binding-cells = <0>;
+         bindings = <&kp LG(X) &kp U &kp S>;
+     };
+};
+combos {
+    compatible = "zmk,combos";
+    /*
+      KEY POSITIONS
+      ╭────────────────────────╮  ╭────────────────────────╮
+      │ 0   1   2   3   4   5  │  │ 6   7   8   9   10  11 │
+      │ 12  13  14  15  16  17 │  │ 18  19  20  21  22  23 │
+      │ 24  25  26  27  28  29 │  │ 30  31  32  33  34  35 │
+      ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
+                  ╰────────────╯  ╰────────────╯
+    */
 
-                default_layer {
-                       label = "DEFAULT";
+    NAMED_COMBO(t, &kp LEFT, 34 35)
+    /*
+    COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
+    COMBO(&tog NAVIGATION, 19 20 21 22)
+    COMBO(&mo CONFIG, 40 41)
+    // "Home row mods", mirrored on both sides
+    COMBO(&mo SYMBOL, 19 20)
+    COMBO(&kp LGUI, 19 21)
+    COMBO(&sk LCTRL, 19 22)
+    COMBO(&mo SYMBOL, 15 16)
+    COMBO(&kp LGUI, 14 16)
+    COMBO(&sk LCTRL, 13 16)
+    // Navigation
+    COMBO(&kp UP, 7 8)
+    COMBO(&kp PGUP, 7 9)
+    COMBO(&kp DOWN, 31 32)
+    COMBO(&kp PGDN, 31 33)
+    COMBO(&kp LEFT, 18 19)
+    COMBO(&kp RIGHT, 20 21)
+    COMBO(&kp HOME, 18 20)
+    COMBO(&kp END, 20 22)
+    */
+};
+keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+        label = "DEFAULT";
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
 // | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
 //                    | GUI | CTL | SPC |   | SHF | SYMB| NAVI|
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
-   &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
-   &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-              &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVIGATION
-                        >;
-                };
+        bindings = <
+    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
+    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
+    &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
+               &kp LGUI &kp LCTRL &kp SPACE   &kp LSHFT &mo SYMBOL &mo NAVIGATION
+        >;
+    };
 
-                default_no_combos_layer {
-                        label = "DEFAULT_NO_COMBOS";
-                        bindings = <
-   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-                 &trans &trans &trans &trans &trans &trans
-                        >;
-                };
+    default_no_combos_layer {
+        label = "DEFAULT_NO_COMBOS";
+        bindings = <
+    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                  &trans &trans &trans &trans &trans &trans
+        >;
+    };
 
-                symbol_layer {
-                        label = "SYMBOL";
+    symbol_layer {
+        label = "SYMBOL";
 // -----------------------------------------------------------------------------------------
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
 // |      |  &  |  [  |  ]  |  _  | '|' |                         |  \  |  1  |  2  |  3  |  $  |  ;   |
 //                    |  ^  |     |     |                         |     |     |     |
-                        bindings = <
-   &kp GRAVE &kp AT    &kp LBRC &kp RBRC &kp EQUAL &kp EXCL     &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
-   &kp TILDE &kp HASH  &kp LPAR &kp RPAR &kp MINUS &kp PRCNT    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
-   &trans    &kp AMPS  &kp LBKT &kp RBKT &kp UNDER &kp PIPE     &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
-                             &kp CARET    &trans   &trans          &trans    &trans    &trans
-                        >;
-                };
+        bindings = <
+    &kp GRAVE &kp AT    &kp LBRC &kp RBRC &kp EQUAL &kp EXCL     &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
+    &kp TILDE &kp HASH  &kp LPAR &kp RPAR &kp MINUS &kp PRCNT    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
+    &trans    &kp AMPS  &kp LBKT &kp RBKT &kp UNDER &kp PIPE     &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
+                              &kp CARET    &trans   &trans          &trans    &trans    &trans
+        >;
+    };
 
-                navi_layer {
-                        label = "NAVIGATION";
+    navi_layer {
+        label = "NAVIGATION";
 // -------------------------------------------------------------------------
 // |     |ENT | PGDN| UP  | PGUP|  =   |                  | PSCRN|  PGDN |  UP  | PGUP  |      |       |
 // |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
 // |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                   |     |     |     |                      |     |     |     |
-                        bindings = <
-   &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp EQUAL      &kp PSCRN  &kp PGDN &kp UP   &kp PGUP  &trans   &trans
-   &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
-   &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                          &trans    &trans   &trans          &trans    &trans    &trans
-                        >;
-                };
+        bindings = <
+    &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp EQUAL      &kp PSCRN  &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
+    &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+                           &trans    &trans   &trans          &trans    &trans    &trans
+        >;
+    };
 
-                config_layer {
-                        label = "CONFIG";
+    config_layer {
+        label = "CONFIG";
 // -------------------------------------------------------------------------
 // | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
 // |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
 // |       | F9 | F10 | F11 | F12 | BTX0 |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
 //                   |     |     |     |                      |     |     |     |
-                        bindings = <
-   &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
-   &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
-   &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
-                          &trans    &trans   &trans          &trans    &trans    &trans
-                        >;
-                };
-        };
+        bindings = <
+    &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
+    &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
+    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
+                           &trans    &trans   &trans          &trans    &trans    &trans
+        >;
+    };
+};
 };
