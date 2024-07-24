@@ -55,9 +55,9 @@ combos {
                   ╰────────────╯  ╰────────────╯
     */
 
-    NAMED_COMBO(t, &kp LEFT, 34 35)
-    /*
-    COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
+    // NAMED_COMBO(t, &kp LEFT, 34 35)
+    // Useful when gaming
+    COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
     COMBO(&tog NAVIGATION, 19 20 21 22)
     COMBO(&mo CONFIG, 40 41)
     // "Home row mods", mirrored on both sides
@@ -76,7 +76,6 @@ combos {
     COMBO(&kp RIGHT, 20 21)
     COMBO(&kp HOME, 18 20)
     COMBO(&kp END, 20 22)
-    */
 };
 keymap {
     compatible = "zmk,keymap";
