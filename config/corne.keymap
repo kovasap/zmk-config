@@ -54,16 +54,18 @@
           ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
                       ╰────────────╯  ╰────────────╯
         */
+        NAMED_COMBO(test, &tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
+        /*
         COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
         COMBO(&tog NAVIGATION, 19 20 21 22)
         COMBO(&mo CONFIG, 40 41)
         // "Home row mods", mirrored on both sides
-        // COMBO(&mo SYMBOL, 19 20)
-        // COMBO(&kp LGUI, 19 21)
-        // COMBO(&sk LCTRL, 19 22)
-        // COMBO(&mo SYMBOL, 15 16)
-        // COMBO(&kp LGUI, 14 16)
-        // COMBO(&sk LCTRL, 13 16)
+        COMBO(&mo SYMBOL, 19 20)
+        COMBO(&kp LGUI, 19 21)
+        COMBO(&sk LCTRL, 19 22)
+        COMBO(&mo SYMBOL, 15 16)
+        COMBO(&kp LGUI, 14 16)
+        COMBO(&sk LCTRL, 13 16)
         // Navigation
         COMBO(&kp UP, 7 8)
         COMBO(&kp PGUP, 7 9)
@@ -73,6 +75,7 @@
         COMBO(&kp RIGHT, 20 21)
         COMBO(&kp HOME, 18 20)
         COMBO(&kp END, 20 22)
+        */
     };
     keymap {
         compatible = "zmk,keymap";
