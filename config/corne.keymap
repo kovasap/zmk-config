@@ -58,7 +58,7 @@
         };
         combo_symbol_left {
             timeout-ms = <50>;
-            key-positions = <15 16>;
+            key-positions = <14 16>;
             bindings = <&mo SYMBOL>;
         };
         combo_left {
