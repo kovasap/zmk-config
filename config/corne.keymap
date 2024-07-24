@@ -9,10 +9,14 @@
 #include <dt-bindings/zmk/bt.h>
 
 
-#define DEFAULT 0
-#define SYMBOL 1
-#define NAVI 2
-#define CONFIG 3
+/* Copied (modified) from https://github.com/caksoylar/zmk-config */
+#define COMBO(BINDINGS, KEYPOS) \
+  combo_##__LINE__ { \
+    timeout-ms = <40>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <DEFAULT SYMBOL NAVIGATION>; \
+  };
 
 / {
 
@@ -29,78 +33,45 @@
     };
     combos {
         compatible = "zmk,combos";
-        combo_symbol_toggle {
-            timeout-ms = <50>;
-            // bottom right two keys
-            key-positions = <34 35>;
-            bindings = <&tog SYMBOL>;
-        };
-        combo_mo_config {
-            timeout-ms = <50>;
-            // both mod keys
-            key-positions = <40 41>;
-            bindings = <&mo CONFIG>;
-        };
-        combo_up {
-            timeout-ms = <50>;
-            key-positions = <7 8>;
-            bindings = <&kp UP>;
-        };
-        combo_down {
-            timeout-ms = <50>;
-            key-positions = <31 32>;
-            bindings = <&kp DOWN>;
-        };
-        combo_symbol_right {
-            timeout-ms = <50>;
-            key-positions = <19 20>;
-            bindings = <&mo SYMBOL>;
-        };
-        combo_symbol_left {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&mo SYMBOL>;
-        };
-        combo_left {
-            timeout-ms = <50>;
-            key-positions = <18 19>;
-            bindings = <&kp LEFT>;
-        };
-        combo_right {
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp RIGHT>;
-        };
-        combo_home {
-            timeout-ms = <50>;
-            key-positions = <18 20>;
-            bindings = <&kp HOME>;
-        };
-        combo_end {
-            timeout-ms = <50>;
-            key-positions = <20 22>;
-            bindings = <&kp END>;
-        };
-        combo_pgup {
-            timeout-ms = <50>;
-            key-positions = <7 9>;
-            bindings = <&kp PGUP>;
-        };
-        combo_pgdn {
-            timeout-ms = <50>;
-            key-positions = <19 21>;
-            bindings = <&kp PGDN>;
-        };
+        /*
+          KEY POSITIONS
+          ╭────────────────────────╮  ╭────────────────────────╮
+          │ 0   1   2   3   4   5  │  │ 6   7   8   9   10  11 │
+          │ 12  13  14  15  16  17 │  │ 18  19  20  21  22  23 │
+          │ 24  25  26  27  28  29 │  │ 30  31  32  33  34  35 │
+          ╰───────────╮ 36  37  38 │  │ 39  40  41 ╭───────────╯
+                      ╰────────────╯  ╰────────────╯
+        */
+        COMBO(&tog DEFAULT_NO_COMBOS, 34 35)  // Useful when gaming
+        COMBO(&tog NAVIGATION, 19 20 21 22)
+        COMBO(&mo CONFIG, 40 41)
+        // "Home row mods", mirrored on both sides
+        COMBO(&mo SYMBOL, 19 20)
+        COMBO(&kp LGUI, 19 21)
+        COMBO(&kp LCTRL, 19 22)
+        COMBO(&mo SYMBOL, 15 16)
+        COMBO(&kp LGUI, 14 16)
+        COMBO(&kp LCTRL, 13 16)
+        // Navigation
+        COMBO(&kp UP, 7 8)
+        COMBO(&kp PGUP, 7 9)
+        COMBO(&kp DOWN, 31 32)
+        COMBO(&kp PGDN, 31 33)
+        COMBO(&kp LEFT, 18 19)
+        COMBO(&kp RIGHT, 20 21)
+        COMBO(&kp HOME, 18 20)
+        COMBO(&kp END, 20 22)
     };
     keymap {
         compatible = "zmk,keymap";
 
                 default_layer {
+                       label = "DEFAULT",
 // -----------------------------------------------------------------------------------------
-// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  | DEL | BKSP |
-// | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
-// | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | ENT  |
-//                    | GUI | CTL | SPC |   | SHF | LAY1 | LAY2|
+// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
+// | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
+// | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
+//                    | GUI | CTL | SPC |   | SHF | SYMB| NAVI|
                         bindings = <
    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
@@ -109,7 +80,18 @@
                         >;
                 };
 
+                default_no_combos_layer {
+                        label = "DEFAULT_NO_COMBOS",
+                        bindings = <
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                 &trans &trans &trans &trans &trans &trans
+                        >;
+                };
+
                 symbol_layer {
+                        label = "SYMBOL",
 // -----------------------------------------------------------------------------------------
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
@@ -124,6 +106,7 @@
                 };
 
                 navi_layer {
+                        label = "NAVIGATION",
 // -------------------------------------------------------------------------
 // |     |ENT | PGDN| UP  | PGUP|  =   |                  | PSCRN|  PGDN |  UP  | PGUP  |      |       |
 // |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
@@ -138,6 +121,7 @@
                 };
 
                 config_layer {
+                        label = "CONFIG",
 // -------------------------------------------------------------------------
 // | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
 // |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
