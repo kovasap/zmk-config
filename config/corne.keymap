@@ -48,17 +48,17 @@
         };
         combo_down {
             timeout-ms = <50>;
-            key-positions = <19 20>;
+            key-positions = <31 32>;
             bindings = <&kp DOWN>;
         };
         combo_symbol_right {
             timeout-ms = <50>;
-            key-positions = <31 32>;
+            key-positions = <19 20>;
             bindings = <&mo SYMBOL>;
         };
         combo_symbol_left {
             timeout-ms = <50>;
-            key-positions = <27 28>;
+            key-positions = <15 16>;
             bindings = <&mo SYMBOL>;
         };
         combo_left {
@@ -111,15 +111,15 @@
 
                 symbol_layer {
 // -----------------------------------------------------------------------------------------
-// |   `  |  @  |  !  |  {  |  =  |  }  |                     |  +  |  7  |  8  |  9  |     |      |
-// |   ~  |  #  |  %  |  (  |  -  |  )  |                     |  *  |  4  |  5  |  6  |  0  |  :   |
-// |      |  &  | '|' |  [  |  _  |  ]  |                     |  \  |  1  |  2  |  3  |  $  |  ;   |
-//                    |  ^  |     |     |                     |     |     |     |
+// |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
+// |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
+// |      |  &  |  [  |  ]  |  _  | '|' |                         |  \  |  1  |  2  |  3  |  $  |  ;   |
+//                    |  ^  |     |     |                         |     |     |     |
                         bindings = <
-   &kp GRAVE &kp AT    &kp EXCL  &kp LBRC &kp EQUAL &kp RBRC    &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
-   &kp TILDE &kp HASH  &kp PRCNT &kp LPAR &kp MINUS &kp RPAR    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
-   &trans    &kp AMPS  &kp PIPE  &kp LBKT &kp UNDER &kp RBKT    &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
-                    &kp CARET    &trans   &trans          &trans    &trans    &trans
+   &kp GRAVE &kp AT    &kp LBRC &kp RBRC &kp EQUAL &kp EXCL     &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
+   &kp TILDE &kp HASH  &kp LPAR &kp RPAR &kp MINUS &kp PRCNT    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
+   &trans    &kp AMPS  &kp LBKT &kp RBKT &kp UNDER &kp PIPE     &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
+                             &kp CARET    &trans   &trans          &trans    &trans    &trans
                         >;
                 };
 
