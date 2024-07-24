@@ -48,10 +48,10 @@
         // "Home row mods", mirrored on both sides
         COMBO(&mo SYMBOL, 19 20)
         COMBO(&kp LGUI, 19 21)
-        COMBO(&kp LCTRL, 19 22)
+        COMBO(&sk LCTRL, 19 22)
         COMBO(&mo SYMBOL, 15 16)
         COMBO(&kp LGUI, 14 16)
-        COMBO(&kp LCTRL, 13 16)
+        COMBO(&sk LCTRL, 13 16)
         // Navigation
         COMBO(&kp UP, 7 8)
         COMBO(&kp PGUP, 7 9)
