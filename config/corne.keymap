@@ -49,6 +49,7 @@ behaviors {
         #binding-cells = <2>;
         flavor = "hold-preferred";
         tapping-term-ms = <200>;
+        hold-while-undecided-linger;
         bindings = <&mo>, <&sl>;
     };
     kmhst: key_momentary_hold_sticky_tap {
@@ -56,6 +57,7 @@ behaviors {
         #binding-cells = <2>;
         flavor = "hold-preferred";
         tapping-term-ms = <200>;
+        hold-while-undecided-linger;
         bindings = <&kp>, <&sk>;
     };
 };
