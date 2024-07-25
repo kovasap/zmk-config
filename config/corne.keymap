@@ -111,6 +111,12 @@ combos {
 
     // Useful when gaming
     COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
+    combo_return {
+      timeout-ms = <30>;
+      bindings = <&tog DEFAULT_NO_COMBOS>;
+      key-positions = <34 35>;
+      layers = <DEFAULT_NO_COMBOS>;
+    };
 
     COMBO(&tog NAVIGATION, 19 20 21 22)
     COMBO(&mo CONFIG, 40 41)
