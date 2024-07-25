@@ -79,7 +79,7 @@ behaviors {
         compatible = "zmk,behavior-tap-dance";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kmhst SHIFT SHIFT>, <&kt SHIFT>;
+        bindings = <&kmhst LSHFT LSHFT>, <&kt LSHFT>;
     };
     gui: gui_control {
         compatible = "zmk,behavior-tap-dance";
