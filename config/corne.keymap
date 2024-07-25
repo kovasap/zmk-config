@@ -14,13 +14,16 @@
 #define NAVIGATION 3
 #define CONFIG 4
 
+#define COMBO_TIMEOUT_MS 35
+
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
-    timeout-ms = <30>; \
+    timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <DEFAULT SYMBOL NAVIGATION>; \
+    require-prior-idle-ms = <75>; \
   };
 
 // See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
@@ -51,6 +54,7 @@ behaviors {
         flavor = "hold-preferred";
         tapping-term-ms = <200>;
         hold-while-undecided-linger;
+        retro-tap;
         bindings = <&mo>, <&sl>;
     };
     kmhst: key_momentary_hold_sticky_tap {
@@ -59,6 +63,7 @@ behaviors {
         flavor = "hold-preferred";
         tapping-term-ms = <200>;
         hold-while-undecided-linger;
+        retro-tap;
         bindings = <&kp>, <&sk>;
     };
     // These behaviors work like this:
@@ -114,7 +119,7 @@ combos {
     // Useful when gaming
     COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
     combo_return {
-      timeout-ms = <30>;
+      timeout-ms = <COMBO_TIMEOUT_MS>;
       bindings = <&tog DEFAULT_NO_COMBOS>;
       key-positions = <34 35>;
       layers = <DEFAULT_NO_COMBOS>;
