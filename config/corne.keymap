@@ -134,11 +134,13 @@ combos {
     COMBO(&shift, 20 21)
     COMBO(&ctrl, 19 21)
     COMBO(&gui, 19 22)
+    COMBO(&gui, 27 28)
     COMBO(&navigation, 7 8)
     COMBO(&symbol, 15 16)
     COMBO(&shift, 14 15)
     COMBO(&ctrl, 14 16)
     COMBO(&gui, 13 16)
+    COMBO(&gui, 31 32)
 
     // Navigation
     /*
