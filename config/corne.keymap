@@ -17,7 +17,7 @@
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
-    timeout-ms = <40>; \
+    timeout-ms = <30>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <DEFAULT SYMBOL NAVIGATION>; \
@@ -44,6 +44,7 @@ macros {
      };
 };
 behaviors {
+    // Implementation details for later behaviors
     lmhst: layer_momentary_hold_sticky_tap {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
@@ -59,6 +60,40 @@ behaviors {
         tapping-term-ms = <200>;
         hold-while-undecided-linger;
         bindings = <&kp>, <&sk>;
+    };
+    // These behaviors work like this:
+    //  - Press once for sticky key functionality
+    //  - Press and hold for holding functionality
+    //  - Press twice to toggle holding the key (like caps lock)
+    symbol: symbol_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lmhst SYMBOL SYMBOL>, <&tog SYMBOL>;
+    };
+    navigation: navigation_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lmhst NAVIGATION NAVIGATION>, <&tog NAVIGATION>;
+    };
+    shift: shift_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kmhst LSHFT LSHFT>, <&kt LSHFT>;
+    };
+    gui: gui_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kmhst LGUI LGUI>, <&kt LGUI>;
+    };
+    ctrl: ctrl_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kmhst LCTRL LCTRL>, <&kt LCTRL>;
     };
 };
 combos {
@@ -78,21 +113,30 @@ combos {
 
     // Useful when gaming
     COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
+    combo_return {
+      timeout-ms = <30>;
+      bindings = <&tog DEFAULT_NO_COMBOS>;
+      key-positions = <34 35>;
+      layers = <DEFAULT_NO_COMBOS>;
+    };
 
     COMBO(&tog NAVIGATION, 19 20 21 22)
     COMBO(&mo CONFIG, 40 41)
 
     // "Home row mods", mirrored on both sides
-    // These combos stickily activate their keypresses/layers when tapped, and
-    // activate them fully when held.
-    COMBO(&lmhst SYMBOL SYMBOL, 19 20)
-    COMBO(&kmhst LGUI LGUI, 19 21)
-    COMBO(&kmhst LCTRL LCTRL, 19 22)
-    COMBO(&lmhst SYMBOL SYMBOL, 15 16)
-    COMBO(&kmhst LGUI LGUI, 14 16)
-    COMBO(&kmhst LCTRL LCTRL, 13 16)
+    COMBO(&navigation, 3 4)
+    COMBO(&symbol, 19 20)
+    COMBO(&shift, 20 21)
+    COMBO(&ctrl, 19 21)
+    COMBO(&gui, 19 22)
+    COMBO(&navigation, 7 8)
+    COMBO(&symbol, 15 16)
+    COMBO(&shift, 14 15)
+    COMBO(&ctrl, 14 16)
+    COMBO(&gui, 13 16)
 
     // Navigation
+    /*
     COMBO(&kp UP, 7 8)
     COMBO(&kp PGUP, 7 9)
     COMBO(&kp DOWN, 31 32)
@@ -101,6 +145,7 @@ combos {
     COMBO(&kp RIGHT, 20 21)
     COMBO(&kp HOME, 18 20)
     COMBO(&kp END, 20 22)
+    */
 };
 keymap {
     compatible = "zmk,keymap";
@@ -148,12 +193,12 @@ keymap {
     navi_layer {
         label = "NAVIGATION";
 // -------------------------------------------------------------------------
-// |     |ENT | PGDN| UP  | PGUP|  =   |                  | PSCRN|  PGDN |  UP  | PGUP  |      |       |
+// |     |ENT | PGDN| UP  | PGUP|  <   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
 // |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
 // |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                   |     |     |     |                      |     |     |     |
         bindings = <
-    &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp EQUAL      &kp PSCRN  &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp LT         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
     &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
     &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
                            &trans    &trans   &trans          &trans    &trans    &trans
