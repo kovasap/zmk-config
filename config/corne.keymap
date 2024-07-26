@@ -69,36 +69,36 @@ behaviors {
     // These behaviors work like this:
     //  - Press once for sticky key functionality
     //  - Press and hold for holding functionality
-    //  - Press twice to toggle holding the key (like caps lock)
+    //  - Press while holding alt to toggle holding the key (like caps lock)
     symbol: symbol_control {
-        compatible = "zmk,behavior-tap-dance";
+        compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        tapping-term-ms = <200>;
         bindings = <&lmhst SYMBOL SYMBOL>, <&tog SYMBOL>;
+        mods = <(MOD_LALT)>;
     };
     navigation: navigation_control {
-        compatible = "zmk,behavior-tap-dance";
+        compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        tapping-term-ms = <200>;
         bindings = <&lmhst NAVIGATION NAVIGATION>, <&tog NAVIGATION>;
+        mods = <(MOD_LALT)>;
     };
     shift: shift_control {
-        compatible = "zmk,behavior-tap-dance";
+        compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        tapping-term-ms = <200>;
         bindings = <&kmhst LSHFT LSHFT>, <&kt LSHFT>;
+        mods = <(MOD_LALT)>;
     };
     gui: gui_control {
-        compatible = "zmk,behavior-tap-dance";
+        compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        tapping-term-ms = <200>;
         bindings = <&kmhst LGUI LGUI>, <&kt LGUI>;
+        mods = <(MOD_LALT)>;
     };
     ctrl: ctrl_control {
-        compatible = "zmk,behavior-tap-dance";
+        compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        tapping-term-ms = <200>;
         bindings = <&kmhst LCTRL LCTRL>, <&kt LCTRL>;
+        mods = <(MOD_LALT)>;
     };
 };
 combos {
