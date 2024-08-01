@@ -14,7 +14,7 @@
 #define NAVIGATION 3
 #define CONFIG 4
 
-#define COMBO_TIMEOUT_MS 35
+#define COMBO_TIMEOUT_MS 40
 
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
@@ -23,6 +23,7 @@
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <DEFAULT SYMBOL NAVIGATION>; \
+    slow-release; \
     require-prior-idle-ms = <75>; \
   };
 
@@ -129,18 +130,29 @@ combos {
     COMBO(&mo CONFIG, 40 41)
 
     // "Home row mods", mirrored on both sides
+    // Left
     COMBO(&navigation, 3 4)
-    COMBO(&symbol, 19 20)
-    COMBO(&shift, 20 21)
-    COMBO(&ctrl, 19 21)
-    COMBO(&gui, 19 22)
-    COMBO(&gui, 27 28)
-    COMBO(&navigation, 7 8)
+    COMBO(&navigation, 38 15)
     COMBO(&symbol, 15 16)
+    COMBO(&symbol, 38 16)
     COMBO(&shift, 14 15)
     COMBO(&ctrl, 14 16)
+    COMBO(&ctrl, 38 13)
     COMBO(&gui, 13 16)
     COMBO(&gui, 31 32)
+    COMBO(&gui, 38 14)
+    // Right
+    COMBO(&navigation, 7 8)
+    COMBO(&navigation, 39 20)
+    COMBO(&symbol, 19 20)
+    COMBO(&symbol, 39 19)
+    COMBO(&shift, 20 21)
+    COMBO(&ctrl, 19 21)
+    COMBO(&ctrl, 39 22)
+    COMBO(&gui, 19 22)
+    COMBO(&gui, 27 28)
+    COMBO(&gui, 39 21)
+
 
     // Navigation
     /*
@@ -190,10 +202,10 @@ keymap {
 // |      |  &  |  [  |  ]  |  _  | '|' |                         |  \  |  1  |  2  |  3  |  $  |  ;   |
 //                    |  ^  |     |     |                         |     |     |     |
         bindings = <
-    &kp GRAVE &kp AT    &kp LBRC &kp RBRC &kp EQUAL &kp EXCL     &kp PLUS  &kp N7 &kp N8 &kp N9 &trans   &trans 
-    &kp TILDE &kp HASH  &kp LPAR &kp RPAR &kp MINUS &kp PRCNT    &kp ASTRK &kp N4 &kp N5 &kp N6 &kp N0   &kp COLON
-    &trans    &kp AMPS  &kp LBKT &kp RBKT &kp UNDER &kp PIPE     &kp BSLH  &kp N1 &kp N2 &kp N3 &kp DLLR &kp SEMI
-                              &kp CARET    &trans   &trans          &trans    &trans    &trans
+    &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
+    &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp MINUS &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
+    &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp UNDER &kp PIPE     &kp BSLH  &kp N1  &kp N2 &kp N3 &kp DLLR &kp SEMI
+                                 &kp CARET &trans    &trans       &trans    &trans  &trans
         >;
     };
 
@@ -203,12 +215,12 @@ keymap {
 // |     |ENT | PGDN| UP  | PGUP|  <   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
 // |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
 // |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
-//                   |     |     |     |                      |     |     |     |
+//                   |     |     |     |                  |      |       |      |
         bindings = <
     &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp LT         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
     &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
     &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                           &trans    &trans   &trans          &trans    &trans    &trans
+                                &trans   &trans    &trans         &trans     &trans   &trans
         >;
     };
 
@@ -218,12 +230,12 @@ keymap {
 // | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
 // |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
 // |       | F9 | F10 | F11 | F12 | BTX0 |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
-//                   |     |     |     |                      |     |     |     |
+//                    |     |     |      |                  |      |      |      |
         bindings = <
     &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
     &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
     &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
-                           &trans    &trans   &trans          &trans    &trans    &trans
+                             &trans  &trans  &trans         &trans         &trans      &trans
         >;
     };
 };
