@@ -24,9 +24,9 @@
     key-positions = <KEYPOS>; \
     layers = <DEFAULT SYMBOL NAVIGATION>; \
     slow-release; \
-    // I would like to use this, but it doesn't quite work with the tap dance toggle behavior
-    // require-prior-idle-ms = <125>; \
   };
+    // I would like to use this above, but it doesn't quite work with the tap dance toggle behavior
+    // require-prior-idle-ms = <125>; \
 
 // See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
 // Can test output by putting these macros in a file test.c, then running 
