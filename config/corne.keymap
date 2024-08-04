@@ -100,33 +100,33 @@ combos {
     // comments after them on the same line can break them!
 
     // Useful when gaming
-    COMBO(&tog DEFAULT_NO_COMBOS, 34 35)
+    COMBO(&to DEFAULT_NO_COMBOS, 34 35)
     combo_return {
       timeout-ms = <COMBO_TIMEOUT_MS>;
-      bindings = <&tog DEFAULT_NO_COMBOS>;
+      bindings = <&to DEFAULT_NO_COMBOS>;
       key-positions = <34 35>;
       layers = <DEFAULT_NO_COMBOS>;
     };
-    COMBO(&tog BBROS, 22 23)
+    COMBO(&to BBROS, 22 23)
 
     // Get back to normal
-    COMBO(&tog DEFAULT, 10 11)
+    COMBO(&to DEFAULT, 10 11)
 
     COMBO(&mo CONFIG, 40 41)
 
     // "Home row mods"
     // Left
     COMBO(&lmhst NAVIGATION NAVIGATION, 3 4)
-    COMBO(&tog NAVIGATION, 2 4)
+    COMBO(&to NAVIGATION, 2 4)
     COMBO(&lmhst SYMBOL SYMBOL, 15 16)
-    COMBO(&tog SYMBOL, 14 16)
+    COMBO(&to SYMBOL, 14 16)
     COMBO(&kmhst LGUI LGUI, 27 28)
 
     // Right
     COMBO(&lmhst NAVIGATION NAVIGATION, 7 8)
-    COMBO(&tog NAVIGATION, 7 9)
+    COMBO(&to NAVIGATION, 7 9)
     COMBO(&lmhst SYMBOL SYMBOL, 19 20)
-    COMBO(&tog SYMBOL, 19 21)
+    COMBO(&to SYMBOL, 19 21)
     COMBO(&kmhst LGUI LGUI, 31 32)
 
     // Navigation
@@ -180,7 +180,7 @@ keymap {
     &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
     &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp MINUS &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
     &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp UNDER &kp PIPE     &kp BSLH  &kp N1  &kp N2 &kp N3 &kp DLLR &kp SEMI
-                               &kp CARET &trans &tog DEFAULT       &trans    &trans  &trans
+                               &kp CARET &trans &to DEFAULT       &trans    &trans  &trans
         >;
     };
 
@@ -195,7 +195,7 @@ keymap {
     &kp BSPC  &kp DEL  &kp N9 &kp N8  &kp N7 &kp PLUS         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
     &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
     &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                        &trans   &kp RET &tog DEFAULT         &trans     &trans   &trans
+                        &trans   &kp RET &to DEFAULT         &trans     &trans   &trans
         >;
     };
 
