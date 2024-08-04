@@ -12,7 +12,8 @@
 #define DEFAULT_NO_COMBOS 1
 #define SYMBOL 2
 #define NAVIGATION 3
-#define CONFIG 4
+#define BBROS 4
+#define CONFIG 5
 
 #define COMBO_TIMEOUT_MS 50
 
@@ -49,7 +50,9 @@ macros {
      };
 };
 behaviors {
-    // Implementation details for later behaviors
+    // These behaviors work like this:
+    //  - Press once for sticky key functionality
+    //  - Press and hold for holding functionality
     lmhst: layer_momentary_hold_sticky_tap {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
@@ -68,59 +71,6 @@ behaviors {
         retro-tap;
         bindings = <&kp>, <&sk>;
     };
-    // These behaviors work like this:
-    //  - Press once for sticky key functionality
-    //  - Press and hold for holding functionality
-    //  - Press twice to toggle holding the key (like caps lock)
-    symbol: symbol_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&lmhst SYMBOL SYMBOL>, <&tog SYMBOL>;
-    };
-    navigation: navigation_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&lmhst NAVIGATION NAVIGATION>, <&tog NAVIGATION>;
-    };
-    shift: shift_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&kmhst LSHFT LSHFT>, <&kt LSHFT>;
-    };
-    gui: gui_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&kmhst LGUI LGUI>, <&kt LGUI>;
-    };
-    ctrl: ctrl_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&kmhst LCTRL LCTRL>, <&kt LCTRL>;
-    };
-    ctrl_gui: ctrl_gui_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&kp LCTRL>, <&kp LGUI>;
-    };
-    shift_symbol: shift_symbol_control {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&kp LSHFT>, <&mo SYMBOL>;
-    };
-    //  - Press while holding alt to toggle holding the key (like caps lock)
-    // symbol: symbol_control {
-    //     compatible = "zmk,behavior-mod-morph";
-    //     #binding-cells = <0>;
-    //     bindings = <&lmhst SYMBOL SYMBOL>, <&tog SYMBOL>;
-    //     mods = <(MOD_LALT)>;
-    // };
 };
 combos {
     compatible = "zmk,combos";
@@ -145,37 +95,27 @@ combos {
       key-positions = <34 35>;
       layers = <DEFAULT_NO_COMBOS>;
     };
+    COMBO(&tog BBROS, 22 23)
 
     // Get back to normal
     COMBO(&tog DEFAULT, 10 11)
 
-    COMBO(&tog NAVIGATION, 19 20 21 22)
     COMBO(&mo CONFIG, 40 41)
 
     // "Home row mods"
     // Left
-    COMBO(&navigation, 3 4)
-    COMBO(&navigation, 38 15)
-    COMBO(&symbol, 15 16)
-    COMBO(&symbol, 38 16)
-    COMBO(&shift, 14 15)
-    COMBO(&ctrl, 14 16)
-    COMBO(&ctrl, 38 13)
-    COMBO(&gui, 13 16)
-    COMBO(&gui, 31 32)
-    COMBO(&gui, 38 14)
-    // Right
-    COMBO(&navigation, 7 8)
-    COMBO(&navigation, 39 20)
-    COMBO(&symbol, 19 20)
-    COMBO(&symbol, 39 19)
-    COMBO(&shift, 20 21)
-    COMBO(&ctrl, 19 21)
-    COMBO(&ctrl, 39 22)
-    COMBO(&gui, 19 22)
-    COMBO(&gui, 27 28)
-    COMBO(&gui, 39 21)
+    COMBO(&lmhst NAVIGATION NAVIGATION, 3 4)
+    COMBO(&tog NAVIGATION, 2 4)
+    COMBO(&lmhst SYMBOL SYMBOL, 15 16)
+    COMBO(&tog SYMBOL, 14 16)
+    COMBO(&kmhst LGUI LGUI, 27 28)
 
+    // Right
+    COMBO(&lmhst NAVIGATION NAVIGATION, 7 8)
+    COMBO(&tog NAVIGATION, 7 9)
+    COMBO(&lmhst SYMBOL SYMBOL, 19 20)
+    COMBO(&tog SYMBOL, 19 21)
+    COMBO(&kmhst LGUI LGUI, 31 32)
 
     // Navigation
     /*
@@ -223,27 +163,42 @@ keymap {
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
 // |      |  &  |  [  |  ]  |  _  | '|' |                         |  \  |  1  |  2  |  3  |  $  |  ;   |
-//                    |  ^  |     |     |                         |     |     |     |
+//                    |  ^  |     |DEFAU|                         |     |     |     |
         bindings = <
     &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
     &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp MINUS &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
     &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp UNDER &kp PIPE     &kp BSLH  &kp N1  &kp N2 &kp N3 &kp DLLR &kp SEMI
-                                 &kp CARET &trans    &trans       &trans    &trans  &trans
+                               &kp CARET &trans &tog DEFAULT       &trans    &trans  &trans
         >;
     };
 
     navi_layer {
         label = "NAVIGATION";
 // -------------------------------------------------------------------------
-// |     |ENT | PGDN| UP  | PGUP|  <   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
-// |     |HOME| LEFT| DOWN|RIGHT| END  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// |     | 1  |  2  | 3   |  4  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
-//                   |     |     |     |                  |      |       |      |
+// |BKSP |DEL | 9   | 8   |  7  |  +  |                  | >    |  PGDN |  UP  | PGUP  |      |       |
+// |     | 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
+// | ENT | $  |  3  | 2   |  1  |  \  |                  | 6    |  7    |   8  |   9   |   0  |       |
+//                  |     | ENT |DEFAU|                  |      |       |      |
         bindings = <
-    &trans    &kp RET  &kp PGDN &kp UP   &kp PGUP  &kp LT         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
-    &trans    &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
-    &trans    &kp N1   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                                &trans   &trans    &trans         &trans     &trans   &trans
+    &kp BSPC  &kp DEL  &kp N9 &kp N8  &kp N7 &kp PLUS         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
+    &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+                        &trans   &kp ENT &tog DEFAULT         &trans     &trans   &trans
+        >;
+    };
+
+    bbros_layer {
+        label = "BATTLE BROTHERS";
+// -------------------------------------------------------------------------
+// |     |ENT |  1  | 2   | 3   |  4   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
+// |     |d   | LEFT| UP  |RIGHT|  5   |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
+// |     | a  |  b  | DOWN|  c  |  6   |                  | 6    |  7    |   8  |   9   |   0  |       |
+//                  |     | ENT |SPC   |                  |      |       |      |
+        bindings = <
+    &trans    &kp RET &kp N1   &kp N2    &kp N3    &kp N4        &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &kp D   &kp LEFT &kp UP    &kp RIGHT &kp N5       &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
+    &trans    &kp A   &kp B    &kp DOWN  &kp C     &kp N6        &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+                            &trans   &trans    &kp SPACE         &trans     &trans   &trans
         >;
     };
 
