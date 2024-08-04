@@ -12,8 +12,9 @@
 #define DEFAULT_NO_COMBOS 1
 #define SYMBOL 2
 #define NAVIGATION 3
-#define BBROS 4
-#define CONFIG 5
+#define MIRRORED 4
+#define BBROS 5
+#define CONFIG 6
 
 #define COMBO_TIMEOUT_MS 50
 
@@ -155,7 +156,7 @@ keymap {
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-               &kp LGUI &ctrl_gui &kp SPACE   &shift_symbol &kp RET &mo NAVIGATION
+      &kp LGUI &ctrl_gui &mt MIRRORED SPACE   &shift_symbol &kp RET &mo NAVIGATION
         >;
     };
 
@@ -165,7 +166,7 @@ keymap {
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-                  &trans &trans &trans &trans &trans &trans
+               &trans &trans &kp SPACE &trans &trans &trans
         >;
     };
 
@@ -196,6 +197,21 @@ keymap {
     &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
     &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
                         &trans   &kp RET &to DEFAULT         &trans     &trans   &trans
+        >;
+    };
+
+    mirrored_layer {
+        label = "MIRRORED";
+// -----------------------------------------------------------------------------------------
+// | BKSP |  DEL|  Y  |  U  |  L  |  J  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
+// |  '   |  O  |  I  |  E  |  N  |  M  |   |  M  |  N  |  E  |  I  |  O  |  '   |
+// | ENT  |  /  |  .  |  ,  |  H  |  K  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
+//                    | SHFT| CTRL| SPC |   | SHF | ENT | NAVI|
+        bindings = <
+    &kp BSPC &kp DEL  &kp Y   &kp U     &kp L &kp J   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
+    &kp SQT  &kp O    &kp I   &kp E     &kp N &kp M   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
+    &kp RET  &kp FSLH &kp DOT &kp COMMA &kp H &kp K   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
+             &sk LSHFT &ctrl_gui &mt MIRRORED SPACE   &shift_symbol &kp RET &mo NAVIGATION
         >;
     };
 
