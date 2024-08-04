@@ -103,7 +103,7 @@ combos {
     COMBO(&to DEFAULT_NO_COMBOS, 34 35)
     combo_return {
       timeout-ms = <COMBO_TIMEOUT_MS>;
-      bindings = <&to DEFAULT_NO_COMBOS>;
+      bindings = <&to DEFAULT>;
       key-positions = <34 35>;
       layers = <DEFAULT_NO_COMBOS>;
     };
