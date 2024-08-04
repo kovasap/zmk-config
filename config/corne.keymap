@@ -71,6 +71,18 @@ behaviors {
         retro-tap;
         bindings = <&kp>, <&sk>;
     };
+    ctrl_gui: ctrl_gui_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp LCTRL>, <&kp LGUI>;
+    };
+    shift_symbol: shift_symbol_control {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp LSHFT>, <&mo SYMBOL>;
+    };
 };
 combos {
     compatible = "zmk,combos";
