@@ -102,13 +102,13 @@ combos {
 
     // Useful when gaming
     COMBO(&to DEFAULT_NO_COMBOS, 34 35)
+    COMBO(&to BBROS, 22 23)
     combo_return {
       timeout-ms = <COMBO_TIMEOUT_MS>;
       bindings = <&to DEFAULT>;
       key-positions = <34 35>;
-      layers = <DEFAULT_NO_COMBOS>;
+      layers = <DEFAULT_NO_COMBOS BBROS>;
     };
-    COMBO(&to BBROS, 22 23)
 
     // Get back to normal
     COMBO(&to DEFAULT, 10 11)
@@ -188,14 +188,14 @@ keymap {
     navi_layer {
         label = "NAVIGATION";
 // -------------------------------------------------------------------------
-// |BKSP |DEL | 9   | 8   |  7  |  +  |                  | >    |  PGDN |  UP  | PGUP  |      |       |
+// |BKSP |DEL | 9   | 8   |  7  |  +  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
 // |     | 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// | ENT | $  |  3  | 2   |  1  |  \  |                  | 6    |  7    |   8  |   9   |   0  |       |
+// | ENT | $  |  3  | 2   |  1  |  \  |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
 //                  |     | ENT |DEFAU|                  |      |       |      |
         bindings = <
-    &kp BSPC  &kp DEL  &kp N9 &kp N8  &kp N7 &kp PLUS         &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
-    &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
-    &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+    &kp BSPC  &kp DEL  &kp N9 &kp N8  &kp N7 &kp PLUS         &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
+    &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
+    &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
                         &trans   &kp RET &to DEFAULT         &trans     &trans   &trans
         >;
     };
@@ -218,15 +218,15 @@ keymap {
     bbros_layer {
         label = "BATTLE BROTHERS";
 // -------------------------------------------------------------------------
-// |     |ENT |  1  | 2   | 3   |  4   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
-// |     |d   | LEFT| UP  |RIGHT|  5   |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// |     | a  |  b  | DOWN|  c  |  6   |                  | 6    |  7    |   8  |   9   |   0  |       |
+// |     |ENT |     | UP   | 1   |  3   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
+// |     |    | LEFT| DOWN |RIGHT|  4   |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
+// |     |    |     |      |  2  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                  |     | ENT |SPC   |                  |      |       |      |
         bindings = <
-    &trans    &kp RET &kp N1   &kp N2    &kp N3    &kp N4        &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
-    &trans    &kp D   &kp LEFT &kp UP    &kp RIGHT &kp N5       &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
-    &trans    &kp A   &kp B    &kp DOWN  &kp C     &kp N6        &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                            &trans   &trans    &kp SPACE         &trans     &trans   &trans
+    &trans    &kp RET &trans   &kp UP    &kp N1    &kp N3        &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &trans  &kp LEFT &kp DOWN  &kp RIGHT &kp N4       &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
+    &trans    &trans  &trans   &trans    &kp N2    &kp N5        &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+                            &trans   &kp RET    &kp SPACE         &trans     &trans   &trans
         >;
     };
 
