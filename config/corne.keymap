@@ -9,12 +9,13 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT 0
-#define DEFAULT_NO_COMBOS 1
-#define SYMBOL 2
-#define NAVIGATION 3
-#define MIRRORED 4
-#define BBROS 5
-#define CONFIG 6
+#define DEFAULT_WITH_MIRROR 1
+#define DEFAULT_NO_COMBOS 2
+#define SYMBOL 3
+#define NAVIGATION 4
+#define MIRRORED 5
+#define BBROS 6
+#define CONFIG 7
 
 #define COMBO_TIMEOUT_MS 50
 
@@ -24,7 +25,7 @@
     timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <DEFAULT SYMBOL NAVIGATION>; \
+    layers = <DEFAULT DEFAULT_WITH_MIRROR MIRRORED SYMBOL NAVIGATION>; \
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
@@ -151,10 +152,25 @@ keymap {
 // | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
 //                    | GUI | CTL | SPC |   | SHF | ENT | NAVI|
         bindings = <
+    &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
+    &kp ESC   &kp A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
+    &kp LALT  &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
+      &kp LGUI &ctrl_gui &lt NAVIGATION SPACE  &shift_symbol &lt SYMBOL RET &mo CONFIG
+        >;
+    };
+
+    default_layer_with_mirror {
+        label = "DEFAULT_WITH_MIRROR";
+// -----------------------------------------------------------------------------------------
+// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
+// | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
+// | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
+//                    | GUI | CTL | SPC |   | SHF | ENT | NAVI|
+        bindings = <
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-      &kp LGUI &ctrl_gui &lt MIRRORED SPACE   &shift_symbol &kp RET &mo CONFIG
+      &kp LGUI &ctrl_gui &lt MIRRORED SPACE   &shift_symbol &lt SYMBOL RET  &mo CONFIG
         >;
     };
 
@@ -188,13 +204,13 @@ keymap {
 // -------------------------------------------------------------------------
 // |BKSP |DEL | 9   | 8   |  7  |  +  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
 // |     | 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// | ENT | $  |  3  | 2   |  1  |  \  |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
+// | ENT | $  | 3   | 2   |  1  |  \  |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
 //                  |     | ENT |DEFAU|                  |      |       |      |
         bindings = <
-    &kp BSPC  &kp DEL  &kp N9 &kp N8  &kp N7 &kp PLUS         &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
-    &trans    &kp N0   &kp N6 &kp N5  &kp N4 &kp ASTRK        &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
-    &kp RET   &kp DLLR &kp N3 &kp N2  &kp N1 &kp BSLH         &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
-                        &trans   &kp RET &to DEFAULT         &trans     &trans   &trans
+    &kp BSPC &kp DEL  &kp N9 &kp N8 &kp N7 &kp PLUS      &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
+    &trans   &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
+    &kp RET  &kp DLLR &kp N3 &kp N2 &kp N1 &kp BSLH      &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
+                        &trans   &kp RET &to DEFAULT     &trans     &trans   &trans
         >;
     };
 
@@ -221,24 +237,24 @@ keymap {
 // |     |    |     |      |  2  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
 //                  |     | ENT |SPC   |                  |      |       |      |
         bindings = <
-    &trans    &kp RET &trans   &kp UP    &kp N1    &kp N3        &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
+    &trans    &kp RET &trans   &kp UP    &kp N1    &kp N3       &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
     &trans    &trans  &kp LEFT &kp DOWN  &kp RIGHT &kp N4       &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
-    &trans    &trans  &trans   &trans    &kp N2    &kp N5        &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
-                            &trans   &kp RET    &kp SPACE         &trans     &trans   &trans
+    &trans    &trans  &trans   &trans    &kp N2    &kp N5       &kp N6     &kp N7   &kp N8   &kp N9    &kp N0   &trans
+                            &trans   &kp RET    &kp SPACE       &trans     &trans   &trans
         >;
     };
 
     config_layer {
         label = "CONFIG";
 // -------------------------------------------------------------------------
-// | PSCRN | F1 | F2  | F3  | F4  | VOL+ |                  | BTCAL|  HOME |  UP  |  END  |  |SLEEP  |
-// |       | F5 | F6  | F7  | F8  | VOL- |                  | BT1  |  LEFT | DOWN | RIGHT |  | OFF   |
-// |       | F9 | F10 | F11 | F12 | MUTE |                  | BT2  |  PGUP | END  | PGDN  |  | PLAY  |
+// | PSCRN | F1 | F2  | F3  | F4  | VOL+ |                  | BTCAL|       | MUTE  | VOL- | VOL+ | SLEEP    |
+// |       | F5 | F6  | F7  | F8  | VOL- |                  | BT1  |       |       |      |MIRROR| OFF      |
+// |       | F9 | F10 | F11 | F12 | MUTE |                  | BT2  |  SYMB | NAVI  |BBROS |DEFAUL| NO_COMBO |
 //                    |     |     |      |                  |      |      |      |
         bindings = <
-    &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &kp C_VOL_UP   &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END     &win_sleep
-    &trans    &kp F5 &kp F6  &kp F7  &kp F8  &kp C_VOL_DN   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT   &soft_off
-    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE     &bt BT_SEL 2   &kp PGUP    &kp END   &kp PGDN    &kp C_PP
+    &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &kp C_VOL_UP   &bt BT_CLR_ALL &trans      &kp C_MUTE     &kp C_VOL_DN &kp C_VOL_UP             &win_sleep
+    &trans    &kp F5 &kp F6  &kp F7  &kp F8  &kp C_VOL_DN   &bt BT_SEL 1   &trans      &trans         &trans       &to DEFAULT_WITH_MIRROR  &soft_off
+    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE     &bt BT_SEL 2   &to SYMBOL  &to NAVIGATION &to BBROS    &to DEFAULT              &to DEFAULT_NO_COMBOS
                              &trans  &trans  &trans         &trans         &trans      &trans
         >;
     };
