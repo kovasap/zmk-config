@@ -148,9 +148,6 @@ combos {
     // Get back to normal
     COMBO(&tog DEFAULT, 10 11)
 
-    COMBO(&tog NAVIGATION, 19 20 21 22)
-    COMBO(&mo CONFIG, 40 41)
-
     // "Home row mods"
     // Left
     COMBO(&navigation, 3 4)
@@ -202,7 +199,7 @@ keymap {
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-               &kp LGUI &ctrl_gui &kp SPACE   &shift_symbol &kp RET &mo NAVIGATION
+               &kp LGUI &ctrl_gui &kp SPACE   &shift_symbol &kp RET &mo CONFIG
         >;
     };
 
@@ -249,14 +246,14 @@ keymap {
     config_layer {
         label = "CONFIG";
 // -------------------------------------------------------------------------
-// | PSCRN | F1 | F2  | F3  | F4  | BTCLR|                  | BTCAL|  HOME |  UP  |  END  |VOL+  |SLEEP  |
-// |       | F5 | F6  | F7  | F8  | BT0  |                  | BT1  |  LEFT | DOWN | RIGHT |VOL-  | OFF   |
-// |       | F9 | F10 | F11 | F12 | BTX0 |                  | BTX1 |  PGUP | END  | PGDN  |MUTE  | PLAY  |
+// | PSCRN | F1 | F2  | F3  | F4  | VOL+ |                  | BTCAL|  HOME |  UP  |  END  |  |SLEEP  |
+// |       | F5 | F6  | F7  | F8  | VOL- |                  | BT1  |  LEFT | DOWN | RIGHT |  | OFF   |
+// |       | F9 | F10 | F11 | F12 | MUTE |                  | BT2  |  PGUP | END  | PGDN  |  | PLAY  |
 //                    |     |     |      |                  |      |      |      |
         bindings = <
-    &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &bt BT_CLR     &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END    &kp C_VOL_UP  &win_sleep
-    &trans    &kp F5 &kp F6  &kp F7  &kp F8  &bt BT_SEL 0   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT  &kp C_VOL_DN  &soft_off
-    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &bt BT_DISC 0  &bt BT_DISC 1  &kp PGUP    &kp END   &kp PGDN   &kp C_MUTE    &kp C_PP
+    &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &kp C_VOL_UP   &bt BT_CLR_ALL &kp HOME    &kp UP    &kp END     &win_sleep
+    &trans    &kp F5 &kp F6  &kp F7  &kp F8  &kp C_VOL_DN   &bt BT_SEL 1   &kp LEFT    &kp DOWN  &kp RIGHT   &soft_off
+    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE     &bt BT_SEL 2   &kp PGUP    &kp END   &kp PGDN    &kp C_PP
                              &trans  &trans  &trans         &trans         &trans      &trans
         >;
     };
