@@ -180,7 +180,7 @@ keymap {
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-               &trans &trans &kp SPACE &trans &trans &trans
+                   &kp SHFT &kp BSPC &kp SPACE &trans &trans &trans
         >;
     };
 
