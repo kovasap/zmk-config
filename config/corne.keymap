@@ -10,7 +10,7 @@
 
 #define DEFAULT 0
 #define DEFAULT_WITH_MIRROR 1
-#define DEFAULT_NO_COMBOS 2
+#define GAMING 2
 #define SYMBOL 3
 #define NAVIGATION 4
 #define MIRRORED 5
@@ -73,6 +73,7 @@ behaviors {
         retro-tap;
         bindings = <&kp>, <&sk>;
     };
+    // Tap dances
     ctrl_gui: ctrl_gui_control {
         compatible = "zmk,behavior-tap-dance";
         #binding-cells = <0>;
@@ -102,17 +103,20 @@ combos {
     // comments after them on the same line can break them!
 
     // Useful when gaming
-    COMBO(&to DEFAULT_NO_COMBOS, 34 35)
+    COMBO(&to GAMING, 34 35)
     COMBO(&to BBROS, 22 23)
     combo_return {
       timeout-ms = <COMBO_TIMEOUT_MS>;
       bindings = <&to DEFAULT>;
       key-positions = <34 35>;
-      layers = <DEFAULT_NO_COMBOS BBROS>;
+      layers = <GAMING BBROS>;
     };
-
-    // Get back to normal
-    COMBO(&to DEFAULT, 10 11)
+    
+    combo_symbol {
+      timeout-ms = <1000>;
+      bindings = <&lmhst SYMBOL SYMBOL>;
+      key-positions = <38 39>;
+    };
 
     // "Home row mods"
     // Left
@@ -155,27 +159,22 @@ keymap {
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-      &kp LGUI &ctrl_gui &lt NAVIGATION SPACE  &shift_symbol &lt SYMBOL RET &mo CONFIG
+      &kp LGUI &ctrl_gui &lt NAVIGATION SPACE  &mt LSHFT MINUS &kp LGUI &mo CONFIG
         >;
     };
 
     default_layer_with_mirror {
         label = "DEFAULT_WITH_MIRROR";
-// -----------------------------------------------------------------------------------------
-// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
-// | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
-// | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
-//                    | GUI | CTL | SPC |   | SHF | ENT | NAVI|
         bindings = <
-    &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
-    &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
-    &kp LALT  &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-      &kp LGUI &ctrl_gui &lt MIRRORED SPACE   &shift_symbol &lt SYMBOL RET  &mo CONFIG
+    &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &trans &trans
+                   &trans &trans &lt MIRRORED SPACE &trans &trans &trans
         >;
     };
 
     default_no_combos_layer {
-        label = "DEFAULT_NO_COMBOS";
+        label = "GAMING";
         bindings = <
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
@@ -190,27 +189,27 @@ keymap {
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
 // |      |  &  |  [  |  ]  |  _  | '|' |                         |  ;  |  1  |  2  |  3  |  $  |  \   |
-//                    |  ^  |     |DEFAU|                         |     |     |     |
+//                    |  ^  |     | SPC |                         |     |     |     |
         bindings = <
     &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
     &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp MINUS &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
     &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp UNDER &kp PIPE     &kp SEMI  &kp N1  &kp N2 &kp N3 &kp DLLR &kp BSLH
-                               &kp CARET &trans &to DEFAULT       &trans    &trans  &trans
+                               &kp CARET &trans &trans            &trans    &trans  &trans
         >;
     };
 
     navi_layer {
         label = "NAVIGATION";
 // -------------------------------------------------------------------------
-// |BKSP |DEL | 9(  | 8*  |  7& |  +  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
-// | SYMB| 0) | 6^  | 5%  |  4$ |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// | ENT | $  | 3#  | 2@  |  1! | ;:  |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
-//                  |     | ENT |DEFAU|                  |      |       |      |
+// |BKSP |DEL | 9   | 8   |  7  |  :  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
+// | SYMB| 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
+// | ENT | $  | 3   | 2   |  1  | ;   |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
+//                  |     | ENT | SPC |                  |      |       |      |
         bindings = <
-    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp PLUS      &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
+    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
     &lmhst SYMBOL SYMBOL  &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
     &kp RET               &kp DLLR &kp N3 &kp N2 &kp N1 &kp SEMI      &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
-                        &trans   &kp RET &to DEFAULT     &trans     &trans   &trans
+                                     &trans   &kp RET &trans           &mo SYMBOL     &trans   &trans
         >;
     };
 
@@ -235,7 +234,7 @@ keymap {
 // |     |ENT |     | UP   | 1   |  3   |                  | >    |  PGDN |  UP  | PGUP  |      |       |
 // |     |    | LEFT| DOWN |RIGHT|  4   |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
 // |     |    |     |      |  2  |  5   |                  | 6    |  7    |   8  |   9   |   0  |       |
-//                  |     | ENT |SPC   |                  |      |       |      |
+//                  |      | ENT | SPC  |                  |      |       |      |
         bindings = <
     &trans    &kp RET &trans   &kp UP    &kp N1    &kp N3       &kp GT     &kp PGDN &kp UP   &kp PGUP  &trans   &trans
     &trans    &trans  &kp LEFT &kp DOWN  &kp RIGHT &kp N4       &kp HOME   &kp LEFT &kp DOWN &kp RIGHT &kp END  &kp LC(BSPC)
@@ -254,8 +253,8 @@ keymap {
         bindings = <
     &kp PSCRN &kp F1 &kp F2  &kp F3  &kp F4  &kp C_VOL_UP   &bt BT_CLR_ALL &trans      &kp C_MUTE     &kp C_VOL_DN &kp C_VOL_UP             &win_sleep
     &trans    &kp F5 &kp F6  &kp F7  &kp F8  &kp C_VOL_DN   &bt BT_SEL 1   &trans      &trans         &trans       &to DEFAULT_WITH_MIRROR  &soft_off
-    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE     &bt BT_SEL 2   &to SYMBOL  &to NAVIGATION &to BBROS    &to DEFAULT              &to DEFAULT_NO_COMBOS
-                             &trans  &trans  &trans         &trans         &trans      &trans
+    &trans    &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE     &bt BT_SEL 2   &to SYMBOL  &to NAVIGATION &to BBROS    &to DEFAULT              &to GAMING
+                             &trans  &trans  &to DEFAULT    &trans         &trans      &trans
         >;
     };
 };
