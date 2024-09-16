@@ -113,7 +113,7 @@ combos {
     };
     
     combo_symbol {
-      timeout-ms = <1000>;
+      timeout-ms = <300>;
       bindings = <&lmhst SYMBOL SYMBOL>;
       key-positions = <38 39>;
     };
@@ -159,7 +159,7 @@ keymap {
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-      &kp LGUI &ctrl_gui &lt NAVIGATION SPACE  &mt LSHFT MINUS &kp LGUI &mo CONFIG
+         &kp CONFIG &ctrl_gui &mt LGUI SPACE  &mt LSHFT MINUS &kp SYMBOL &mo CONFIG
         >;
     };
 
@@ -187,13 +187,13 @@ keymap {
         label = "SYMBOL";
 // -----------------------------------------------------------------------------------------
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
-// |   ~  |  #  |  (  |  )  |  -  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
-// |      |  &  |  [  |  ]  |  _  | '|' |                         |  ;  |  1  |  2  |  3  |  $  |  \   |
+// |   ~  |  #  |  (  |  )  |  _  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
+// |      |  &  |  [  |  ]  |  :  | '|' |                         |  ;  |  1  |  2  |  3  |  $  |  \   |
 //                    |  ^  |     | SPC |                         |     |     |     |
         bindings = <
     &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
-    &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp MINUS &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
-    &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp UNDER &kp PIPE     &kp SEMI  &kp N1  &kp N2 &kp N3 &kp DLLR &kp BSLH
+    &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp UNDER &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
+    &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp COLON &kp PIPE     &kp SEMI  &kp N1  &kp N2 &kp N3 &kp DLLR &kp BSLH
                                &kp CARET &trans &trans            &trans    &trans  &trans
         >;
     };
