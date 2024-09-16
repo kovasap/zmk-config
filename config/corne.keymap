@@ -159,7 +159,7 @@ keymap {
     &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
     &kp ESC   &kp A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
     &kp LALT  &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-         &kp CONFIG &ctrl_gui &mt LGUI SPACE  &mt LSHFT MINUS &kp SYMBOL &mo CONFIG
+         &kp CONFIG &ctrl_gui &mt LGUI SPACE  &mt LSHFT MINUS &mo SYMBOL &mo CONFIG
         >;
     };
 
