@@ -73,6 +73,22 @@ behaviors {
         retro-tap;
         bindings = <&kp>, <&sk>;
     };
+    ht_bal: balanced_hold_tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        retro-tap;
+        bindings = <&kp>, <&kp>;
+    };
+    lht_bal: balanced_hold_tap_for_layers {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        retro-tap;
+        bindings = <&mo>, <&kp>;
+    };
     // Tap dances
     ctrl_gui: ctrl_gui_control {
         compatible = "zmk,behavior-tap-dance";
@@ -102,16 +118,6 @@ combos {
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
 
-    // Useful when gaming
-    COMBO(&to GAMING, 34 35)
-    COMBO(&to BBROS, 22 23)
-    combo_return {
-      timeout-ms = <COMBO_TIMEOUT_MS>;
-      bindings = <&to DEFAULT>;
-      key-positions = <34 35>;
-      layers = <GAMING BBROS>;
-    };
-    
     combo_symbol {
       timeout-ms = <300>;
       bindings = <&lmhst SYMBOL SYMBOL>;
@@ -121,16 +127,16 @@ combos {
     // "Home row mods"
     // Left
     COMBO(&lmhst NAVIGATION NAVIGATION, 3 4)
-    COMBO(&to NAVIGATION, 2 4)
+    // COMBO(&to NAVIGATION, 2 4)
     COMBO(&lmhst SYMBOL SYMBOL, 15 16)
-    COMBO(&to SYMBOL, 14 16)
+    // COMBO(&to SYMBOL, 14 16)
     COMBO(&kmhst LGUI LGUI, 27 28)
 
     // Right
     COMBO(&lmhst NAVIGATION NAVIGATION, 7 8)
-    COMBO(&to NAVIGATION, 7 9)
+    // COMBO(&to NAVIGATION, 7 9)
     COMBO(&lmhst SYMBOL SYMBOL, 19 20)
-    COMBO(&to SYMBOL, 19 21)
+    // COMBO(&to SYMBOL, 19 21)
     COMBO(&kmhst LGUI LGUI, 31 32)
 
     // Navigation
@@ -154,12 +160,12 @@ keymap {
 // | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
 // | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
-//                    | GUI | CTL | SPC |   | SHF | ENT | NAVI|
+//                    | CONF| CTRL| SPC |   | SHF | SYMB| CONF|
         bindings = <
-    &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL  &kp BSPC
-    &kp ESC   &kp A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O    &kp SQT
-    &kp LALT  &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-         &kp CONFIG &ctrl_gui &mt LGUI SPACE  &mt LSHFT MINUS &mo SYMBOL &mo CONFIG
+    &kp TAB   &kp Q             &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL              &kp BSPC
+    &kp ESC   &kp A             &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O                &kp SQT
+    &kp LALT  &lht_bal SYMBOL Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &lht_bal SYMBOL FSLH &kp RET
+    &kp CONFIG &kp LCTRL &ht_bal LGUI SPACE     &mt LSHFT MINUS &mo SYMBOL &mo CONFIG
         >;
     };
 
