@@ -183,9 +183,9 @@ keymap {
     default_no_combos_layer {
         label = "GAMING";
         bindings = <
-    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans   &trans
+    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans   &trans
+    &trans &kp Z  &trans &trans &trans &trans &trans &trans &trans &trans &kp FSLH &trans
                    &kp LSHFT &kp BSPC &kp SPACE &trans &trans &trans
         >;
     };
