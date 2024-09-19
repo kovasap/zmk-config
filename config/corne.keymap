@@ -122,6 +122,7 @@ combos {
       timeout-ms = <300>;
       bindings = <&lmhst SYMBOL SYMBOL>;
       key-positions = <38 39>;
+      layers = <DEFAULT DEFAULT_WITH_MIRROR MIRRORED SYMBOL NAVIGATION>;
     };
 
     // "Home row mods"
