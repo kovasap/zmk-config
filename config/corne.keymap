@@ -128,16 +128,16 @@ combos {
     // "Home row mods"
     // Left
     COMBO(&lmhst NAVIGATION NAVIGATION, 3 4)
-    // COMBO(&to NAVIGATION, 2 4)
+    COMBO(&to NAVIGATION, 2 4)
     COMBO(&lmhst SYMBOL SYMBOL, 15 16)
-    // COMBO(&to SYMBOL, 14 16)
+    COMBO(&to SYMBOL, 14 16)
     COMBO(&kmhst LGUI LGUI, 27 28)
 
     // Right
     COMBO(&lmhst NAVIGATION NAVIGATION, 7 8)
-    // COMBO(&to NAVIGATION, 7 9)
+    COMBO(&to NAVIGATION, 7 9)
     COMBO(&lmhst SYMBOL SYMBOL, 19 20)
-    // COMBO(&to SYMBOL, 19 21)
+    COMBO(&to SYMBOL, 19 21)
     COMBO(&kmhst LGUI LGUI, 31 32)
 
     // Navigation
@@ -161,12 +161,12 @@ keymap {
 // | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  | DEL | BKSP |
 // | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | ALT  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ENT  |
-//                    | CONF| CTRL| SPC |   | SHF | SYMB| CONF|
+//                    | CONF| CTRL| SPC |   | SHF | UNDS| CONF|
         bindings = <
     &kp TAB   &kp Q             &kp W &kp F &kp P &kp B    &kp J &kp L &kp U     &kp Y   &kp DEL              &kp BSPC
     &kp ESC   &kp A             &kp R &kp S &kp T &kp G    &kp M &kp N &kp E     &kp I   &kp O                &kp SQT
     &kp LALT  &lht_bal SYMBOL Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA &kp DOT &lht_bal SYMBOL FSLH &kp RET
-    &kp CONFIG &kp LCTRL &ht_bal LGUI SPACE     &mt LSHFT MINUS &mo SYMBOL &mo CONFIG
+                         &kp CONFIG &kp LCTRL &kp SPACE     &mt LSHFT MINUS &kp UNDER &mo CONFIG
         >;
     };
 
@@ -196,12 +196,12 @@ keymap {
 // |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
 // |   ~  |  #  |  (  |  )  |  _  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
 // |      |  &  |  [  |  ]  |  :  | '|' |                         |  ;  |  1  |  2  |  3  |  $  |  \   |
-//                    |  ^  |     | SPC |                         |     |     |     |
+//                    |  ^  |     | DEF |                         |     |     |     |
         bindings = <
     &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
     &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp UNDER &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
     &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp COLON &kp PIPE     &kp SEMI  &kp N1  &kp N2 &kp N3 &kp DLLR &kp BSLH
-                               &kp CARET &trans &trans            &trans    &trans  &trans
+                                 &kp CARET &trans &to DEFAULT            &trans    &trans  &trans
         >;
     };
 
@@ -211,12 +211,12 @@ keymap {
 // |BKSP |DEL | 9   | 8   |  7  |  :  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
 // | SYMB| 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
 // | ENT | $  | 3   | 2   |  1  | ;   |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
-//                  |     | ENT | SPC |                  |      |       |      |
+//                  |     | ENT | DEF |                  |      |       |      |
         bindings = <
     &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
     &lmhst SYMBOL SYMBOL  &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
     &kp RET               &kp DLLR &kp N3 &kp N2 &kp N1 &kp SEMI      &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
-                                     &trans   &kp RET &trans           &trans     &trans   &trans
+                                     &trans   &kp RET &to DEFAULT           &trans     &trans   &trans
         >;
     };
 
