@@ -192,31 +192,31 @@ keymap {
 
     symbol_layer {
         label = "SYMBOL";
-// -----------------------------------------------------------------------------------------
-// |   `  |  @  |  {  |  }  |  =  |  !  |                         |  +  |  7  |  8  |  9  |     |      |
-// |   ~  |  #  |  (  |  )  |  _  |  %  |                         |  *  |  4  |  5  |  6  |  0  |  :   |
-// |      |  &  |  [  |  ]  |  :  | '|' |                         |  ;  |  1  |  2  |  3  |  $  |  \   |
-//                    |  ^  |     | DEF |                         |     |     |     |
+// ----------------------------------------------------------------------------------
+// |BKSP |DEL  | 9   | 8   |  7  |  !  |                    |  }  |  {  |  =  |  &  |  @  |  `   |
+// | $   | GUI | 6   | 5   |  4  |  *  |                    |  )  |  (  |  :  |  |  |  #  |  ~   |
+// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  ]  |  [  |  ;  | Esc |  \  |  Tab |
+//                   |     |     | DEF |                    |     |     |     |
         bindings = <
-    &kp GRAVE &kp AT    &kp LBRC &kp RBRC  &kp EQUAL &kp EXCL     &kp PLUS  &kp N7  &kp N8 &kp N9 &trans   &trans 
-    &kp TILDE &kp HASH  &kp LPAR &kp RPAR  &kp UNDER &kp PRCNT    &kp ASTRK &kp N4  &kp N5 &kp N6 &kp N0   &kp COLON
-    &trans    &kp AMPS  &kp LBKT &kp RBKT  &kp COLON &kp PIPE     &kp SEMI  &kp N1  &kp N2 &kp N3 &kp DLLR &kp BSLH
-                                 &kp CARET &trans &to DEFAULT            &trans    &trans  &trans
+    &kp BSPC  &kp DEL          &kp N9 &kp N8 &kp N7 &kp EXCL    &kp RBRC &kp LBRC &kp EQUAL &kp AMPS &kp AT   &kp GRAVE
+    &kp DLLR  &kmhst LGUI LGUI &kp N6 &kp N5 &kp N4 &kp ASTRK   &kp RPAR &kp LPAR &kp COLON &kp PIPE &kp HASH &kp TILDE
+    &kp CARET &kp N0           &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp LBKT &kp SEMI  &kp ESC  &kp BSLH &kp TAB
+                                 &trans &trans &to DEFAULT          &trans    &trans  &trans
         >;
     };
 
     navi_layer {
         label = "NAVIGATION";
 // -------------------------------------------------------------------------
-// |BKSP |DEL | 9   | 8   |  7  |  :  |                  |C+BKSP|  PGDN |  UP  | PGUP  |      |       |
-// | SYMB| 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |C+BKSP |
-// | ENT | $  | 3   | 2   |  1  | ;   |                  |C+DEL | C+LEFT|C+DOWN|C+RIGHT|C+UP  |       |
-//                  |     | ENT | DEF |                  |      |       |      |
+// |BKSP |DEL | 9   | 8   |  7  |  :  |                  |C+UP  |  PGDN |  UP  | PGUP  |C+DEL |C+BKSP|
+// | SYMB| 0  | 6   | 5   |  4  |  *  |                  | HOME |  LEFT | DOWN | RIGHT |  END |INSERT|
+// | ENT | $  | 3   | 2   |  1  | ;   |                  |C+DOWN| C+LEFT|C+BKSP|C+RIGHT|C+DEL |PSCRN |
+//                  |     |     | DEF |                  |      |       |      |
         bindings = <
-    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(BSPC) &kp PGDN     &kp UP       &kp PGUP      &trans     &trans
-    &lmhst SYMBOL SYMBOL  &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END    &kp LC(BSPC)
-    &kp RET               &kp DLLR &kp N3 &kp N2 &kp N1 &kp SEMI      &kp LC(DEL)  &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT) &kp LC(UP) &trans
-                                     &trans   &kp RET &to DEFAULT           &trans     &trans   &trans
+    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(UP)   &kp PGDN     &kp UP       &kp PGUP      &kp LC(DEL) &LC(BKSP)
+    &lmhst SYMBOL SYMBOL  &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END     &kp INSERT
+    &kp RET               &kp DLLR &kp N3 &kp N2 &kp N1 &kp SEMI      &kp LC(DOWN) &kp LC(LEFT) &kp LC(BKSP) &kp LC(RIGHT) &kp LC(DEL) &kp PSCRN
+                                     &trans   &trans  &to DEFAULT           &trans     &trans   &trans
         >;
     };
 
