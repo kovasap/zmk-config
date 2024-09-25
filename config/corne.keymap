@@ -213,7 +213,7 @@ keymap {
 // | ENT | $  | 3   | 2   |  1  | ;   |                  |C+DOWN| C+LEFT|C+BSPC|C+RIGHT|C+DEL |PSCRN |
 //                  |     |     | DEF |                  |      |       |      |
         bindings = <
-    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(UP)   &kp PGDN     &kp UP       &kp PGUP      &kp LC(DEL) &LC(BSPC)
+    &kp BSPC              &kp DEL  &kp N9 &kp N8 &kp N7 &kp COLON     &kp LC(UP)   &kp PGDN     &kp UP       &kp PGUP      &kp LC(DEL) &kp LC(BSPC)
     &lmhst SYMBOL SYMBOL  &kp N0   &kp N6 &kp N5 &kp N4 &kp ASTRK     &kp HOME     &kp LEFT     &kp DOWN     &kp RIGHT     &kp END     &kp INSERT
     &kp RET               &kp DLLR &kp N3 &kp N2 &kp N1 &kp SEMI      &kp LC(DOWN) &kp LC(LEFT) &kp LC(BSPC) &kp LC(RIGHT) &kp LC(DEL) &kp PSCRN
                                      &trans   &trans  &to DEFAULT           &trans     &trans   &trans
