@@ -195,12 +195,12 @@ keymap {
 // ----------------------------------------------------------------------------------
 // |BSPC |DEL  | 9   | 8   |  7  |  !  |                    |  }  |  {  |  =  |  &  |  @  |  `   |
 // | $   | GUI | 6   | 5   |  4  |  *  |                    |  )  |  (  |  :  |  |  |  #  |  ~   |
-// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  ]  |  [  |  ;  | Esc |  \  |  Tab |
+// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  ]  |  [  |  ;  |  +  |  \  |  Tab |
 //                   |     |     | DEF |                    |     |     |     |
         bindings = <
     &kp BSPC  &kp DEL          &kp N9 &kp N8 &kp N7 &kp EXCL    &kp RBRC &kp LBRC &kp EQUAL &kp AMPS &kp AT   &kp GRAVE
     &kp DLLR  &kmhst LGUI LGUI &kp N6 &kp N5 &kp N4 &kp ASTRK   &kp RPAR &kp LPAR &kp COLON &kp PIPE &kp HASH &kp TILDE
-    &kp CARET &kp N0           &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp LBKT &kp SEMI  &kp ESC  &kp BSLH &kp TAB
+    &kp CARET &kp N0           &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp LBKT &kp SEMI  &kp PLUS &kp BSLH &kp TAB
                                  &trans &trans &to DEFAULT          &trans    &trans  &trans
         >;
     };
