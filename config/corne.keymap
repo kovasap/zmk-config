@@ -12,10 +12,11 @@
 #define DEFAULT_WITH_MIRROR 1
 #define GAMING 2
 #define SYMBOL 3
-#define NAVIGATION 4
-#define MIRRORED 5
-#define BBROS 6
-#define CONFIG 7
+#define SYMBOL 4
+#define NAVIGATION 5
+#define MIRRORED 6
+#define BBROS 7
+#define CONFIG 8
 
 #define COMBO_TIMEOUT_MS 50
 
@@ -132,6 +133,7 @@ combos {
     COMBO(&lmhst SYMBOL SYMBOL, 15 16)
     COMBO(&to SYMBOL, 14 16)
     COMBO(&kmhst LGUI LGUI, 27 28)
+    COMBO(&kt LGUI, 26 28)
 
     // Right
     COMBO(&lmhst NAVIGATION NAVIGATION, 7 8)
@@ -139,6 +141,7 @@ combos {
     COMBO(&lmhst SYMBOL SYMBOL, 19 20)
     COMBO(&to SYMBOL, 19 21)
     COMBO(&kmhst LGUI LGUI, 31 32)
+    COMBO(&kt LGUI, 31 33)
 
     // Navigation
     /*
@@ -193,15 +196,30 @@ keymap {
     symbol_layer {
         label = "SYMBOL";
 // ----------------------------------------------------------------------------------
-// |BSPC |DEL  | 9   | 8   |  7  |  !  |                    |  }  |  {  |  =  |  &  |  @  |  `   |
-// | $   | GUI | 6   | 5   |  4  |  *  |                    |  )  |  (  |  :  |  |  |  #  |  ~   |
-// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  ]  |  [  |  ;  |  +  |  \  |  Tab |
+// |BSPC |DEL  | 9   | 8   |  7  |  !  |                    | DEL |  {  |  =  |  &  |  @  |  `   |
+// | ESC | $   | 6   | 5   |  4  |  *  |                    | BSPC|  (  |  :  |  |  |  #  |  ~   |
+// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  +  |  [  |  ;  | Ent |  \  |  Tab |
 //                   |     |     | DEF |                    |     |     |     |
         bindings = <
-    &kp BSPC  &kp DEL          &kp N9 &kp N8 &kp N7 &kp EXCL    &kp RBRC &kp LBRC &kp EQUAL &kp AMPS &kp AT   &kp GRAVE
-    &kp DLLR  &kmhst LGUI LGUI &kp N6 &kp N5 &kp N4 &kp ASTRK   &kp RPAR &kp LPAR &kp COLON &kp PIPE &kp HASH &kp TILDE
-    &kp CARET &kp N0           &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp LBKT &kp SEMI  &kp PLUS &kp BSLH &kp TAB
-                                 &trans &trans &to DEFAULT          &trans    &trans  &trans
+    &kp BSPC  &kp DEL  &kp N9 &kp N8 &kp N7 &kp EXCL    &kp DEL  &kp LBRC &kp EQUAL &kp AMPS &kp AT   &kp GRAVE
+    &kp ESC   &kp DLLR &kp N6 &kp N5 &kp N4 &kp ASTRK   &kp BSPC &kp LPAR &kp COLON &kp PIPE &kp HASH &kp TILDE
+    &kp CARET &kp N0   &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp LBKT &kp SEMI  &kp PLUS &kp BSLH &kp TAB
+                         &trans &trans &to DEFAULT          &lt SYMBOL_SHIFTED &trans  &trans
+        >;
+    };
+
+    symbol_shifted_layer {
+        label = "SYMBOL_SHIFTED";
+// ----------------------------------------------------------------------------------
+// |BSPC |DEL  | 9   | 8   |  7  |  !  |                    | DEL |   } |  =  |  &  |  @  |  `   |
+// | ESC | $   | 6   | 5   |  4  |  *  |                    | BSPC|   ) |  :  |  |  |  #  |  ~   |
+// | ^   | 0   | 3   | 2   |  1  |  %  |                    |  +  |   ] |  ;  | Ent |  \  |  Tab |
+//                   |     |     | DEF |                    |     |     |     |
+        bindings = <
+    &kp BSPC  &kp DEL  &kp N9 &kp N8 &kp N7 &kp EXCL    &kp DEL  &kp RBRC &kp EQUAL &kp AMPS &kp AT   &kp GRAVE
+    &kp ESC   &kp DLLR &kp N6 &kp N5 &kp N4 &kp ASTRK   &kp BSPC &kp RPAR &kp COLON &kp PIPE &kp HASH &kp TILDE
+    &kp CARET &kp N0   &kp N3 &kp N2 &kp N1 &kp PRCNT   &kp RBKT &kp RBKT &kp SEMI  &kp PLUS &kp BSLH &kp TAB
+                         &trans &trans &to DEFAULT          &lt SYMBOL_SHIFTED &trans  &trans
         >;
     };
 
