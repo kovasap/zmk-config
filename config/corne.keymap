@@ -12,7 +12,7 @@
 #define DEFAULT_WITH_MIRROR 1
 #define GAMING 2
 #define SYMBOL 3
-#define SYMBOL 4
+#define SYMBOL_SHIFTED 4
 #define NAVIGATION 5
 #define MIRRORED 6
 #define BBROS 7
