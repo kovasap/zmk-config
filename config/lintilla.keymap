@@ -124,7 +124,7 @@
                 &none   &none   &none   &none   &none   &none                            &kp SLASH &kp N7 &kp N8  &kp N9 &kp MINUS &kp BSPC
                 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
                 // ┃       ┃ CtrlA ┃       ┃ CtrlD ┃       ┃       ┃                          ┃   *   ┃   4   ┃   5   ┃   6   ┃   +   ┃RETURN ┃
-                &kp GLOBE Sft LC(A) &kp LCTL Opt LC(D) &kp LGUI &kp RALT                       &kp STAR &kp N4  &kp N5  &kp N6 &kp PLUS &kp RET
+                &kp GLOBE &kp LC(A) &kp LCTL Opt LC(D) &kp LGUI &kp RALT                       &kp STAR &kp N4  &kp N5  &kp N6 &kp PLUS &kp RET
                 // ┃ Globe ┃ Shift ┃ Ctrl  ┃  Opt  ┃  Cmd  ┃ R Alt ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
                 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
                 //         ┃ CtrlZ ┃ CtrlX ┃ CtrlC ┃ CtrlV ┃       ┃                          ┃   :   ┃   1   ┃   2   ┃   3   ┃   =   ┃
@@ -150,7 +150,7 @@
                 &none   &none   &none   &none   &none   &none                            &kp PG_UP &none   &none   &none   &none  &kp BSPC
                 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
                 // ┃       ┃ Cmd A ┃       ┃       ┃       ┃       ┃                          ┃ Home  ┃ Left  ┃  Up   ┃ Right ┃  End  ┃RETURN ┃
-                &kp GLOBE Sft LG(A) &kp LCTL &kp LALT &kp LGUI &kp RALT                      &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &kp RET
+                &kp GLOBE &kp LG(A) &kp LCTL &kp LALT &kp LGUI &kp RALT                      &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &kp RET
                 // ┃ Globe ┃ Shift ┃ Ctrl  ┃  Opt  ┃  Cmd  ┃ R Alt ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
                 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
                 //         ┃ Cmd Z ┃ Cmd X ┃ Cmd C ┃ Cmd V ┃       ┃                          ┃ Pg Dn ┃       ┃ Down  ┃       ┃       ┃
