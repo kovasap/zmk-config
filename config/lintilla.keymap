@@ -100,19 +100,19 @@ keymap {
         >;
     };
 
-    num {
+    symbols {
         //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "numpad"                ;
+        display-name = "symbols"                ;
         //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
         bindings = <
             //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
                         &kp BSPC                                                                            &kp RET
             // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
+                &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J  &kp LBRC &kp RBRC &kp Y  &kp DEL &kp BSPC
             // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp SQT
+                &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M  &kp LPAR &kp RPAR &kp I  &kp O   &kp SQT
             // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                          &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
+                         &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K  &kp LBKT &kp RBKT &kp LT &kp GT
             //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                                &kp LGUI      &kp LCTL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
             //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
