@@ -7,286 +7,137 @@
 // Magic bluetooth button
 #define BT_(btnum) &bt_key btnum btnum
 
-#define shm &mt LSHFT MINUS
-
 / {
-    behaviors {
-        bt_key: magic_bluetooth_key {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <500>;
-            bindings = <&bt_clr>, <&bt_sel>;
-        };
-
-        mcs: mod_comma_semi {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SEMI>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mdc: mod_dot_colon {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp COLON>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        msb: mod_slash_back {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SLASH>, <&kp BACKSLASH>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
+behaviors {
+    bt_key: magic_bluetooth_key {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        tapping-term-ms = <500>;
+        bindings = <&bt_clr>, <&bt_sel>;
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        function_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
+    mcs: mod_comma_semi {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp COMMA>, <&kp SEMI>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    macros {
-        // Attempting to do
-        // https://www.reddit.com/r/olkb/comments/1f6x99q/tap_into_a_layer_from_another_layer_and_exit_by/
-        ltto: to_layer_while_another_layer_held {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press &to 1>,
-                <&macro_release &to 0>;
-        };
-
-        bt_clr: bluetooth_clear {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &bt_sel MACRO_PLACEHOLDER>, <&bt BT_CLR>;
-        };
-
-        bt_sel: bluetooth_select {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&out OUT_BLE>, <&macro_param_1to2 &bt BT_SEL MACRO_PLACEHOLDER>;
-        };
-
-        flash: dongle_bootloader {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER>, <&bootloader>;
-        };
+    mdc: mod_dot_colon {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp DOT>, <&kp COLON>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    keymap {
-        compatible = "zmk,keymap";
-
-        qwerty {
-            //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "Colemak DH"                ;
-            //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-                            &kp BSPC                                                                            &kp RET
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                    &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp SQT
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
-                //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                                  &kp LGUI      &kp LCTL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
-                //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
-            >;
-        };
-
-        num {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "numpad"                ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-            >;
-        };
-
-        nav {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "navigation"            ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-            >;
-        };
-
-        fn {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "function"              ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-        };
-
-        sym {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "symbols"               ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-        };
-
-        keybd {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "keyboard"              ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-        };
-
-        flash {
-            //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-            display-name = "flash mode"            ;
-            //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            bindings = <
-                //         ┏━━━━━━━┓                                                                                          ┏━━━━━━━┓
-                //         ┃       ┃                                                                                          ┃       ┃
-                &none                                                                                              &none
-                // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓                          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-                // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none   &none
-                // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-                //         ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃
-                &none   &none   &none   &none   &none                              &none   &none   &none   &none   &none
-                //         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━┳━━━┻━━━┳━━━┻━━━┳━━━━━━━┓  ┏━━━━━━━┳━━━┻━━━┳━━━┻━━━┳━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-                //                                     ┃       ┃       ┃       ┃  ┃       ┃       ┃       ┃
-                &none   &none   &none      &none   &none   &none
-                //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
-                //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
-            >;
-        };
-
-        // Extra empty layers for ZMK Studio
-
-        layer7 {
-            status = "reserved";
-        };
-
-        layer8 {
-            status = "reserved";
-        };
-
-        layer9 {
-            status = "reserved";
-        };
-
-        layer10 {
-            status = "reserved";
-        };
-
-        layer11 {
-            status = "reserved";
-        };
-
-        layer12 {
-            status = "reserved";
-        };
-
-        layer13 {
-            status = "reserved";
-        };
-
-        layer14 {
-            status = "reserved";
-        };
-
-        layer15 {
-            status = "reserved";
-        };
+    msb: mod_slash_back {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp SLASH>, <&kp BACKSLASH>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
     };
+
+};
+
+conditional_layers {
+    compatible = "zmk,conditional-layers";
+    function_layer {
+        if-layers = <1 2>;
+        then-layer = <3>;
+    };
+};
+
+macros {
+    // Attempting to do
+    // https://www.reddit.com/r/olkb/comments/1f6x99q/tap_into_a_layer_from_another_layer_and_exit_by/
+    ltto: to_layer_while_another_layer_held {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings =
+            <&macro_press &to 1>,
+            <&macro_release &to 0>;
+    };
+
+    bt_clr: bluetooth_clear {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_param_1to1 &bt_sel MACRO_PLACEHOLDER>, <&bt BT_CLR>;
+    };
+
+    bt_sel: bluetooth_select {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&out OUT_BLE>, <&macro_param_1to2 &bt BT_SEL MACRO_PLACEHOLDER>;
+    };
+
+    flash: dongle_bootloader {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER>, <&bootloader>;
+    };
+};
+
+keymap {
+    compatible = "zmk,keymap";
+
+    colemak_dh {
+        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "Colemak DH"                ;
+        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+            //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+                        &kp BSPC                                                                            &kp RET
+            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+                &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
+            // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+                &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp SQT
+            // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+                         &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
+            //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                              &kp LGUI      &kp LCTRL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
+            //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
+    num {
+        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "numpad"                ;
+        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+            //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+                        &kp BSPC                                                                            &kp RET
+            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+                &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
+            // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+                &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp SQT
+            // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+                          &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
+            //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                               &kp LGUI      &kp LCTL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
+            //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
+    nav {
+        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "navigation"            ;
+        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+            //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+                        &kp BSPC                                                                            &kp RET
+            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+                &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
+            // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+                &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp SQT
+            // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+                         &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
+            //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                               &kp LGUI      &kp LCTL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
+            //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+};
 };
 
 // vim: expandtab softtabstop=4 shiftwidth=4 filetype=dts
