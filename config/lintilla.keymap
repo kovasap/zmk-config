@@ -70,6 +70,16 @@
     };
 
     macros {
+        // Attempting to do
+        // https://www.reddit.com/r/olkb/comments/1f6x99q/tap_into_a_layer_from_another_layer_and_exit_by/
+        ltto: to_layer_while_another_layer_held {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press &to 1>,
+                <&macro_release &to 0>;
+        };
+
         bt_clr: bluetooth_clear {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
