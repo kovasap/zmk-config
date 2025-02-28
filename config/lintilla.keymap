@@ -109,6 +109,7 @@ macros {
         bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER>, <&bootloader>;
     };
 
+    // Windows sleep key
     win_sleep: win_sleep {
         wait-ms = <500>;
         tap-ms = <5>;
@@ -121,6 +122,7 @@ macros {
 };
 
 combos {
+    compatible = "zmk,combos";
     //                                                  KEY POSITIONS
     //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
     //             0                                                                                   1
@@ -139,7 +141,7 @@ combos {
 
     COMBO(&kp LALT, 40 41)
 
-}
+};
 
 keymap {
     compatible = "zmk,keymap";
