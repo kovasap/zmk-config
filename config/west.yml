@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/ctranstrum
     - name: caksoylar # <-- and this for the LED
       url-base: https://github.com/caksoylar
+    - name: urob
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -18,6 +20,9 @@ manifest:
       revision: zmk
     - name: zmk-rgbled-widget # <-- and this for the LED
       remote: caksoylar
+      revision: main
+    - name: zmk-auto-layer
+      remote: urob
       revision: main
   self:
     path: config

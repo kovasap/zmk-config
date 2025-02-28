@@ -1,8 +1,15 @@
 #include <behaviors.dtsi>
+// See https://github.com/urob/zmk-auto-layer
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors/rgbled_widget.dtsi>
+
+#define DEFAULT 0
+#define SYMBOL 1
+#define NAVIGATION 2
+#define CONFIG 3
 
 // Magic bluetooth button
 #define BT_(btnum) &bt_key btnum btnum
@@ -87,7 +94,7 @@ keymap {
         //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
         bindings = <
             //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-                        &kp BSPC                                                                            &kp RET
+                      &num_word SYMBOL                                                                      &kp RET
             // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
                 &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp DEL &kp BSPC
             // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
@@ -95,7 +102,7 @@ keymap {
             // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
                          &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc    &msb
             //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━━┻━━━━━┳━┻━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                              &kp LGUI      &kp LCTRL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
+                              &kp LGUI      &kp LCTRL     &kp SPACE    &mt LSHFT MINUS  &lt SYMBOL RET  &lt NAVIGATION RET 
             //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
