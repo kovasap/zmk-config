@@ -213,7 +213,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
    &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END   &kp SQT
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LC(BSPC) &kp PGDN &kb LC(LEFT) &kp LC(RIGHT) &msb
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LC(BSPC) &kp PGDN &kp LC(LEFT) &kp LC(RIGHT) &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LALT    &mt LCTRL RET   &kp SPACE       &kp BSPC     &mt LSHFT RET  &lt SYMBOL DEL  // &lt NAVIGATION UNDER
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
