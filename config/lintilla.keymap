@@ -156,6 +156,9 @@ combos {
     COMBO(&kp LALT, 40 41)
     COMBO(&mo SYMBOL, 37 40)
 
+    COMBO(&mo SYMBOL, 21 40)
+    COMBO(&mo NAVIGATION, 22 40)
+
 };
 
 keymap {
