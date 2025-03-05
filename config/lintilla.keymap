@@ -11,7 +11,7 @@
 #define NAVIGATION 2
 #define CONFIG 3
 
-#define COMBO_TIMEOUT_MS 50
+#define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
