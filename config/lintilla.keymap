@@ -12,7 +12,6 @@
 #define CONFIG 3
 
 #define COMBO_TIMEOUT_MS 50
-
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
@@ -23,7 +22,6 @@
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
-
 // See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
 // Can test output by putting these macros in a file test.c, then running 
 // `gcc -E test.c`
