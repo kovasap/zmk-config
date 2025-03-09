@@ -71,15 +71,6 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    as_mcs: as_mod_comma_semi {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <0>;
-        tapping_term_ms = <135>;
-        quick_tap_ms = <0>;
-        flavor = "tap-preferred";
-        bindings = <&kp COMMA>, <&kp SEMI>;
-    };
-
     mdc: mod_dot_colon {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -87,29 +78,11 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    as_mdc: as_mod_dot_colon {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <0>;
-        tapping_term_ms = <135>;
-        quick_tap_ms = <0>;
-        flavor = "tap-preferred";
-        bindings = <&kp DOT>, <&kp COLON>;
-    };
-
     msb: mod_slash_back {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&kp SLASH>, <&kp BACKSLASH>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
-    as_msb: as_mod_slash_back {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <0>;
-        tapping_term_ms = <135>;
-        quick_tap_ms = <0>;
-        flavor = "tap-preferred";
-        bindings = <&kp SLASH>, <&kp BACKSLASH>;
     };
 
     msb_nav: mod_slash_back_nav {
@@ -213,11 +186,11 @@ keymap {
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
           &num_word SYMBOL                                                               &nav_word NAVIGATION
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-    &kp TAB  &kp AS(Q)   &kp AS(W)   &kp AS(F)   &kp AS(P)   &kp AS(B)               &kp AS(J)   &kp AS(L)   &kp AS(U)   &kp AS(Y)  &kp UNDER &kp AS(SQT)
+    &kp TAB  AS(Q)   AS(W)   AS(F)   AS(P)   AS(B)               AS(J)   AS(L)   AS(U)   AS(Y)  &caps_word AS(SQT)
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp AS(A)   &kp AS(R)   &kp AS(S)   &kp AS(T)   &kp AS(G)               &kp AS(M)   &kp AS(N)   &kp AS(E)   &kp AS(I)  &kp AS(O)   &kp AS(MINUS)
+    &kp ESC  AS(A)   AS(R)   AS(S)   AS(T)   AS(G)               AS(M)   AS(N)   AS(E)   AS(I)  AS(O)   AS(MINUS)
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp AS(Z)   &kp AS(X)   &kp AS(C)   &kp AS(D)   &kp AS(V)               &kp AS(K)   &kp AS(H)   &as_mcs    &as_mdc   &as_msb
+             AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as COMMA SEMI    &as DOT COLON   &as SLASH BACKSLASH
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
