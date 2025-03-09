@@ -41,7 +41,7 @@ behaviors {
         compatible = "zmk,behavior-hold-tap";
         label = "AUTO_SHIFT";
         #binding-cells = <2>;
-        tapping_term_ms = <400>;
+        tapping_term_ms = <350>;
         quick_tap_ms = <0>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
@@ -190,7 +190,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
     &kp ESC  AS(A)   AS(R)   AS(S)   AS(T)   AS(G)               AS(M)   AS(N)   AS(E)   AS(I)  AS(O)   AS(MINUS)
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as COMMA SEMI    &as DOT COLON   &as SLASH BACKSLASH
+             AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as SEMI COMMA    &as COLON DOT   &as BACKSLASH SLASH
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
