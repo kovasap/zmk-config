@@ -7,9 +7,10 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 #define DEFAULT 0
-#define SYMBOL 1
-#define NAVIGATION 2
-#define CONFIG 3
+#define GAMING 1
+#define SYMBOL 2
+#define NAVIGATION 3
+#define CONFIG 4
 
 #define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
@@ -32,8 +33,20 @@
 // Magic bluetooth button
 #define BT_(btnum) &bt_key btnum btnum
 
+#define AS(keycode) &as LS(keycode) keycode
+
 / {
 behaviors {
+    as: auto_shift {
+        compatible = "zmk,behavior-hold-tap";
+        label = "AUTO_SHIFT";
+        #binding-cells = <2>;
+        tapping_term_ms = <135>;
+        quick_tap_ms = <0>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+    };
+
     bt_key: magic_bluetooth_key {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
@@ -158,6 +171,7 @@ combos {
 
     COMBO(&mo SYMBOL, 22 40)
     COMBO(&mo NAVIGATION, 23 40)
+    COMBO(&to GAMING, 15 37)
 
 };
 
@@ -179,6 +193,25 @@ keymap {
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &mt LSHFT ESC  &lt NAVIGATION DEL
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
+    gaming {
+        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "Gaming"                ;
+        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+          &to DEFAULT                                                                         &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp TAB  &kp LALT   &kp W   &kp UP   &kp N1   &kp N2               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+    &kp ESC  &kp A   &kp LEFT   &kp DOWN   &kp RIGHT   &kp N3               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+             &kp LSHFT   &kp X   &kp C   &kp D   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                  &kp LGUI     &kp RET      &kp SPACE          &kp BSPC       &mt LSHFT ESC    &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
