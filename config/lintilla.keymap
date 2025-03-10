@@ -30,6 +30,23 @@
 // __LINE__ is the line number in the file, used here for uniqueness.
 #define COMBO(BINDINGS, KEYPOS) NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
 
+#define SHIFT_COMBO_TIMEOUT_MS 75
+/* Copied (modified) from https://github.com/caksoylar/zmk-config */
+#define SHIFT_NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
+  combo_shift_##NAME { \
+    timeout-ms = <SHIFT_COMBO_TIMEOUT_MS>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <DEFAULT>; \
+    require-prior-idle-ms = <50>; \
+  };
+// See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
+// Can test output by putting these macros in a file test.c, then running 
+// `gcc -E test.c`
+#define SHIFT_NAMED_COMBO2(NAME, BINDINGS, KEYPOS) SHIFT_NAMED_COMBO(NAME, BINDINGS, KEYPOS)
+// __LINE__ is the line number in the file, used here for uniqueness.
+#define SHIFT_COMBO(BINDINGS, KEYPOS) SHIFT_NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
+
 // Magic bluetooth button
 #define BT_(btnum) &bt_key btnum btnum
 
@@ -172,6 +189,41 @@ combos {
     COMBO(&mo SYMBOL, 22 40)
     COMBO(&mo NAVIGATION, 23 40)
     COMBO(&to GAMING, 15 37)
+
+    // Experimental shift combos
+    
+    SHIFT_COMBO(&kp LS(Q), 21 3)
+    SHIFT_COMBO(&kp LS(W), 21 4)
+    SHIFT_COMBO(&kp LS(F), 21 5)
+    SHIFT_COMBO(&kp LS(P), 21 6)
+    SHIFT_COMBO(&kp LS(B), 21 7)
+
+    SHIFT_COMBO(&kp LS(A), 21 15)
+    SHIFT_COMBO(&kp LS(R), 21 16)
+    SHIFT_COMBO(&kp LS(S), 21 17)
+    SHIFT_COMBO(&kp LS(T), 21 18)
+    SHIFT_COMBO(&kp LS(G), 21 19)
+
+    SHIFT_COMBO(&kp LS(Z), 21 26)
+    SHIFT_COMBO(&kp LS(X), 21 27)
+    SHIFT_COMBO(&kp LS(C), 21 28)
+    SHIFT_COMBO(&kp LS(D), 21 29)
+    SHIFT_COMBO(&kp LS(V), 21 30)
+
+    SHIFT_COMBO(&kp LS(J), 18 8)
+    SHIFT_COMBO(&kp LS(L), 18 9)
+    SHIFT_COMBO(&kp LS(U), 18 10)
+    SHIFT_COMBO(&kp LS(Y), 18 11)
+    SHIFT_COMBO(&kp LS(SQT), 18 13)
+
+    SHIFT_COMBO(&kp LS(M), 18 20)
+    SHIFT_COMBO(&kp LS(N), 18 21)
+    SHIFT_COMBO(&kp LS(E), 18 22)
+    SHIFT_COMBO(&kp LS(I), 18 23)
+    SHIFT_COMBO(&kp LS(O), 18 24)
+
+    SHIFT_COMBO(&kp LS(K), 18 31)
+    SHIFT_COMBO(&kp LS(H), 18 32)
 
 };
 
