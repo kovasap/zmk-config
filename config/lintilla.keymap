@@ -192,6 +192,13 @@ combos {
     COMBO(&mo NAVIGATION, 23 40)
     COMBO(&to GAMING, 15 37)
 
+    // Various convienience keys that are nice to have on the left hand when using the mouse with the right
+    // Should be awkward enough to press that they never accidentally get hit
+
+    COMBO(&kp BSPC, 2 37)
+    COMBO(&kp LSHFT, 14 37)
+    COMBO(&kp LALT, 3 37)
+
     // Experimental shift combos
 
     SHIFT_COMBO(&kp TILDE, 21 3)
