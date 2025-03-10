@@ -7,10 +7,12 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 #define DEFAULT 0
-#define GAMING 1
+#define SHIFTED 1
 #define SYMBOL 2
 #define NAVIGATION 3
 #define CONFIG 4
+#define GAMING 5
+#define AUTO_SHIFT 6
 
 #define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
@@ -238,33 +240,33 @@ keymap {
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
           &num_word SYMBOL                                                               &nav_word NAVIGATION
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-    &kp TAB  AS(Q)   AS(W)   AS(F)   AS(P)   AS(B)               AS(J)   AS(L)   AS(U)   AS(Y)  &caps_word AS(SQT)
+    &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  AS(A)   AS(R)   AS(S)   AS(T)   AS(G)               AS(M)   AS(N)   AS(E)   AS(I)  AS(O)   AS(MINUS)
+    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as SEMI COMMA    &as COLON DOT   &as BACKSLASH SLASH
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAVIGATION DEL
+                  &kp LGUI    &kp LCTRL      &kp SPACE       &kp BSPC     &lt SHIFTED ESC  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
 
-    gaming {
+    colemak_dh_shifted {
         //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Gaming"                ;
+        display-name = "Colemak DH Shifted"                ;
         //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
         bindings = <
-//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-          &to DEFAULT                                                                         &to DEFAULT
-// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-    &kp TAB  &kp LALT &kp N0 &kp UP &kp N1  &kp N2               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
-// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT   &kp N3               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
-// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp LCTRL   &kp N7   &kp N6   &kp N5   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
-//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LGUI     &kp RET      &kp SPACE          &kp BSPC       &mt LSHFT ESC    &lt NAVIGATION DEL
-//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+//            ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
+          &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
+// ┏━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
+    &kp TAB &as TILDE LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT UP    &as GRAVE LS(SQT)
+// ┣━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
+    &kp ESC &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK LS(MINUS)
+// ┗━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
+            &as CARET LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
+//         ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
+                  &kp LGUI                   &mt LCTRL RET           &kp SPACE       &kp BSPC                         &none                 &none
+//            ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
         >;
     };
 
@@ -326,6 +328,45 @@ keymap {
         >;
     };
 
+    // Not actively used layers.
+
+    gaming {
+        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "Gaming"                ;
+        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+           &to DEFAULT                                                                         &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp TAB  &kp LALT &kp N0 &kp UP &kp N1  &kp N2               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT   &kp N3               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+        &kp LCTRL   &kp N7   &kp N6   &kp N5   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                 &kp LGUI     &kp RET      &kp SPACE          &kp BSPC       &mt LSHFT ESC    &lt NAVIGATION DEL
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
+    colemak_dh_autoshift {
+        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "Colemak DH Autoshift"                ;
+        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+         &num_word SYMBOL                                                               &nav_word NAVIGATION
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp TAB  AS(Q)   AS(W)   AS(F)   AS(P)   AS(B)               AS(J)   AS(L)   AS(U)   AS(Y)  &caps_word AS(SQT)
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+    &kp ESC  AS(A)   AS(R)   AS(S)   AS(T)   AS(G)               AS(M)   AS(N)   AS(E)   AS(I)  AS(O)   AS(MINUS)
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+             AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as SEMI COMMA    &as COLON DOT   &as BACKSLASH SLASH
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+               &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAVIGATION DEL
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
 };
 };
 
