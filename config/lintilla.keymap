@@ -210,7 +210,8 @@ combos {
     SHIFT_COMBO(&kp N0, 21 15)
     SHIFT_COMBO(&kp N6, 21 16)
     SHIFT_COMBO(&kp N5, 21 17)
-    SHIFT_COMBO(&kp N4, 21 18)
+    // This conflicts with the combo for LPAR, and I'd rather have LPAR.
+    // SHIFT_COMBO(&kp N4, 21 18)
     SHIFT_COMBO(&kp PRCNT, 21 19)
 
     SHIFT_COMBO(&kp CARET, 21 26)
@@ -293,7 +294,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LGUI    &kp LCTRL      &kp SPACE       &kp BSPC     &lt SHIFTED ESC  &lt NAVIGATION DEL
+               &mt LGUI RET    &kp LCTRL      &kp SPACE       &kp BSPC     &lt SHIFTED ESC  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
