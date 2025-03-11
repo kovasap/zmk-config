@@ -32,7 +32,7 @@
 // __LINE__ is the line number in the file, used here for uniqueness.
 #define COMBO(BINDINGS, KEYPOS) NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
 
-#define SHIFT_COMBO_TIMEOUT_MS 75
+#define SHIFT_COMBO_TIMEOUT_MS 50
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
 #define SHIFT_NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
   combo_shift_##NAME { \
@@ -223,13 +223,15 @@ combos {
     SHIFT_COMBO(&kp EQUAL, 18 9)
     SHIFT_COMBO(&kp AMPS, 18 10)
     SHIFT_COMBO(&kp PIPE, 18 11)
-    SHIFT_COMBO(&kp AT, 18 13)
+    SHIFT_COMBO(&kp AT, 18 12)
+    SHIFT_COMBO(&kp GRAVE, 18 13)
 
     SHIFT_COMBO(&kp STAR, 18 20)
     SHIFT_COMBO(&kp LPAR, 18 21)
     SHIFT_COMBO(&kp LBKT, 18 22)
     SHIFT_COMBO(&kp LBRC, 18 23)
     SHIFT_COMBO(&kp LT, 18 24)
+    SHIFT_COMBO(&kp QMARK, 18 25)
 
     SHIFT_COMBO(&kp HASH, 18 31)
     SHIFT_COMBO(&kp RPAR, 18 32)
@@ -310,7 +312,7 @@ keymap {
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
                 &as CARET LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
-                      &kp LGUI                   &mt LCTRL RET           &kp SPACE       &kp BSPC                         &none                 &none
+                      &kp UNDER                  &mt LCTRL RET           &kp RET          &kp BSPC                         &none                 &none
 //                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
         >;
     };
