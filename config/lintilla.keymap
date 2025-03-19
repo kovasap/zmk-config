@@ -49,6 +49,22 @@
 // __LINE__ is the line number in the file, used here for uniqueness.
 #define SHIFT_COMBO(BINDINGS, KEYPOS) SHIFT_NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
 
+#define SYMBOL_COMBO_TIMEOUT_MS 75
+/* Copied (modified) from https://github.com/caksoylar/zmk-config */
+#define SYMBOL_NAMED_COMBO(NAME, BINDINGS, KEYPOS) \
+  combo_symbol_##NAME { \
+    timeout-ms = <SYMBOL_COMBO_TIMEOUT_MS>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <SHIFTED>; \
+  };
+// See https://stackoverflow.com/a/71899854 on why these multiple functions are necessary
+// Can test output by putting these macros in a file test.c, then running 
+// `gcc -E test.c`
+#define SYMBOL_NAMED_COMBO2(NAME, BINDINGS, KEYPOS) SYMBOL_NAMED_COMBO(NAME, BINDINGS, KEYPOS)
+// __LINE__ is the line number in the file, used here for uniqueness.
+#define SYMBOL_COMBO(BINDINGS, KEYPOS) SYMBOL_NAMED_COMBO2(__LINE__, BINDINGS, KEYPOS)
+
 // Magic bluetooth button
 #define BT_(btnum) &bt_key btnum btnum
 
@@ -199,7 +215,7 @@ combos {
     COMBO(&kp LSHFT, 14 37)
     COMBO(&kp LALT, 3 37)
 
-    // Experimental shift combos
+    // Experimental symbol combos
 
     SHIFT_COMBO(&kp TILDE, 21 22 3)
     SHIFT_COMBO(&kp N3, 21 22 4)
@@ -239,40 +255,26 @@ combos {
     SHIFT_COMBO(&kp RBRC, 17 18 34)
     SHIFT_COMBO(&kp GT, 17 18 35)
 
-    /*
-    SHIFT_COMBO(&kp LS(Q), 21 3)
-    SHIFT_COMBO(&kp LS(W), 21 4)
-    SHIFT_COMBO(&kp LS(F), 21 5)
-    SHIFT_COMBO(&kp LS(P), 21 6)
-    SHIFT_COMBO(&kp LS(B), 21 7)
+    // More experimental symbol combos
 
-    SHIFT_COMBO(&kp LS(A), 21 15)
-    SHIFT_COMBO(&kp LS(R), 21 16)
-    SHIFT_COMBO(&kp LS(S), 21 17)
-    SHIFT_COMBO(&kp LS(T), 21 18)
-    SHIFT_COMBO(&kp LS(G), 21 19)
+    SYMBOL_COMBO(&kp EXCL, 8 9)
+    SYMBOL_COMBO(&kp EQUAL, 9 10)
+    SYMBOL_COMBO(&kp AMPS, 10 11)
+    SYMBOL_COMBO(&kp PIPE, 11 12)
+    SYMBOL_COMBO(&kp GRAVE, 12 13)
 
-    SHIFT_COMBO(&kp LS(Z), 21 26)
-    SHIFT_COMBO(&kp LS(X), 21 27)
-    SHIFT_COMBO(&kp LS(C), 21 28)
-    SHIFT_COMBO(&kp LS(D), 21 29)
-    SHIFT_COMBO(&kp LS(V), 21 30)
+    SYMBOL_COMBO(&kp STAR, 20 21)
+    SYMBOL_COMBO(&kp LPAR, 21 22)
+    SYMBOL_COMBO(&kp LBKT, 22 23)
+    SYMBOL_COMBO(&kp LBRC, 23 24)
+    SYMBOL_COMBO(&kp LT, 24 25)
+    SYMBOL_COMBO(&kp QMARK, 25 35)
 
-    SHIFT_COMBO(&kp LS(J), 18 8)
-    SHIFT_COMBO(&kp LS(L), 18 9)
-    SHIFT_COMBO(&kp LS(U), 18 10)
-    SHIFT_COMBO(&kp LS(Y), 18 11)
-    SHIFT_COMBO(&kp LS(SQT), 18 13)
-
-    SHIFT_COMBO(&kp LS(M), 18 20)
-    SHIFT_COMBO(&kp LS(N), 18 21)
-    SHIFT_COMBO(&kp LS(E), 18 22)
-    SHIFT_COMBO(&kp LS(I), 18 23)
-    SHIFT_COMBO(&kp LS(O), 18 24)
-
-    SHIFT_COMBO(&kp LS(K), 18 31)
-    SHIFT_COMBO(&kp LS(H), 18 32)
-    */
+    SYMBOL_COMBO(&kp HASH, 31 32)
+    SYMBOL_COMBO(&kp RPAR, 32 33)
+    SYMBOL_COMBO(&kp RBKT, 33 34)
+    SYMBOL_COMBO(&kp RBRC, 34 35)
+    SYMBOL_COMBO(&kp GT, 24 35)
 
 };
 
