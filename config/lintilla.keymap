@@ -308,7 +308,7 @@ keymap {
 //                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
                &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
-    &kp LS(TAB) &as TILDE LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT UP    &as GRAVE LS(SQT)
+    &kp LS(TAB) &as TILDE LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
     &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK LS(MINUS)
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
@@ -324,16 +324,16 @@ keymap {
         display-name = "symbols"                ;
         //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
         bindings = <
-//         ┏━━━━━━━━━┓                                                                                   ┏━━━━━━━━┓
+//         ┏━━━━━━━━━┓                                                                                     ┏━━━━━━━━┓
             &to DEFAULT                                                                                   &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
-    &kp TAB &kp TILDE &kp N3  &kp N2  &kp N1  &kp PLUS      &kp EXCL  &kp EQUAL &kp AMPS &kp PIPE &kp AT   &kp GRAVE
+    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp EXCL  &kp EQUAL &kp AMPS &kp PIPE &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
     &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp PRCNT     &kp STAR  &kp LPAR  &kp LBKT &kp LBRC &kp LT   &kp QMARK
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &kp CARET &kp N9  &kp N8  &kp N7  &kp DLLR      &kp HASH  &kp RPAR  &kp RBKT &kp RBRC &kp GT
+            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DLLR      &kp HASH  &kp RPAR  &kp RBKT &kp RBRC &kp GT
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp MINUS      &kp RET         &kp SPACE         &kp BSPC          &none          &none
+                 &kp RET        &kp DOT         &kp SPACE      &kp BSPC          &none          &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
