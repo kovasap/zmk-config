@@ -158,8 +158,8 @@ macros {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         bindings =
-            <&macro_press &to 1>,
-            <&macro_release &to 0>;
+            <&macro_press &to SHIFTED>,
+            <&macro_release &to DEFAULT>;
     };
 
     bt_clr: bluetooth_clear {
@@ -309,6 +309,7 @@ keymap {
                &mt LGUI RET    &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
+        // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
     };
 
     colemak_dh_shifted {
