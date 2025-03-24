@@ -210,17 +210,16 @@ combos {
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
 
-    COMBO(&kp LALT, 40 41)
-    COMBO(&mo SYMBOL, 37 40)
-
     COMBO(&mo SYMBOL, 22 40)
     COMBO(&mo NAVIGATION, 23 40)
+    COMBO(&mo NAVIGATION, 10 40)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&kp BSPC, 2 37)
     COMBO(&kp LSHFT, 14 37)
+    COMBO(&mo SYMBOL, 7 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
