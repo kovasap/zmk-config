@@ -99,6 +99,15 @@ behaviors {
         bindings = <&mo>, <&kp>;
     };
 
+    lt_sl: layer_tap_sticky_layer {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        retro-tap;
+        bindings = <&mo>, <&sl>;
+    };
+
     mcs: mod_comma_semi {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -130,14 +139,14 @@ behaviors {
     num_word: num_word {
         compatible = "zmk,behavior-auto-layer";
         #binding-cells = <1>;
-        continue-list = <N0 N1 N2 N3 N4 N5 N6 N7 N8 N9 BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+        continue-list = <N0 N1 N2 N3 N4 N5 N6 N7 N8 N9 BSPC DEL DOT COMMA PLUS MINUS STAR SLASH EQUAL>;
         ignore-modifiers;
     };
 
     nav_word: nav_word {
       compatible = "zmk,behavior-auto-layer";
       #binding-cells = <1>;
-      continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP>;
+      continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP HOME END>;
       ignore-modifiers;
     };
 };
@@ -212,6 +221,9 @@ combos {
 
     COMBO(&kp BSPC, 2 37)
     COMBO(&kp LSHFT, 14 37)
+
+    // This should make alt-tabbing easy when pressed with the ring finger.
+
     COMBO(&kp LALT, 3 37)
 
     // Experimental symbol combos
@@ -295,7 +307,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-               &mt LGUI RET    &kp LCTRL      &kp SPACE       &kp BSPC     &lt SHIFTED ESC  &lt NAVIGATION DEL
+               &mt LGUI RET    &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -308,11 +320,11 @@ keymap {
 //                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
                &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
-    &kp LS(TAB) &as TILDE LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
+    &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
     &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK LS(MINUS)
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
-                &as CARET LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
+                &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
                       &kp LS(RET)                &kp LCTRL               &kp SPACE          &kp BSPC                         &none                 &none
 //                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
@@ -324,8 +336,8 @@ keymap {
         display-name = "symbols"                ;
         //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
         bindings = <
-//         ┏━━━━━━━━━┓                                                                                     ┏━━━━━━━━┓
-            &to DEFAULT                                                                                   &to DEFAULT
+//         ┏━━━━━━━━━┓                                                                            ┏━━━━━━━━┓
+            &to DEFAULT                                                                           &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
     &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp EXCL  &kp EQUAL &kp AMPS &kp PIPE &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
@@ -333,7 +345,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
             &kp SLASH &kp N9  &kp N8  &kp N7  &kp DLLR      &kp HASH  &kp RPAR  &kp RBKT &kp RBRC &kp GT
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp RET        &kp DOT         &kp SPACE      &kp BSPC          &none          &none
+                 &kp RET        &kp DOT       &kp SPACE      &kp BSPC      &to DEFAULT       &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
@@ -346,13 +358,13 @@ keymap {
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP       &none      &kp PGUP &kp UP &kp PGUP  &kp DEL &kp BSPC
+  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp CARET  &kp PGUP &kp UP &kp PGUP  &kp DEL &kp TILDE 
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
    &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END   &kp SQT
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
             &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LC(BSPC) &kp PGDN &kp LC(LEFT) &kp LC(RIGHT) &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &mt LCTRL RET   &kp SPACE       &kp BSPC     &mt LSHFT RET  &lt SYMBOL DEL  // &lt NAVIGATION UNDER
+                  &kp LALT    &kp LCTRL      &kp SPACE       &kp BSPC       &kp LSHFT   &kp DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
