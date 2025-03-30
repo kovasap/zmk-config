@@ -221,8 +221,6 @@ combos {
     COMBO(&kp LSHFT, 14 37)
     COMBO(&mo SYMBOL, 7 37)
 
-    COMBO(&kp LGUI, 18 36)
-
     // This should make alt-tabbing easy when pressed with the ring finger.
 
     COMBO(&kp LALT, 3 37)
@@ -308,7 +306,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                   &kp RET    &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION DEL
+                 &kp LGUI     &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
@@ -328,7 +326,7 @@ keymap {
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
                 &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
-                      &kp LS(RET)                &kp LCTRL               &kp SPACE          &kp BSPC                         &none                 &none
+                      &kp LGUI                  &kp LCTRL               &kp SPACE          &kp DEL                         &none                 &LS(RET)
 //                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
         >;
     };
