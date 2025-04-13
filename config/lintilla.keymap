@@ -219,7 +219,7 @@ combos {
     COMBO(&kp BSPC, 2 37)
     COMBO(&kp LSHFT, 14 37)
     COMBO(&mo SYMBOL, 7 37)
-    COMBO(&mo RET, 19 37)
+    COMBO(&kp RET, 19 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
