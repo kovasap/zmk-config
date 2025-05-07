@@ -211,6 +211,7 @@ combos {
     // comments after them on the same line can break them!
 
     COMBO(&mo SYMBOL, 8 40)
+    COMBO(&mo SYMBOL, 24 40)
     COMBO(&mo NAVIGATION, 20 40)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
@@ -306,7 +307,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
