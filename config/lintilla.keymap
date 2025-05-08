@@ -211,6 +211,10 @@ combos {
     // comments after them on the same line can break them!
 
     COMBO(&mo SYMBOL, 8 40)
+    COMBO(&mo SYMBOL, 9 40)
+    COMBO(&mo SYMBOL, 10 40)
+    COMBO(&mo SYMBOL, 11 40)
+    COMBO(&mo SYMBOL, 12 40)
     COMBO(&mo SYMBOL, 24 40)
     COMBO(&mo NAVIGATION, 20 40)
 
@@ -221,6 +225,7 @@ combos {
     COMBO(&kp LSHFT, 14 37)
     COMBO(&mo SYMBOL, 7 37)
     COMBO(&kp RET, 19 37)
+    COMBO(&kp RET, 36 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
