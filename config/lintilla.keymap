@@ -154,11 +154,11 @@ behaviors {
 macros {
     // Attempting to do
     // https://www.reddit.com/r/olkb/comments/1f6x99q/tap_into_a_layer_from_another_layer_and_exit_by/
-    ltto: to_layer_while_another_layer_held {
+    ltto_symb: to_symbol_layer_while_another_layer_held {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         bindings =
-            <&macro_press &to SHIFTED>,
+            <&macro_press &to SYMBOL>,
             <&macro_release &to DEFAULT>;
     };
 
@@ -328,7 +328,7 @@ keymap {
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
     &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
-    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK LS(MINUS)
+    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK UP
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
                 &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
