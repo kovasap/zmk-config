@@ -210,13 +210,11 @@ combos {
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
 
-    COMBO(&mo SYMBOL, 8 40)
-    COMBO(&mo SYMBOL, 9 40)
-    COMBO(&mo SYMBOL, 10 40)
-    COMBO(&mo SYMBOL, 11 40)
-    COMBO(&mo SYMBOL, 12 40)
-    COMBO(&mo SYMBOL, 24 40)
-    COMBO(&mo NAVIGATION, 20 40)
+    COMBO(&kp BSPC, 20 40)
+    COMBO(&kp UP, 8 40)
+    COMBO(&kp UP, 10 40)
+    COMBO(&kp DOWN, 22 40)
+    COMBO(&kp DOWN, 31 40)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
@@ -312,7 +310,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE      &kp BSPC   &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE     &lt_sl SYMBOL NAVIGATION   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
