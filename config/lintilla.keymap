@@ -10,9 +10,10 @@
 #define SHIFTED 1
 #define SYMBOL 2
 #define NAVIGATION 3
-#define CONFIG 4
-#define GAMING 5
-#define AUTO_SHIFT 6
+#define EDITING 4
+#define CONFIG 5
+#define GAMING 6
+#define AUTO_SHIFT 7
 
 #define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
@@ -119,6 +120,13 @@ behaviors {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&kp DOT>, <&kp COLON>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    mdc_edit: mod_dot_colon_edit {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal EDITING DOT>, <&kp COLON>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -302,7 +310,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
     &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs  &mdc_edit &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                  &kp LGUI     &kp LCTRL      &kp SPACE       &kp COLON     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
@@ -318,11 +326,11 @@ keymap {
 //                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
                &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
-    &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as EQUAL LS(L) &as AMPS LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
+    &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as EXCL LS(J) &as LBRC LS(L) &as RBRC LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
-    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as PRCNT LS(G)   &as STAR LS(M) &as LPAR LS(N)  &as LBKT LS(E) &as LBRC LS(I) &as LT LS(O) &as QMARK UP
+    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as STAR LS(G)   &as EQUAL LS(M) &as LPAR LS(N)  &as RPAR LS(E) &as STAR LS(I) &as PRCNT LS(O) &as QMARK CARET
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
-                &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DLLR LS(V)    &as HASH LS(K) &as RPAR LS(H)  &as RBKT SEMI  &as RBRC COLON &as GT BACKSLASH
+                &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DOT LS(V)    &as AMPS LS(K) &as LBKT LS(H)  &as RBKT SEMI  &as HASH COLON &as DLLR BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
                       &kp LGUI                  &kp LCTRL               &kp SPACE          &kp DEL                         &none                 &kp LS(RET)
 //                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
@@ -337,13 +345,13 @@ keymap {
 //         ┏━━━━━━━━━┓                                                                            ┏━━━━━━━━┓
             &to DEFAULT                                                                           &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
-    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp EXCL  &kp EQUAL &kp AMPS &kp PIPE &kp AT   &kp GRAVE
+    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp EXCL  &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
-    &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp PRCNT     &kp STAR  &kp LPAR  &kp LBKT &kp LBRC &kp LT   &kp QMARK
+    &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp STAR      &kp EQUAL &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp QMARK
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DLLR      &kp HASH  &kp RPAR  &kp RBKT &kp RBRC &kp GT
+            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &kp DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp BSPC        &kp DOT       &kp SPACE      &kp BSPC      &to DEFAULT       &none
+                 &kp RET        &kp BSPC      &kp SPACE      &kp BSPC      &to DEFAULT       &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
@@ -360,7 +368,26 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
    &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp BSPC  &kp LEFT &kp UP  &kp RIGHT &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp PGDN &kp HOME &kp DOWN &kp END &msb
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp PGDN &kp PGUP &kp DOWN &kp PGDN  &msb
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL         &kp HOME     &kp END 
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
+    editing {
+        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "editing"            ;
+        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+//         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
+           &to DEFAULT                                                                              &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp PGUP  &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp DEL &kp TILDE 
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp BSPC   &kp LT   &kp GT  &kp RIGHT &kp END   &kp CARET
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp LC(BSPC) &kp BSPC &kp DEL &mdc     &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL       &kp LSHFT   &kp DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
