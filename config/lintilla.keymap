@@ -210,12 +210,6 @@ combos {
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
 
-    COMBO(&kp BSPC, 20 40)
-    COMBO(&kp UP, 8 40)
-    COMBO(&kp UP, 10 40)
-    COMBO(&kp DOWN, 22 40)
-    COMBO(&kp DOWN, 31 40)
-
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
@@ -310,7 +304,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE     &lt_sl SYMBOL NAVIGATION   &lt_sl SHIFTED SYMBOL  &lt NAVIGATION RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp COLON     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
@@ -362,13 +356,13 @@ keymap {
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp CARET  &kp PGUP &kp UP &kp PGUP  &kp DEL &kp TILDE 
+  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp PGUP  &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp DEL &kp TILDE 
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END   &kp SQT
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp BSPC  &kp LEFT &kp UP  &kp RIGHT &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LC(BSPC) &kp PGDN &kp LC(LEFT) &kp LC(RIGHT) &msb
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp PGDN &kp HOME &kp DOWN &kp END &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE       &kp BSPC       &kp LSHFT   &kp DEL
+                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL       &kp LSHFT   &kp DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
