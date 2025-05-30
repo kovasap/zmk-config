@@ -312,7 +312,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs  &mdc_edit &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp COLON     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp ESC     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
