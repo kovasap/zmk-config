@@ -116,6 +116,13 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
+    mcs_edit: mod_comma_semi_edit {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal EDITING COMMA>, <&kp SEMI>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
     mdc: mod_dot_colon {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -313,9 +320,9 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
     &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &kp MINUS
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H   &mcs  &mdc_edit &msb_nav
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_edit &mdc_edit &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp ESC     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
@@ -388,11 +395,11 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
   &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp PGUP  &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp DEL &kp TILDE 
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp LC(BSPC) &kp BSPC &kp DEL &kp RIGHT &kp END   &kp CARET
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp LC(BSPC) &kp UP &kp DEL &kp RIGHT &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
             &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp LC(BSPC) &kp BSPC &kp DEL &mdc     &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL       &kp LSHFT   &kp DEL
+                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL       &kp DOWN   &kp DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
