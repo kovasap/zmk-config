@@ -225,7 +225,6 @@ combos {
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
 
-    COMBO(&kp UP, 9 10)
     COMBO(&kp BSPC, 20 21)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
