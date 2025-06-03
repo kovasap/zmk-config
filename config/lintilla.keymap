@@ -396,9 +396,9 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
    &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp LC(BSPC) &kp UP &kp DEL &kp RIGHT &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp LC(BSPC) &kp BSPC &kp DEL &mdc     &msb
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp LC(BSPC) &kp BSPC &kp DEL &kp DEL  &kp LC(DEL)
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL       &kp DOWN       &kp UP
+                  &kp LALT    &kp LCTRL      &kp SPACE       &kp PGUP       &kp PGDN       &kp DOWN
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
