@@ -231,7 +231,8 @@ combos {
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&kp BSPC, 2 37)
-    COMBO(&kp LSHFT, 14 37)
+    COMBO(&mo SYMBOL, 2 14)
+    COMBO(&mo SYMBOL, 14 37)
     COMBO(&mo SYMBOL, 7 37)
     COMBO(&kp RET, 19 37)
     COMBO(&kp RET, 36 37)
@@ -337,7 +338,7 @@ keymap {
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
     &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as LT LS(J) &as LBRC LS(L) &as RBRC LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
-    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as STAR LS(G)   &as GT LS(M) &as LPAR LS(N)  &as RPAR LS(E) &as STAR LS(I) &as PRCNT LS(O) &as EXCL QMARK
+    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as EQUAL LS(G)   &as GT LS(M) &as LPAR LS(N)  &as RPAR LS(E) &as STAR LS(I) &as PRCNT LS(O) &as EXCL QMARK
 // ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
                 &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DOT LS(V)    &as AMPS LS(K) &as LBKT LS(H)  &as RBKT SEMI  &as HASH COLON &as DLLR BACKSLASH
 //             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
@@ -356,11 +357,11 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
     &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp LT    &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
-    &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp STAR      &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp EXCL
+    &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp EXCL
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
             &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &kp DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp RET        &kp EQUAL     &kp SPACE      &kp CARET      &to DEFAULT       &none
+                 &kp RET        &kp BSPC     &kp SPACE      &kp CARET      &to DEFAULT       &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
