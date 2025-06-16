@@ -359,7 +359,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
     &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp EXCL
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &kp DLLR 
+            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &lht_bal EDITING RBKT &lht_bal EDITING HASH  &lht_bal NAVIGATION DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
                  &kp RET        &kp BSPC     &kp SPACE      &kp CARET      &to DEFAULT       &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
