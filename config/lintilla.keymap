@@ -226,6 +226,7 @@ combos {
     // comments after them on the same line can break them!
 
     COMBO(&kp BSPC, 20 21)
+    COMBO(&kp BSPC, 18 19)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
@@ -361,7 +362,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
             &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &lht_bal EDITING RBKT &lht_bal EDITING HASH  &lht_bal NAVIGATION DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp RET        &kp BSPC     &kp SPACE      &kp CARET      &to DEFAULT       &none
+                 &kp RET        &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &none
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
