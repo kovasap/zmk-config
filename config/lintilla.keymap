@@ -7,13 +7,13 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 #define DEFAULT 0
-#define SHIFTED 1
-#define SYMBOL 2
-#define NAVIGATION 3
-#define EDITING 4
-#define CONFIG 5
-#define GAMING 6
-#define AUTO_SHIFT 7
+#define SYMBOL 1
+#define NAVIGATION 2
+#define EDITING 3
+#define CONFIG 4
+#define GAMING 5
+#define AUTO_SHIFT 6
+#define SHIFTED 7
 
 #define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
@@ -107,6 +107,20 @@ behaviors {
         tapping-term-ms = <200>;
         retro-tap;
         bindings = <&mo>, <&sl>;
+    };
+
+    muq: mod_under_qmark {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp UNDER>, <&kp QMARK>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    mct: mod_colon_tilde {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp COLON>, <&kp TILDE>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
     mcs: mod_comma_semi {
@@ -221,6 +235,13 @@ combos {
     //       ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻┓ ┏┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
     //               36          37             38            39          40             41
     //          ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━┛ ┗━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+
+
+    // GOLDEN RULE: All combos should be within a single finger's normal coverage range.  This means to trigger
+    // a combo you must either press two keys with the same finger, or move another finger away from its normal
+    // coverage rango to help execute the combo.  I've found that this dramatically reduces false triggers.
+    //
+    // A side effect of this is that combos that require both hands should never be used.
     
     // Note that these macros can be very fragile - for instance, putting
     // comments after them on the same line can break them!
@@ -245,6 +266,25 @@ combos {
     // This should make alt-tabbing easy when pressed with the ring finger.
 
     COMBO(&kp LALT, 3 37)
+
+    // Experimental same finger combos
+
+    COMBO(&kp LT, 8 20)
+    COMBO(&kp GT, 20 31)
+
+    COMBO(&kp LPAR, 9 21)
+    COMBO(&kp LBKT, 21 32)
+
+    COMBO(&kp RPAR, 10 22)
+    COMBO(&kp RBKT, 22 33)
+
+    COMBO(&kp LBRC, 11 23)
+    COMBO(&kp RBRC, 23 34)
+
+    COMBO(&kp EXCL, 12 24)
+    COMBO(&kp QMARK, 24 35)
+
+    COMBO(&kp SEMI, 13 25)
 
     // Experimental symbol combos
 
@@ -286,27 +326,6 @@ combos {
     SHIFT_COMBO(&kp RBRC, 17 18 34)
     SHIFT_COMBO(&kp GT, 17 18 35)
 
-    // More experimental symbol combos
-
-    SYMBOL_COMBO(&kp EXCL, 8 9)
-    SYMBOL_COMBO(&kp EQUAL, 9 10)
-    SYMBOL_COMBO(&kp AMPS, 10 11)
-    SYMBOL_COMBO(&kp PIPE, 11 12)
-    SYMBOL_COMBO(&kp GRAVE, 12 13)
-
-    SYMBOL_COMBO(&kp STAR, 20 21)
-    SYMBOL_COMBO(&kp LPAR, 21 22)
-    SYMBOL_COMBO(&kp LBKT, 22 23)
-    SYMBOL_COMBO(&kp LBRC, 23 24)
-    SYMBOL_COMBO(&kp LT, 24 25)
-    SYMBOL_COMBO(&kp QMARK, 25 35)
-
-    SYMBOL_COMBO(&kp HASH, 31 32)
-    SYMBOL_COMBO(&kp RPAR, 32 33)
-    SYMBOL_COMBO(&kp RBKT, 33 34)
-    SYMBOL_COMBO(&kp RBRC, 34 35)
-    SYMBOL_COMBO(&kp GT, 24 35)
-
 };
 
 keymap {
@@ -321,35 +340,16 @@ keymap {
 //          &num_word SYMBOL                                                                    &to CONFIG
            &to SYMBOL                                                                          &to CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-    &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
+    &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &muq   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &kp COLON
+    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mct
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_edit &mdc_edit &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS     &lt_sl SHIFTED SYMBOL  &lt SYMBOL RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT    &lt SYMBOL RET
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
-    };
-
-    colemak_dh_shifted {
-        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Colemak DH Shifted"                ;
-        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-        bindings = <
-//                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
-               &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
-// ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
-    &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as LT LS(J) &as LBRC LS(L) &as RBRC LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
-// ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
-    &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as EQUAL LS(G)   &as GT LS(M) &as LPAR LS(N)  &as RPAR LS(E) &as STAR LS(I) &as PRCNT LS(O) &as EXCL QMARK
-// ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
-                &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DOT LS(V)    &as AMPS LS(K) &as LBKT LS(H)  &as RBKT SEMI  &as HASH COLON &as DLLR BACKSLASH
-//             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
-                      &kp LGUI                  &kp LCTRL               &kp SPACE          &kp DEL                         &none                 &kp LS(RET)
-//                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
-        >;
     };
 
     symbols {
@@ -468,6 +468,27 @@ keymap {
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
+
+    colemak_dh_shifted {
+        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        display-name = "Colemak DH Shifted"                ;
+        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        bindings = <
+//                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
+            &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
+    &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as LT LS(J) &as LBRC LS(L) &as RBRC LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
+// ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
+     &kp ESC     &as N0 LS(A)    &as N6 LS(R) &as N5 LS(S) &as N4 LS(T) &as EQUAL LS(G)   &as GT LS(M) &as LPAR LS(N)  &as RPAR LS(E) &as STAR LS(I) &as PRCNT LS(O) &as EXCL QMARK
+// ┗━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┛
+                &as SLASH LS(Z) &as N9 LS(X) &as N8 LS(C) &as N7 LS(D) &as DOT LS(V)    &as AMPS LS(K) &as LBKT LS(H)  &as RBKT SEMI  &as HASH COLON &as DLLR BACKSLASH
+//             ┗━━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┻┳━━━━━━━━━━━┻━━━━━━━━━━━┳┻━━━━━━━━━━━━━━┻┓┏┻━━━━━━━━━━━━━━┻━━━━━━━━━━━┳━━━┻━━━━━━━━━━━━━━┻━┳━━━━━━━━━━━━┻━━━━━━━━━━━━┛
+                       &kp LGUI                  &kp LCTRL               &kp SPACE          &kp DEL                         &none                 &kp LS(RET)
+//                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
+        >;
+    };
+
+
 };
 };
 
