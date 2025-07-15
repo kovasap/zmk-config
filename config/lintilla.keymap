@@ -258,7 +258,6 @@ combos {
     COMBO(&kp DEL, 20 21 22)
     COMBO(&kp RET, 31 32)
     COMBO(&kp LS(SQT), 12 13)
-    COMBO(&kp LS(SQT), 13 25)
 
     COMBO(&kp DEL, 6 7)
     COMBO(&kp BSPC, 18 19)
@@ -295,6 +294,7 @@ combos {
     COMBO(&kp QMARK, 24 35)
 
     COMBO(&kp SEMI, 13 25)
+    COMBO(&kp COLON, 24 25)
 
     // Experimental symbol combos
 
