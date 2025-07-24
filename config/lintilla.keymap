@@ -258,15 +258,15 @@ combos {
     COMBO(&kp DEL, 31 32)
 
     COMBO(&kp BSPC, 6 7)
-    COMBO(&kp DEL, 2 14)
+    COMBO(&kp RET, 18 19)
+    COMBO(&kp STAR, 29 30)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&mo SYMBOL, 19 37)
     COMBO(&kp RET, 36 37)
-    COMBO(&kp RET, 18 19)
-    COMBO(&kp STAR, 29 30)
+    COMBO(&kp DEL, 2 14)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
@@ -313,7 +313,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_edit &mdc_symb &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &mo SYMBOL
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &lht_bal SYMBOL LS(SQT)
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
@@ -367,9 +367,9 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
   &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP      &kp PGUP  &kp LC(LEFT) &kp BSPC &kp PIPE &kp DEL &kp TILDE 
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN      &kp LC(BSPC) &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN      &kp SQT     &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LC(BSPC) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LS(SQT) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LALT    &kp LCTRL      &kp SPACE       &kp PGUP       &kp LS(SQT)       &kp SQT
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
