@@ -257,14 +257,15 @@ combos {
     COMBO(&kp BSPC, 20 21)
     COMBO(&kp DEL, 31 32)
 
-    COMBO(&kp BSPC, 2 14)
-    COMBO(&kp RET, 18 19)
+    COMBO(&kp BSPC, 6 7)
+    COMBO(&kp DEL, 2 14)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&mo SYMBOL, 19 37)
     COMBO(&kp RET, 36 37)
+    COMBO(&kp RET, 18 19)
     COMBO(&kp STAR, 29 30)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
@@ -312,7 +313,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_edit &mdc_symb &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT    &lt SYMBOL RET
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &mo SYMBOL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
