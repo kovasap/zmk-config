@@ -292,7 +292,8 @@ combos {
     COMBO(&kp LS(SQT), 12 13)
     COMBO(&kp SEMI, 13 25)
     COMBO(&kp COLON, 24 25)
-
+    
+    COMBO(&kp LS(SQT), 12 13)
 };
 
 keymap {
@@ -408,7 +409,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp LALT &kp N0 &kp UP &kp N1  &kp N2               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT   &kp N3               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
+    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT            &kp N3  &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
         &kp LCTRL   &kp N7   &kp N6   &kp N5   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
