@@ -298,8 +298,6 @@ combos {
     COMBO(&kp LS(SQT), 12 13)
     COMBO(&kp SEMI, 13 25)
     COMBO(&kp COLON, 24 25)
-    
-    COMBO(&kp LS(SQT), 12 13)
 };
 
 keymap {
