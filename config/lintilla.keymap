@@ -265,14 +265,18 @@ combos {
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&mo SYMBOL, 19 37)
-    COMBO(&kp RET, 36 37)
     COMBO(&kp DEL, 2 14)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
     COMBO(&kp LALT, 3 37)
 
-    // Experimental same finger combos
+    // Experimental same finger combos, left hand
+
+    COMBO(&kp UP, 7 19)
+    COMBO(&kp DOWN, 19 30)
+
+    // Experimental same finger combos, right hand
 
     COMBO(&kp LT, 8 20)
     COMBO(&kp GT, 20 31)
