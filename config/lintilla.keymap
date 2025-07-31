@@ -255,11 +255,13 @@ combos {
 
     COMBO(&kp GRAVE, 8 9)
     COMBO(&kp BSPC, 20 21)
-    COMBO(&kp DEL, 31 32)
+    COMBO(&kp RET, 31 32)
+    COMBO(&kp DEL, 39 40)
 
-    COMBO(&kp BSPC, 6 7)
-    COMBO(&kp RET, 18 19)
-    COMBO(&kp STAR, 29 30)
+    COMBO(&kp STAR, 6 7)
+    COMBO(&kp BSPC, 18 19)
+    COMBO(&kp RET, 29 30)
+    COMBO(&kp DEL, 36 37)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
@@ -296,7 +298,8 @@ combos {
     COMBO(&kp LS(SQT), 12 13)
     COMBO(&kp SEMI, 13 25)
     COMBO(&kp COLON, 24 25)
-
+    
+    COMBO(&kp LS(SQT), 12 13)
 };
 
 keymap {
@@ -369,13 +372,13 @@ keymap {
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP      &kp PGUP  &kp LC(LEFT) &kp BSPC &kp PIPE &kp DEL &kp TILDE 
+    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS         &kp PGUP  &kp LC(LEFT) &kp BSPC &kp PIPE &kp DEL &kp TILDE 
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN      &kp SQT     &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
+   &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL        &kp SQT     &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE        &kp LS(SQT) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
+           &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT           &kp LS(SQT) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE       &kp PGUP       &kp LS(SQT)       &kp SQT
+              &kp RET        &kp LCTRL     &kp SPACE            &kp PGUP       &kp LS(SQT)       &kp SQT
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -412,7 +415,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp LALT &kp N0 &kp UP &kp N1  &kp N2               &kp J   &kp L   &kp U   &kp Y  &kp UNDER &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT   &kp N3               &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
+    &kp ESC  &kp LSHFT &kp LEFT  &kp DOWN  &kp RIGHT            &kp N3  &kp M   &kp N   &kp E   &kp I  &kp O   &kp MINUS
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
         &kp LCTRL   &kp N7   &kp N6   &kp N5   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
