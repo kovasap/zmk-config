@@ -280,7 +280,12 @@ combos {
 
     COMBO(&kp LALT, 3 37)
 
-    // Experimental same finger combos
+    // Experimental same finger combos, left hand
+
+    COMBO(&kp UP, 7 19)
+    COMBO(&kp DOWN, 19 30)
+
+    // Experimental same finger combos, right hand
 
     COMBO(&kp LT, 8 20)
     COMBO(&kp GT, 20 31)
@@ -300,8 +305,6 @@ combos {
     COMBO(&kp LS(SQT), 12 13)
     COMBO(&kp SEMI, 13 25)
     COMBO(&kp COLON, 24 25)
-    
-    COMBO(&kp LS(SQT), 12 13)
 };
 
 keymap {
