@@ -137,10 +137,10 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mcs_edit: mod_comma_semi_edit {
+    mcs_symb: mod_comma_semi_symbol {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        bindings = <&lht_bal EDITING COMMA>, <&kp SEMI>;
+        bindings = <&lht_bal SYMBOL COMMA>, <&kp SEMI>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -155,6 +155,13 @@ behaviors {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&lht_bal SYMBOL DOT>, <&kp COLON>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    msc_symb: mod_semi_colon_symbol {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal SYMBOL SEMI>, <&kp COLON>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -313,9 +320,9 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
     &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_edit &mdc_symb &msb_nav
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_symb &mdc_symb &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &lht_bal SYMBOL LS(SQT)
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msc_symb
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
         // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
@@ -333,9 +340,9 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
     &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &lht_bal EDITING RBKT &lht_bal SYMBOL HASH  &lht_bal NAVIGATION DLLR 
+            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAVIGATION DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp RET        &kp LCTRL     &kp SPACE      &mct           &kp LSHFT        &none
+                 &kp RET        &kp LCTRL     &kp SPACE      &mct           &kp LSHFT        &kp LS(SQT)
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
@@ -359,6 +366,7 @@ keymap {
         >;
     };
 
+    // This layer was cool, but I kept getting it mixed up with the symbol layer, and it is redundant.
     editing {
         //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
         display-name = "editing"            ;
