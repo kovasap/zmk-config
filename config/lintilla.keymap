@@ -44,6 +44,7 @@
 
 / {
 behaviors {
+    /*
     as: auto_shift {
         compatible = "zmk,behavior-hold-tap";
         label = "AUTO_SHIFT";
@@ -53,6 +54,7 @@ behaviors {
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
     };
+    */
 
     bt_key: magic_bluetooth_key {
         compatible = "zmk,behavior-hold-tap";
@@ -143,12 +145,12 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    es: escape_shift {
+    cmt: custom_mod_tap {
         compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <0>;
+        #binding-cells = <2>;
         flavor = "balanced";
         tapping-term-ms = <200>;
-        bindings = <&kp LSHFT>, <&kp ESC>;
+        bindings = <&kp>, <&kp>;
     };
 
     num_word: num_word {
@@ -291,7 +293,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &es      &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+&cmt LSHFT ESC &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
@@ -308,7 +310,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp SQT  &mue    &kp Y   &kp U   &kp L   &kp J               &kp B   &kp P   &kp F   &kp W   &kp Q   &kp TAB
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &es
+    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &cmt LSHFT ESC
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
           &msb_nav &mdc_sym &mcs_sym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
