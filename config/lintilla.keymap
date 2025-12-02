@@ -7,13 +7,17 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 #define DEFAULT 0
-#define SYMBOL 1
-#define NAVIGATION 2
-#define EDITING 3
+#define MIRRORED 1
+#define SYMBOL 2
+#define NAVIGATION 3
 #define CONFIG 4
-#define GAMING 5
-#define AUTO_SHIFT 6
-#define SHIFTED 7
+// Unused Layers
+/*
+#define EDITING 5
+#define GAMING 6
+#define AUTO_SHIFT 7
+#define SHIFTED 8
+*/
 
 #define COMBO_TIMEOUT_MS 100
 /* Copied (modified) from https://github.com/caksoylar/zmk-config */
@@ -22,7 +26,7 @@
     timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <DEFAULT SYMBOL NAVIGATION CONFIG>; \
+    layers = <DEFAULT MIRRORED>; \
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
@@ -123,13 +127,6 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mct: mod_caret_tilde {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&kp CARET>, <&kp TILDE>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
     mcs: mod_comma_semi {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -137,7 +134,7 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mcs_symb: mod_comma_semi_symbol {
+    mcs_sym: mod_comma_semi_symbol {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&lht_bal SYMBOL COMMA>, <&kp SEMI>;
@@ -151,17 +148,17 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mdc_symb: mod_dot_colon_symbol {
+    mdc_sym: mod_dot_colon_symbol {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&lht_bal SYMBOL DOT>, <&kp COLON>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    msc_symb: mod_semi_colon_symbol {
+    msp_sym: mod_semi_colon_symbol {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        bindings = <&lht_bal SYMBOL SEMI>, <&kp COLON>;
+        bindings = <&lht_bal SYMBOL STAR>, <&kp PLUS>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -177,6 +174,14 @@ behaviors {
         #binding-cells = <0>;
         bindings = <&lht_bal NAVIGATION SLASH>, <&kp BACKSLASH>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    mes: mod_escape_shift {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp ESC>, <&kp LSHFT>;
+        mods = <(MOD_LCTRL)>;
+        keep-mods = <(MOD_LCTRL)>;
     };
     
     num_word: num_word {
@@ -197,7 +202,7 @@ behaviors {
 macros {
     // Attempting to do
     // https://www.reddit.com/r/olkb/comments/1f6x99q/tap_into_a_layer_from_another_layer_and_exit_by/
-    ltto_symb: to_symbol_layer_while_another_layer_held {
+    ltto_sym: to_symbol_layer_while_another_layer_held {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         bindings =
@@ -265,7 +270,7 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
-    COMBO(&kp STAR, 6 7)
+    COMBO(&tog MIRRORED, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
     COMBO(&kp DEL, 36 37)
@@ -311,9 +316,7 @@ keymap {
     compatible = "zmk,keymap";
 
     colemak_dh {
-        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Colemak DH"                ;
-        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
 //          &num_word SYMBOL                                                                    &to CONFIG
@@ -321,20 +324,34 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+    &mes     &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_symb &mdc_symb &msb_nav
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msc_symb
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
-        // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
+    };
+
+    mirrored_colemak_dh {
+        display-name = "Mirrored Colemak DH";
+        bindings = <
+//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+          &to DEFAULT                                                                         &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp SQT  &mue    &kp Y   &kp U   &kp L   &kp J               &kp B   &kp P   &kp F   &kp W   &kp Q   &kp TAB
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &mes
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+          &msb_nav &mdc_sym &mcs_sym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
     };
 
     symbols {
-        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "symbols"                ;
-        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "symbols";
         bindings = <
 //         ┏━━━━━━━━━┓                                                                            ┏━━━━━━━━┓
             &to DEFAULT                                                                           &to DEFAULT
@@ -343,56 +360,32 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
     &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAVIGATION DLLR 
+            &msb_nav  &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAVIGATION DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp RET        &kp LCTRL     &kp SPACE      &mct           &kp LSHFT        &kp LS(SQT)
+                 &kp LSHFT       &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &kp TILDE
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
 
     nav {
-        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "navigation"            ;
-        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "navigation";
         bindings = <
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_VOL_UP        &kp PGUP  &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
+  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_SLEEP        &kp PGUP &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp C_VOL_DN        &kp RET   &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN          &kp RET    &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_MUTE          &kp HOME &kp LEFT &kp DOWN &kp RIGHT  &msb
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP           &kp HOME  &kp LEFT &kp DOWN &kp RIGHT  &msb
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL         &kp RSHFT     &kp END 
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
 
-    // This layer was cool, but I kept getting it mixed up with the symbol layer, and it is redundant.
-    editing {
-        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "editing"            ;
-        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-        bindings = <
-//         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
-           &to DEFAULT                                                                              &to DEFAULT
-// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS         &kp PGUP  &kp LC(LEFT) &kp BSPC &kp PIPE &kp DEL &kp TILDE 
-// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL        &kp SQT     &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
-// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-           &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT           &kp LS(SQT) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
-//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-              &kp RET        &kp LCTRL     &kp SPACE            &kp PGUP       &kp LS(SQT)       &kp SQT
-//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
-        >;
-    };
-
     config {
-        //                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "config"            ;
-        //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "config";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
           &to DEFAULT                                                                         &to DEFAULT
@@ -409,12 +402,29 @@ keymap {
         >;
     };
 
-    // Not actively used layers.
+    // ---------------------------- Not actively used layers. --------------------------------------------
+
+    /*
+    // This layer was cool, but I kept getting it mixed up with the symbol layer, and it is redundant.
+    editing {
+        display-name = "editing";
+        bindings = <
+//         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
+           &to DEFAULT                                                                              &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS         &kp PGUP  &kp LC(LEFT) &kp BSPC &kp PIPE &kp DEL &kp TILDE 
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+   &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL        &kp SQT     &kp SEMI &kp DEL &kp STAR &kp END   &kp CARET
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+           &kp SLASH &kp N9  &kp N8  &kp N7  &kp DOT           &kp LS(SQT) &kp COLON &kp DEL &kp HASH &kp LC(DEL)
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+              &kp RET        &kp LCTRL     &kp SPACE            &kp PGUP       &kp LS(SQT)       &kp SQT
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
 
     gaming {
-        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Gaming"                ;
-        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "Gaming";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
            &to DEFAULT                                                                         &to DEFAULT
@@ -431,9 +441,7 @@ keymap {
     };
 
     colemak_dh_autoshift {
-        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Colemak DH Autoshift"                ;
-        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "Colemak DH Autoshift";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
          &num_word SYMBOL                                                               &nav_word NAVIGATION
@@ -449,10 +457,9 @@ keymap {
         >;
     };
 
+    // TODO try &ltto on the shifted key if i can find some keys to change layers further on the shifted layer
     colemak_dh_shifted {
-        //                           ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        display-name = "Colemak DH Shifted"                ;
-        //                           ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        display-name = "Colemak DH Shifted";
         bindings = <
 //                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
             &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
@@ -467,8 +474,7 @@ keymap {
 //                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┛┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛
         >;
     };
-
-
+    */
 };
 };
 

@@ -23,3 +23,9 @@ this repo.
 ```bash
 gh run download -R kovasap/zmk-config -n firmware
 ```
+
+## Lintilla
+
+![My Keymap](https://raw.github.com/kovasap/zmk-config/master/lintilla.svg?sanitize=true)
+
+Generated via https://keymap-drawer.streamlit.app/.
