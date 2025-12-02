@@ -241,7 +241,7 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
-    COMBO(&to MIRRORED, 6 7)
+    COMBO(&tog MIRRORED, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
     COMBO(&kp DEL, 36 37)

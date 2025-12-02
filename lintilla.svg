@@ -202,7 +202,7 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(45, 214) rotate(-12.5)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">ESC</text>
-<text x="0" y="-24" class="key shifted">LSHFT</text>
+<text x="0" y="24" class="key hold">LSHFT</text>
 </g>
 <g transform="translate(93, 172) rotate(-12.5)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -361,16 +361,18 @@ path.combo { stroke: #7f7f7f; }
 <text x="352" y="248" class="combo tap">DEL</text>
 </g>
 <g class="combo combopos-8">
+<path d="M213,237 l-149,-21" class="combo"/>
+<path d="M213,237 l149,21" class="combo"/>
+<rect rx="6" ry="6" x="199" y="224" width="28" height="26" class="combo"/>
+<text x="213" y="237" class="combo tap">LSHFT</text>
+</g>
+<g class="combo combopos-9">
 <path d="M349,191 l-24,-53" class="combo"/>
 <path d="M349,191 l24,53" class="combo"/>
 <rect rx="6" ry="6" x="335" y="178" width="28" height="26" class="combo"/>
 <a href="#symbols">
 <text x="349" y="191" class="combo tap layer-activator">symbols</text>
 </a></g>
-<g class="combo combopos-9">
-<rect rx="6" ry="6" x="25" y="174" width="28" height="26" class="combo"/>
-<text x="39" y="187" class="combo tap">DEL</text>
-</g>
 <g class="combo combopos-10">
 <path d="M231,189 l-133,-63" class="combo"/>
 <path d="M231,189 l133,63" class="combo"/>
@@ -555,7 +557,7 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(922, 214) rotate(12.5)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">ESC</text>
-<text x="0" y="-24" class="key shifted">LSHFT</text>
+<text x="0" y="24" class="key hold">LSHFT</text>
 </g>
 <g transform="translate(105, 227) rotate(-12.5)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -669,16 +671,18 @@ path.combo { stroke: #7f7f7f; }
 <text x="352" y="248" class="combo tap">DEL</text>
 </g>
 <g class="combo combopos-8">
+<path d="M213,237 l-149,-21" class="combo"/>
+<path d="M213,237 l149,21" class="combo"/>
+<rect rx="6" ry="6" x="199" y="224" width="28" height="26" class="combo"/>
+<text x="213" y="237" class="combo tap">LSHFT</text>
+</g>
+<g class="combo combopos-9">
 <path d="M349,191 l-24,-53" class="combo"/>
 <path d="M349,191 l24,53" class="combo"/>
 <rect rx="6" ry="6" x="335" y="178" width="28" height="26" class="combo"/>
 <a href="#symbols">
 <text x="349" y="191" class="combo tap layer-activator">symbols</text>
 </a></g>
-<g class="combo combopos-9">
-<rect rx="6" ry="6" x="25" y="174" width="28" height="26" class="combo"/>
-<text x="39" y="187" class="combo tap">DEL</text>
-</g>
 <g class="combo combopos-10">
 <path d="M231,189 l-133,-63" class="combo"/>
 <path d="M231,189 l133,63" class="combo"/>
