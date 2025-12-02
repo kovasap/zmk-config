@@ -180,8 +180,8 @@ behaviors {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&kp ESC>, <&kp LSHFT>;
-        mods = <(MOD_LCTRL)>;
-        keep-mods = <(MOD_LCTRL)>;
+        mods = <(MOD_LCTL)>;
+        keep-mods = <(MOD_LCTL)>;
     };
     
     num_word: num_word {
