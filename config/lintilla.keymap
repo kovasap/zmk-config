@@ -143,14 +143,14 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mes: mod_escape_shift {
-        compatible = "zmk,behavior-mod-morph";
+    es: escape_shift {
+        compatible = "zmk,behavior-hold-tap";
         #binding-cells = <0>;
-        bindings = <&kp ESC>, <&kp LSHFT>;
-        mods = <(MOD_LCTL)>;
-        keep-mods = <(MOD_LCTL)>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        bindings = <&kp LSHFT>, <&kp ESC>;
     };
-    
+
     num_word: num_word {
         compatible = "zmk,behavior-auto-layer";
         #binding-cells = <1>;
@@ -237,7 +237,7 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
-    COMBO(&tog MIRRORED, 6 7)
+    COMBO(&to MIRRORED, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
     COMBO(&kp DEL, 36 37)
@@ -245,8 +245,8 @@ combos {
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
+    COMBO(&kp LSHFT, 14 37)
     COMBO(&mo SYMBOL, 19 37)
-    COMBO(&kp DEL, 2 14)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
@@ -291,7 +291,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &mes     &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+    &es      &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
@@ -308,7 +308,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp SQT  &mue    &kp Y   &kp U   &kp L   &kp J               &kp B   &kp P   &kp F   &kp W   &kp Q   &kp TAB
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &mes
+    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &es
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
           &msb_nav &mdc_sym &mcs_sym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
