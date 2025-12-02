@@ -24,6 +24,10 @@ this repo.
 gh run download -R kovasap/zmk-config -n firmware
 ```
 
+To flash, double tap the small reset button on each half while plugged in with
+usb, then copy the firmware files to the "usb drives" your computer should
+detect.
+
 ## Lintilla
 
 ![My Keymap](https://raw.github.com/kovasap/zmk-config/master/lintilla.svg?sanitize=true)
