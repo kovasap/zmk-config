@@ -26,7 +26,7 @@
     timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <DEFAULT MIRRORED>; \
+    layers = <DEFAULT MIRRORED SYMBOL NAVIGATION>; \
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
@@ -241,7 +241,7 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
-    COMBO(&tog MIRRORED, 6 7)
+    COMBO(&tog SYMBOL, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
     COMBO(&kp DEL, 36 37)
@@ -249,7 +249,7 @@ combos {
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
-    COMBO(&kp LSHFT, 14 37)
+    COMBO(&kp LSHFT, 3 14)
     COMBO(&mo SYMBOL, 19 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
@@ -290,11 +290,11 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-           &to SYMBOL                                                                          &to CONFIG
+           &to MIRRORED                                                                        &to CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-&cmt LSHFT ESC &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
@@ -311,7 +311,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp SQT  &mue    &kp Y   &kp U   &kp L   &kp J               &kp B   &kp P   &kp F   &kp W   &kp Q   &kp TAB
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &mqe     &kp M   &kp N   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &cmt LSHFT ESC
+    &mqe     &kp O   &kp I   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &kp ESC
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
           &msb_nav &mdc_sym &mcs_sym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
