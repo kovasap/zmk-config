@@ -218,7 +218,7 @@ macros {
         bindings = <&kp G &kp I &kp T &kp H &kp U &kp B &kp DOT &kp C &kp O &kp M &kp SLASH>
                  , <&kp K &kp O &kp V &kp A &kp S &kp A &kp P &kp SLASH>
                  , <&kp Z &kp M &kp K &kp MINUS &kp C &kp O &kp N &kp F &kp I &kp G>
-                 , <&kp # &kp L &kp I &kp N &kp T &kp I &kp L &kp L &kp A>;
+                 , <&kp HASH &kp L &kp I &kp N &kp T &kp I &kp L &kp L &kp A>;
     };
 };
 
