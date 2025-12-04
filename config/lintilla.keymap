@@ -209,6 +209,17 @@ macros {
         bindings = <&kp LG(X) &kp U &kp S>;
     };
 
+    config_link: config_link {
+        wait-ms = <30>;
+        tap-ms = <5>;
+        compatible = "zmk,behavior-macro";
+        label = "CONFIG_LINK";
+        #binding-cells = <0>;
+        bindings = <&kp G &kp I &kp T &kp H &kp U &kp B &kp DOT &kp C &kp O &kp M &kp SLASH>
+                 , <&kp K &kp O &kp V &kp A &kp S &kp A &kp P &kp SLASH>
+                 , <&kp Z &kp M &kp K &kp MINUS &kp C &kp O &kp N &kp F &kp I &kp G>
+                 , <&kp # &kp L &kp I &kp N &kp T &kp I &kp L &kp L &kp A>;
+    };
 };
 
 combos {
@@ -343,13 +354,13 @@ keymap {
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_SLEEP        &kp PGUP &kp LC(LEFT) &kp BSPC &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
+&kp C_VOL_UP &kp C_PP &kp LC(LEFT) &kp RSHFT &kp LC(RIGHT) &kp C_SLEEP    &kp C_SLEEP &kp LC(LEFT) &kp LCTRL &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN          &kp RET    &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
+&kp C_VOL_DN &kp C_MUTE &kp PGDN &kp UP &kp PGUP &to NAVIGATION  &to NAVIGATION &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP           &kp HOME  &kp LEFT &kp DOWN &kp RIGHT  &msb
+            &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE       &kp DEL         &kp RSHFT     &kp END 
+                  &kp HOME    &kp LCTRL      &kp SPACE       &kp DEL         &kp RSHFT     &kp END 
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -357,18 +368,17 @@ keymap {
     config {
         display-name = "config";
         bindings = <
-//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-          &to DEFAULT                                                                         &to DEFAULT
-// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-//                                                              con led         bat led
-&kp C_BRI_UP &none  &none    &none   &none  &none              &ind_con  &none &ind_bat  &none &win_sleep &kp C_SLEEP
-// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-&kp C_BRI_DN BT_(0)  BT_(1)  BT_(2)  BT_(3)  BT_(4)              &none   &none   &none   &none   &none   &none
-// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-          &bootloader &none &kp CAPS &none  &none               &none   &none   &none   &none &bootloader
-//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                    &kp LGUI      &kp LCTL     &kp SPACE     &mt LSHFT MINUS    &lt 1 RET    &lt 2 RET 
-//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+//         ┏━━━━━━━┓                                                                          ┏━━━━━━━┓
+           &to DEFAULT                                                                       &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_SLEEP    &bootloader &ind_con &ind_bat  &none &win_sleep &kp C_SLEEP
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN           BT_(0)  BT_(1)  BT_(2)  BT_(3)  BT_(4) &bootloader
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP      &config_link &config_link &config_link &config_link  &kp PSCRN
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓ ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+                  &kp LALT    &kp LCTRL      &kp SPACE      &config_link   &config_link  &config_link
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
 

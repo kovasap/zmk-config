@@ -33,3 +33,11 @@ detect.
 ![My Keymap](https://raw.github.com/kovasap/zmk-config/master/lintilla.svg?sanitize=true)
 
 Generated via https://keymap-drawer.streamlit.app/.
+
+To draw on command line, run:
+
+```
+pipx install keymap-drawer
+keymap parse -c 12 -z config/lintilla.keymap > lintilla_keymap.yaml
+keymap draw lintilla_keymap.yaml > lintilla.svg
+```
