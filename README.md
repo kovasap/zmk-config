@@ -1,5 +1,7 @@
 # My ZMK configurations
 
+Currently I use the Lintilla.
+
 ## Keymap Learnings
 
 Home row mods lead to too many false presses for me.
@@ -28,7 +30,12 @@ To flash, double tap the small reset button on each half while plugged in with
 usb, then copy the firmware files to the "usb drives" your computer should
 detect.
 
-## Lintilla
+## Bluetooth
+
+If you get a persistent "pairing failed" error when trying to pair, clear all bluetooth profiles by holding down each of their keys in turn.
+Then switch to your desired profile by tapping the key and try again.
+
+## Lintilla Keymap
 
 ![My Keymap](https://raw.github.com/kovasap/zmk-config/master/lintilla.svg?sanitize=true)
 
