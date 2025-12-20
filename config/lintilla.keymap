@@ -377,7 +377,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
             &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP      &config_link &config_link &config_link &config_link  &kp PSCRN
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓ ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                  &kp LALT    &kp LCTRL      &kp SPACE      &config_link   &config_link  &config_link
+                  &kp LALT    &kp LCTRL      &kp SPACE      &config_link   &kp RSHFT  &config_link
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
