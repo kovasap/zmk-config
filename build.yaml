@@ -25,20 +25,20 @@
 include:
 
 # Uncomment this if you do not want to use a dongle
- - board: seeeduino_xiao_ble
+ - board: xiao_ble
    shield: lintilla_left_central rgbled_adapter
    snippet: studio-rpc-usb-uart
    artifact-name: lintilla-left-central
 # Uncomment this if you want to use a dongle
-# - board: seeeduino_xiao_ble
+# - board: xiao_ble
 #   shield: lintilla_left_peripheral rgbled_adapter
 #   artifact-name: lintilla-left-peripheral
-# - board: seeeduino_xiao_ble
+# - board: xiao_ble
 #   shield: lintilla_dongle dongle_display
 #   snippet: studio-rpc-usb-uart
 #   artifact-name: lintilla-dongle
- - board: seeeduino_xiao_ble
+ - board: xiao_ble
    shield: lintilla_right_peripheral rgbled_adapter
    artifact-name: lintilla-right
- - board: seeeduino_xiao_ble
+ - board: xiao_ble
    shield: settings_reset
