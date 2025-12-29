@@ -373,7 +373,7 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
   &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_SLEEP    &bootloader &ind_con &ind_bat  &none &win_sleep &kp C_SLEEP
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN           BT_(0)  BT_(1)  BT_(2)  BT_(3)  BT_(4) &bootloader
+   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN           BT_(0)  BT_(1)  BT_(2)  BT_(3)  &bt BT_CLR_ALL &bootloader
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
             &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP      &config_link &config_link &config_link &config_link  &kp PSCRN
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓ ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
