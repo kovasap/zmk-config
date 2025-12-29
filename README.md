@@ -32,7 +32,7 @@ detect.
 
 ## Bluetooth
 
-If you get a persistent "pairing failed" error when trying to pair, clear all bluetooth profiles by holding down each of their keys in turn.
+If you get a persistent "pairing failed" error when trying to pair, clear all bluetooth profiles by holding down each of their keys in turn or using the "BT_CLR_ALL" button.
 Then switch to your desired profile by tapping the key and try again.
 
 ## Lintilla Keymap
