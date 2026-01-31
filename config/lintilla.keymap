@@ -321,7 +321,7 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-           &lht_to MIRRORED                                                                   &lht_to CONFIG
+        &lht_to MIRRORED MIRRORED                                                          &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
