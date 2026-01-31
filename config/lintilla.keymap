@@ -9,8 +9,9 @@
 #define DEFAULT 0
 #define MIRRORED 1
 #define SYMBOL 2
-#define NAVIGATION 3
-#define CONFIG 4
+#define MSYMB 3
+#define NAV 4
+#define CFG 5
 // Unused Layers
 /*
 #define EDITING 5
@@ -26,7 +27,7 @@
     timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <DEFAULT MIRRORED SYMBOL NAVIGATION>; \
+    layers = <DEFAULT MIRRORED SYMBOL MSYMB NAV>; \
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
@@ -71,6 +72,15 @@ behaviors {
         tapping-term-ms = <200>;
         retro-tap;
         bindings = <&mo>, <&kp>;
+    };
+
+    lht_to: tap_to_enter_layer_hold_to_mo {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        retro-tap;
+        bindings = <&mo>, <&to>;
     };
 
     lt_sl: layer_tap_sticky_layer {
@@ -124,10 +134,17 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    msp_sym: mod_semi_colon_symbol {
+    msp_sym: mod_star_plus_symbol {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&lht_bal SYMBOL STAR>, <&kp PLUS>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    msp_msym: mod_star_plus_mirrored_symbol {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal MSYMB STAR>, <&kp PLUS>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -141,7 +158,7 @@ behaviors {
     msb_nav: mod_slash_back_nav {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        bindings = <&lht_bal NAVIGATION SLASH>, <&kp BACKSLASH>;
+        bindings = <&lht_bal NAV SLASH>, <&kp BACKSLASH>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -255,13 +272,16 @@ combos {
     COMBO(&tog SYMBOL, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
-    COMBO(&kp DEL, 36 37)
+    COMBO(&mo MIRRORED, 36 37)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
+    COMBO(&kp LSHFT, 30 36)
     COMBO(&kp LSHFT, 3 14)
+    COMBO(&mo MSYMB, 7 37)
     COMBO(&mo SYMBOL, 19 37)
+    COMBO(&mo NAV, 30 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
@@ -269,8 +289,8 @@ combos {
 
     // Experimental same finger combos, left hand
 
-    COMBO(&kp UP, 7 19)
-    COMBO(&kp DOWN, 19 30)
+    COMBO(&kp DEL, 7 19)
+    COMBO(&kp ESC, 19 30)
 
     // Experimental same finger combos, right hand
 
@@ -301,7 +321,7 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-           &to MIRRORED                                                                        &to CONFIG
+           &lht_to MIRRORED                                                                   &lht_to CFG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
@@ -332,31 +352,48 @@ keymap {
     };
 
     symbols {
-        display-name = "symbols";
+        display-name = "Symbols";
         bindings = <
 //         ┏━━━━━━━━━┓                                                                            ┏━━━━━━━━┓
             &to DEFAULT                                                                           &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
     &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp LT    &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
-    &kp ESC &kp N0    &kp N6  &kp N5  &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
+&kp ESC &lht_bal CFG N0 &kp N6 &kp N5 &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-            &msb_nav  &kp N9  &kp N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAVIGATION DLLR 
+  &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
-                 &kp LSHFT       &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &kp TILDE
+                 &msp_msym      &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &kp TILDE
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
         >;
     };
 
+    mirrored_symbols {
+        display-name = "Mirrored Symbols";
+        bindings = <
+//          ┏━━━━━━━━━┓                                                                           ┏━━━━━━━━┓
+            &to DEFAULT                                                                          &to DEFAULT
+// ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓    ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
+   &kp GRAVE &kp AT    &kp PIPE &kp RBRC &kp LBRC &kp LT     &kp PLUS  &kp N1    &kp N2   &kp N3   &kp MINUS &kp TAB 
+// ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫    ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
+   &kp PLUS  &kp PRCNT &kp STAR &kp RPAR &kp LPAR &kp GT     &kp EQUAL &kp N4    &kp N5   &kp N6   &kp N0    &kp ESC 
+// ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫    ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
+    &lht_bal NAV DLLR &kp HASH &kp RBKT &kp LBKT &kp AMPS    &kp DOT   &kp N7    &kp N8  &kp N9    &msb_nav  
+//          ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
+                  &kp TILDE      &kp LSHFT      &kp CARET      &kp SPACE      &kp LCTRL        &kp LSHFT
+//             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
+        >;
+    };
+
     nav {
-        display-name = "navigation";
+        display-name = "Navigation";
         bindings = <
 //         ┏━━━━━━━┓                                                                               ┏━━━━━━━┓
            &to DEFAULT                                                                              &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-&kp C_VOL_UP &kp C_PP &kp LC(LEFT) &kp RSHFT &kp LC(RIGHT) &kp C_SLEEP    &kp C_SLEEP &kp LC(LEFT) &kp LCTRL &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
+&kp C_VOL_UP &kp C_PP &kp F3 &kp F2 &kp F1  &mo CFG       &kp C_SLEEP &kp LC(LEFT) &kp LCTRL &kp LC(RIGHT) &kp C_PP &kp C_VOL_UP
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-&kp C_VOL_DN &kp C_MUTE &kp PGDN &kp UP &kp PGUP &to NAVIGATION  &to NAVIGATION &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
+&kp C_VOL_DN &kp C_MUTE &kp PGDN &kp UP &kp PGUP &to NAV  &to NAV &kp PGUP &kp UP  &kp PGDN &kp C_MUTE &kp C_VOL_DN
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
             &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END        &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━━━━┻┳━━━━━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
@@ -366,16 +403,16 @@ keymap {
     };
 
     config {
-        display-name = "config";
+        display-name = "Config";
         bindings = <
 //         ┏━━━━━━━┓                                                                          ┏━━━━━━━┓
            &to DEFAULT                                                                       &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓          ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
-  &kp PSCRN &kp F1  &kp F2   &kp F3  &kp F4 &kp C_SLEEP    &bootloader &ind_con &ind_bat  &none &win_sleep &kp C_SLEEP
+   &kp PSCRN &none  &kp F3  &kp F2  &kp F1  &kp F10        &kp C_SLEEP &ind_con &ind_bat &kp PSCRN &win_sleep &kp C_SLEEP
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-   &kp C_PP &kp F5  &kp F6  &kp F7  &kp F8  &kp PSCRN           BT_(0)  BT_(1)  BT_(2)  BT_(3)  &bt BT_CLR_ALL &bootloader
+   &kp C_PP  &none  &kp F6  &kp F5  &kp F4  &kp F11          BT_(0)  BT_(1)  BT_(2) BT_(3) &bt BT_CLR_ALL &bootloader
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-            &kp F9  &kp F10 &kp F11 &kp F12 &kp C_PP      &config_link &config_link &config_link &config_link  &kp PSCRN
+             &none  &kp F9  &kp F8  &kp F7  &kp F12      &config_link &config_link &config_link &config_link  &kp PSCRN
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓ ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                   &kp LALT    &kp LCTRL      &kp SPACE      &config_link   &kp RSHFT  &config_link
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
@@ -415,7 +452,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
         &kp LCTRL   &kp N7   &kp N6   &kp N5   &kp N4              &kp K   &kp H   &mcs    &mdc   &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp RET      &kp SPACE          &kp BSPC       &mt LSHFT ESC    &lt NAVIGATION DEL
+                 &kp LGUI     &kp RET      &kp SPACE          &kp BSPC       &mt LSHFT ESC    &lt NAV DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -424,7 +461,7 @@ keymap {
         display-name = "Colemak DH Autoshift";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-         &num_word SYMBOL                                                               &nav_word NAVIGATION
+         &num_word SYMBOL                                                               &nav_word NAV
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  AS(Q)   AS(W)   AS(F)   AS(P)   AS(B)               AS(J)   AS(L)   AS(U)   AS(Y)  &caps_word AS(SQT)
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
@@ -432,7 +469,7 @@ keymap {
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              AS(Z)   AS(X)   AS(C)   AS(D)   AS(V)               AS(K)   AS(H)   &as SEMI COMMA    &as COLON DOT   &as BACKSLASH SLASH
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-               &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAVIGATION DEL
+               &kp LGUI    &mt LCTRL RET   &kp SPACE       &kp BSPC     &lt SYMBOL ESC  &lt NAV DEL
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -442,7 +479,7 @@ keymap {
         display-name = "Colemak DH Shifted";
         bindings = <
 //                ┏━━━━━━━┓                                                                                                                           ┏━━━━━━━┓
-            &num_word SYMBOL                                                                                                                   &nav_word NAVIGATION
+            &num_word SYMBOL                                                                                                                   &nav_word NAV
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┓
     &kp LS(TAB) &as MINUS LS(Q) &as N3 LS(W) &as N2 LS(F) &as N1 LS(P) &as PLUS LS(B)    &as LT LS(J) &as LBRC LS(L) &as RBRC LS(U) &as PIPE LS(Y) &as AT TILDE  &as GRAVE LS(SQT)
 // ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫  ┣━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
