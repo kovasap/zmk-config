@@ -28,7 +28,7 @@
     timeout-ms = <COMBO_TIMEOUT_MS>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <DEFAULT MIRRORED SYMBOL MSYMB NAV>; \
+    layers = <DEFAULT MIRROR_READY MIRRORED SYMBOL MSYMB NAV CONFIG>; \
     slow-release; \
     require-prior-idle-ms = <125>; \
   };
