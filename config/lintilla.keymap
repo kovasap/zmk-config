@@ -294,9 +294,9 @@ combos {
 
     COMBO(&kp LSHFT, 30 36)
     COMBO(&kp LSHFT, 3 14)
-    COMBO(&lht_to MSYMB, 7 37)
-    COMBO(&lht_to SYMBOL, 19 37)
-    COMBO(&lht_to NAV, 30 37)
+    COMBO(&lht_to MSYMB MSYMB, 7 37)
+    COMBO(&lht_to SYMBOL SYMBOL, 19 37)
+    COMBO(&lht_to NAV NAV, 30 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
