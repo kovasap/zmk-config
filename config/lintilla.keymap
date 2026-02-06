@@ -7,11 +7,12 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 #define DEFAULT 0
-#define MIRRORED 1
-#define SYMBOL 2
-#define MSYMB 3
-#define NAV 4
-#define CONFIG 5
+#define MIRROR_READY 1
+#define MIRRORED 2
+#define SYMBOL 3
+#define MSYMB 4
+#define NAV 5
+#define CONFIG 6
 // Unused Layers
 /*
 #define EDITING 5
@@ -120,6 +121,13 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
+    mcs_msym: mod_comma_semi_mirrored_symbol {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal MSYMB COMMA>, <&kp SEMI>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
     mdc: mod_dot_colon {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -131,6 +139,13 @@ behaviors {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
         bindings = <&lht_bal SYMBOL DOT>, <&kp COLON>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    mdc_msym: mod_dot_colon_mirrored_symbol {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&lht_bal MSYMB DOT>, <&kp COLON>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -269,19 +284,19 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
-    COMBO(&tog SYMBOL, 6 7)
+    COMBO(&kp DEL, 6 7)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp RET, 29 30)
-    COMBO(&mo MIRRORED, 36 37)
+    COMBO(&tog MIRROR_READY, 36 37)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&kp LSHFT, 30 36)
     COMBO(&kp LSHFT, 3 14)
-    COMBO(&mo MSYMB, 7 37)
-    COMBO(&mo SYMBOL, 19 37)
-    COMBO(&mo NAV, 30 37)
+    COMBO(&lht_to MSYMB, 7 37)
+    COMBO(&lht_to SYMBOL, 19 37)
+    COMBO(&lht_to NAV, 30 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
 
@@ -289,8 +304,8 @@ combos {
 
     // Experimental same finger combos, left hand
 
-    COMBO(&kp DEL, 7 19)
-    COMBO(&kp ESC, 19 30)
+    COMBO(&kp COLON, 7 19)
+    COMBO(&kp SEMI, 19 30)
 
     // Experimental same finger combos, right hand
 
@@ -334,6 +349,23 @@ keymap {
         >;
     };
 
+    mirror_ready_colemak_dh {
+        display-name = "Colemak DH Mirror Ready";
+        bindings = <
+//         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
+        &lht_to MIRRORED MIRRORED                                                          &lht_to CONFIG CONFIG
+// ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
+    &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
+// ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+// ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
+             &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
+//         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
+           &kp LGUI  &lht_to MIRRORED MIRRORED &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
+//            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+        >;
+    };
+
     mirrored_colemak_dh {
         display-name = "Mirrored Colemak DH";
         bindings = <
@@ -344,7 +376,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
     &mqe     &kp O   &kp I   &kp E   &kp N   &kp M               &kp G   &kp D   &kp S   &kp R   &kp A   &kp ESC
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
-          &msb_nav &mdc_sym &mcs_sym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
+        &msb_nav &mdc_msym &mcs_msym &kp H   &kp K               &kp V   &kp T   &kp C   &kp X   &kp Z
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
                  &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
@@ -359,9 +391,9 @@ keymap {
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
     &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp LT    &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
-&kp ESC &lht_bal CONFIG N0 &kp N6 &kp N5 &kp N4  &kp EQUAL     &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
+&kp ESC &lht_bal CONFIG N0 &kp N6 &kp N5 &kp N4  &kp EQUAL  &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-  &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8  &kp N7  &kp DOT       &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
+  &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8  &kp N7     &kp DOT   &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
                  &msp_msym      &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &kp TILDE
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
