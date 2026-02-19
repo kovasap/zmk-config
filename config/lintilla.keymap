@@ -293,9 +293,12 @@ combos {
     // Should be awkward enough to press that they never accidentally get hit
 
     COMBO(&kp LSHFT, 30 36)
+    COMBO(&kp LSHFT, 36 38)
+    COMBO(&kp LSHFT, 37 38)
     COMBO(&kp LSHFT, 3 14)
+    COMBO(&kp PLUS, 2 3)
     COMBO(&lht_to MSYMB MSYMB, 7 37)
-    COMBO(&lht_to SYMBOL SYMBOL, 19 37)
+    COMBO(&lht_to MSYMB MSYMB, 0 4)
     COMBO(&lht_to NAV NAV, 30 37)
 
     // This should make alt-tabbing easy when pressed with the ring finger.
@@ -336,7 +339,7 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-        &lht_to MIRRORED MIRRORED                                                          &lht_to CONFIG CONFIG
+        &lht_to SYMBOL SYMBOL                                                          &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
@@ -353,7 +356,7 @@ keymap {
         display-name = "Colemak DH Mirror Ready";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-        &lht_to MIRRORED MIRRORED                                                          &lht_to CONFIG CONFIG
+        &lht_to SYMBOL SYMBOL                                                          &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
