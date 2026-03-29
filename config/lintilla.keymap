@@ -75,6 +75,15 @@ behaviors {
         bindings = <&mo>, <&kp>;
     };
 
+    kht_bal: balanced_hold_tap_for_keys {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        retro-tap;
+        bindings = <&kt>, <&kp>;
+    };
+
     lht_to: tap_to_enter_layer_hold_to_mo {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
@@ -284,18 +293,21 @@ combos {
     COMBO(&kp RET, 31 32)
     COMBO(&kp DEL, 39 40)
 
+    COMBO(&kp SPACE, 5 7)
     COMBO(&kp DEL, 6 7)
+    COMBO(&kp TAB, 6 19)
     COMBO(&kp BSPC, 18 19)
+    COMBO(&kp ESC, 18 30)
     COMBO(&kp RET, 29 30)
-    COMBO(&tog MIRROR_READY, 36 37)
+    COMBO(&kp LGUI, 36 37)
+    COMBO(&mo MIRRORED, 37 38)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
-    COMBO(&kp LSHFT, 30 36)
     COMBO(&kp LSHFT, 36 38)
-    COMBO(&kp LSHFT, 37 38)
-    COMBO(&kp LSHFT, 3 14)
+    COMBO(&kp LGUI, 3 14)
+    COMBO(&kp LSHFT, 2 14)
     COMBO(&kp PLUS, 2 3)
     COMBO(&lht_to MSYMB MSYMB, 7 37)
     COMBO(&lht_to MSYMB MSYMB, 0 4)
@@ -339,15 +351,15 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-        &lht_to SYMBOL SYMBOL                                                          &lht_to CONFIG CONFIG
+        &kht_bal LGUI LGUI                                                               &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp TAB  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-    &kp ESC  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
+  &kp LSHFT  &kp A   &kp R   &kp S   &kp T   &kp G               &kp M   &kp N   &kp E   &kp I   &kp O   &mqe
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
              &kp Z   &kp X   &kp C   &kp D   &kp V               &kp K   &kp H &mcs_sym &mdc_sym &msb_nav
 //         ┗━━┳━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━┻━━━━┓  ┏━━━┻━━━━━━━┻━━━┳━━━┻━━━━━━━┻━┳━━━━━┻━━━━━━━┛
-                 &kp LGUI     &kp LCTRL      &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
+                 &msp_sym      &kp LCTRL     &kp SPACE       &kp MINUS       &kp LSHFT     &msp_sym
 //            ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
         >;
     };
@@ -396,7 +408,7 @@ keymap {
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
 &kp ESC &lht_bal CONFIG N0 &kp N6 &kp N5 &kp N4  &kp EQUAL  &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
-  &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8  &kp N7     &kp DOT   &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
+  &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8 &kp N7 &kp DOT   &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
                  &msp_msym      &kp LCTRL     &kp SPACE      &kp CARET      &kp LSHFT        &kp TILDE
 //            ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
