@@ -319,7 +319,7 @@ combos {
 
     // Experimental same finger combos, left hand
 
-    COMBO(&kp COLON, 7 19)
+    COMBO(&kp SPACE, 7 19)
     COMBO(&kp SEMI, 19 30)
 
     // Experimental same finger combos, right hand
@@ -404,9 +404,9 @@ keymap {
 //         ┏━━━━━━━━━┓                                                                            ┏━━━━━━━━┓
             &to DEFAULT                                                                           &to DEFAULT
 // ┏━━━━━━━╋━━━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┓   ┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━╋━━━━━━━━━╋━━━━━━━┓
-    &kp TAB &kp MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp LT    &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
+    &kp TAB &lht_bal CONFIG MINUS &kp N3  &kp N2  &kp N1  &kp PLUS      &kp LT    &kp LBRC  &kp RBRC &kp PIPE  &kp AT   &kp GRAVE
 // ┣━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┫
-&kp ESC &lht_bal CONFIG N0 &kp N6 &kp N5 &kp N4  &kp EQUAL  &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
+&kp ESC   &kp N0 &kp N6 &kp N5 &kp N4  &kp EQUAL  &kp GT    &kp LPAR  &kp RPAR &kp STAR  &kp PRCNT &kp PLUS
 // ┗━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━━━┫   ┣━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━━╋━━━━━━━┛
   &msb_nav &lht_bal MSYMB N9  &lht_bal MSYMB N8 &kp N7 &kp DOT   &kp AMPS  &kp LBKT  &kp RBKT &kp HASH  &lht_bal NAV DLLR 
 //         ┗━━┳━━━━━━┻━━━━━━━┻┳━━━━━━┻━━━━━━┳┻━━━━━━━━━┻┓ ┏┻━━━━━━━━━┻━━━┳━━━━━┻━━━━━━━━┻━┳━━━━━━┻━━━━━━━━━┛
