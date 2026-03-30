@@ -320,8 +320,8 @@ combos {
     COMBO(&kp DEL, 39 40)
 
     COMBO(&kp SPACE, 5 7)
-    COMBO(&kp LS(TAB), 6 7)
-    COMBO(&kp TAB, 6 19)
+    COMBO(&kp TAB, 6 7)
+    COMBO(&kp LS(TAB), 6 19)
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp DEL, 18 30)
     COMBO(&kp RET, 29 30)
