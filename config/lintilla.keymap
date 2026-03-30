@@ -325,6 +325,9 @@ combos {
     COMBO(&kp BSPC, 18 19)
     COMBO(&kp DEL, 18 30)
     COMBO(&kp RET, 29 30)
+    COMBO(&kp ESC, 19 37)
+    COMBO(&kp ESC, 30 37)
+    COMBO(&mo MIRRORED, 30 36)
     COMBO(&mo MIRRORED, 37 38)
 
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
