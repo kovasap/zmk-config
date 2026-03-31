@@ -91,6 +91,7 @@ behaviors {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
         bindings = <&lgui_mo>, <&lgui_tog>;
+        tapping-term-ms = <200>;
         hold-while-undecided-linger;
     };
 
