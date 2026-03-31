@@ -277,7 +277,7 @@ macros {
         compatible = "zmk,behavior-macro";
         label = "TOGGLE_LGUI_LAYER";
         #binding-cells = <0>;
-        bindings = <&kt LGUI &tog LGUI_LAYER>;
+        bindings = <&tog LGUI_LAYER &kt LGUI>;
     };
 
     lgui_mo: momentary_lgui_layer {
