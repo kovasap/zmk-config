@@ -378,7 +378,7 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-           &lgui_tog_mo 0 0                                                                &lht_to CONFIG CONFIG
+           &lgui_tog                                                                   &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp ESC  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
