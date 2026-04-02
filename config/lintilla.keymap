@@ -87,14 +87,15 @@ behaviors {
 
     // This behavior should always be used with dummy parameters like:
     // &lgui_tog_mo 0 0
+    /*
     lgui_tog_mo: lgui_tog_mo {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
         bindings = <&lgui_mo>, <&lgui_tog>;
-        flavor = "balanced";
         tapping-term-ms = <200>;
-        retro-tap;
+        hold-while-undecided-linger;
     };
+    */
 
     lht_to: tap_to_enter_layer_hold_to_mo {
         compatible = "zmk,behavior-hold-tap";
@@ -278,7 +279,7 @@ macros {
         compatible = "zmk,behavior-macro";
         label = "TOGGLE_LGUI_LAYER";
         #binding-cells = <0>;
-        bindings = <&kt LGUI &tog LGUI_LAYER>;
+        bindings = <&tog LGUI_LAYER &kt LGUI>;
     };
 
     lgui_mo: momentary_lgui_layer {
@@ -381,7 +382,7 @@ keymap {
         display-name = "Colemak DH";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-           &lgui_tog_mo 0 0                                                                &lht_to CONFIG CONFIG
+           &lgui_tog                                                                   &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp ESC  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
@@ -502,7 +503,7 @@ keymap {
         display-name = "Colemak DH Lgui on";
         bindings = <
 //         ┏━━━━━━━┓                                                                           ┏━━━━━━━┓
-         &lgui_tog_mo 0 0                                                                &lht_to CONFIG CONFIG
+            &lgui_tog                                                                   &lht_to CONFIG CONFIG
 // ┏━━━━━━━╋━━━━━━━╋━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓           ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━╋━━━━━━━╋━━━━━━━┓
     &kp ESC  &kp Q   &kp W   &kp F   &kp P   &kp B               &kp J   &kp L   &kp U   &kp Y   &mue   &kp SQT
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫           ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
