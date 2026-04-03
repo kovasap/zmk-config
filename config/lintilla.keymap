@@ -275,14 +275,12 @@ macros {
 
     lgui_tog: toggle_lgui_layer {
         compatible = "zmk,behavior-macro";
-        label = "TOGGLE_LGUI_LAYER";
         #binding-cells = <0>;
         bindings = <&tog LGUI_LAYER &kt LGUI>;
     };
 
     lgui_mo: momentary_lgui_layer {
         compatible = "zmk,behavior-macro";
-        label = "TOGGLE_LGUI_LAYER";
         #binding-cells = <0>;
         bindings = <&macro_press &kp LGUI &mo LGUI_LAYER>
                  , <&macro_pause_for_release>
