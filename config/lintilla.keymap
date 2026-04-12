@@ -316,7 +316,6 @@ combos {
     COMBO(&kp GRAVE, 8 9)
     COMBO(&kp BSPC, 20 21)
     COMBO(&kp RET, 31 32)
-    COMBO(&kp DEL, 39 40)
 
     COMBO(&kp SPACE, 5 7)
     COMBO(&kp TAB, 6 7)
@@ -328,11 +327,9 @@ combos {
     // Various convienience keys that are nice to have on the left hand when using the mouse with the right
     // Should be awkward enough to press that they never accidentally get hit
 
-    COMBO(&lht_to MIRRORED, 2 14)
+    COMBO(&lht_to MIRRORED MIRRORED, 2 14)
     COMBO(&kp LALT, 2 3)
-    COMBO(&lht_to MSYMB MSYMB, 7 37)
     COMBO(&lht_to MSYMB MSYMB, 0 4)
-    COMBO(&lht_to NAV NAV, 30 37)
 
     // Experimental same finger combos, left hand
 
