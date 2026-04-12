@@ -37,6 +37,12 @@ Then switch to your desired profile by tapping the key and try again.
 
 ## Lintilla Keymap
 
+Note: I use the Qtile window manager on linux as my desktop environment.
+I control it mainly via [LGUI + \<key\>
+shortcuts](https://github.com/kovasap/dotfiles/blob/368da132eaa8df6e410fde2b7d6e3e924068787a/.config/qtile/config.py#L281).
+I don't use windows so this keymap is not optimized for common windows
+shortcuts.
+
 ![My Keymap](https://raw.github.com/kovasap/zmk-config/master/lintilla.svg?sanitize=true)
 
 Generated via https://keymap-drawer.streamlit.app/.
